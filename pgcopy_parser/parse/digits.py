@@ -3,6 +3,7 @@ from struct import (
     unpack,
     unpack_from,
 )
+from typing import Union
 
 from .nullables import if_nullable
 
@@ -64,6 +65,13 @@ def to_int8(binary_data: bytes) -> int:
 
 
 @if_nullable
+def to_money(binary_data: bytes) -> float:
+    """Unpack money value."""
+
+    return to_int8(binary_data) * 0.01
+
+
+@if_nullable
 def to_float4(binary_data: bytes) -> float:
     """Unpack float4 value."""
 
@@ -107,3 +115,69 @@ def to_numeric(binary_data: bytes) -> Decimal:
         numeric *= -1
 
     return numeric.quantize(scale)
+
+
+@if_nullable
+def to_point(binary_data: bytes) -> tuple[float, float]:
+    """Unpack point value."""
+
+    return unpack(">2d", binary_data)
+
+
+@if_nullable
+def to_line(binary_data: bytes) -> tuple[float, float, float]:
+    """Unpack line value."""
+
+    return unpack(">3d", binary_data)
+
+
+@if_nullable
+def to_circle(binary_data: bytes) -> tuple[tuple[float, float], float]:
+    """Unpack circle value."""
+
+    *x_y, r = unpack(">3d", binary_data)
+
+    return x_y, r
+
+
+@if_nullable
+def to_lseg(binary_data: bytes) -> list[tuple[float, float]]:
+    """Unpack lseg value."""
+
+    x1, y1, x2, y2 = unpack(">4d", binary_data)
+
+    return [(x1, y1), (x2, y2)]
+
+
+@if_nullable
+def to_box(binary_data: bytes) -> tuple[
+    tuple[float, float],
+    tuple[float, float],
+]:
+    """Unpack box value."""
+
+    x1, y1, x2, y2 = unpack(">4d", binary_data)
+
+    return (x1, y1), (x2, y2)
+
+
+@if_nullable
+def to_path(binary_data: bytes) -> Union[
+    list[tuple[float, float]],
+    tuple[tuple[float, float]],
+]:
+    """Unpack path value."""
+
+    # TODO. add path
+    # path 16+16n bytes Closed path (similar to polygon) ((x1,y1),...)
+    # path 16+16n bytes Open path [(x1,y1),...]
+    raise ValueError("Not support.")
+
+
+@if_nullable
+def to_polygon(binary_data: bytes) -> list[tuple[float, float]]:
+    """Unpack polygon value."""
+
+    # TODO. add polygon
+    # polygon 40+16n bytes Polygon (similar to closed path) ((x1,y1),...)
+    raise ValueError("Not support.")

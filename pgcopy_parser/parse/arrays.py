@@ -21,13 +21,21 @@ from .dates import (
 )
 from .digits import (
     to_bool,
+    to_box,
+    to_circle,
     to_float4,
     to_float8,
     to_int2,
     to_int4,
     to_int8,
+    to_line,
+    to_lseg,
+    to_money,
     to_numeric,
     to_oid,
+    to_path,
+    to_point,
+    to_polygon,
     to_serial2,
     to_serial4,
     to_serial8,
@@ -36,6 +44,7 @@ from .ipaddrs import to_network
 from .jsons import to_json
 from .nullables import if_nullable
 from .strings import (
+    to_bits,
     to_bytea,
     to_macaddr,
     to_text,
@@ -44,9 +53,12 @@ from .uuids import to_uuid
 
 
 DtypeFunc: dict[PGDataType, FunctionType] = {
+    PGDataType.Bit: to_bits,
     PGDataType.Bool: to_bool,
+    PGDataType.Box: to_box,
     PGDataType.Bytes: to_bytea,
     PGDataType.Cidr: to_network,
+    PGDataType.Circle: to_circle,
     PGDataType.Date: to_date,
     PGDataType.Float4: to_float4,
     PGDataType.Float8: to_float8,
@@ -56,10 +68,16 @@ DtypeFunc: dict[PGDataType, FunctionType] = {
     PGDataType.Int8: to_int8,
     PGDataType.Interval: to_interval,
     PGDataType.Json: to_json,
+    PGDataType.Line: to_line,
+    PGDataType.Lseg: to_lseg,
     PGDataType.Macaddr8: to_macaddr,
     PGDataType.Macaddr: to_macaddr,
+    PGDataType.Money: to_money,
     PGDataType.Numeric: to_numeric,
     PGDataType.Oid: to_oid,
+    PGDataType.Path: to_path,
+    PGDataType.Point: to_point,
+    PGDataType.Polygon: to_polygon,
     PGDataType.Serial2: to_serial2,
     PGDataType.Serial4: to_serial4,
     PGDataType.Serial8: to_serial8,
