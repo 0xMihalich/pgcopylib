@@ -6,7 +6,7 @@ from struct import unpack
 def read_record(file: BufferedReader) -> Optional[bytes]:
     """Read one record to bytes."""
 
-    length: int = unpack(">l", file.read(4))[0]
+    length: int = unpack("!l", file.read(4))[0]
 
     if length == -1:
         return None
@@ -19,7 +19,7 @@ def read_record(file: BufferedReader) -> Optional[bytes]:
 def skip_record(file: BufferedReader) -> None:
     """Skip one record."""
 
-    length: int = unpack(">l", file.read(4))[0]
+    length: int = unpack("!l", file.read(4))[0]
 
     if length > 0:
         file.seek(file.tell() + length)

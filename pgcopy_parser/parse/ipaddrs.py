@@ -27,7 +27,7 @@ def to_network(
     """Unpack inet or cidr value."""
 
     ip_family, ip_netmask, is_cidr, ip_length, ip_data = unpack(
-        f">4B{len(binary_data) - 4}s",
+        f"!4B{len(binary_data) - 4}s",
         binary_data,
     )
 

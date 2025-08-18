@@ -49,7 +49,7 @@ class PGCopy:
             for i in range(7, -1, -1)
         ]
         self.is_oid_enable: bool = bool(self.flags_area[16])
-        self.header_ext_length: int = unpack(">i", self.file.read(4))[0]
+        self.header_ext_length: int = unpack("!i", self.file.read(4))[0]
         self.num_columns: Optional[int] = None
         self.num_rows: Optional[int] = None
 
@@ -85,7 +85,7 @@ class PGCopy:
             self.file.seek(19)
             self.num_rows = 0
 
-            cols: int = unpack(">h", self.file.read(2))[0]
+            cols: int = unpack("!h", self.file.read(2))[0]
             all_cols: list[int] = []
 
             while cols != -1:
@@ -96,7 +96,7 @@ class PGCopy:
                     self.file.seek(self.file.tell() + 4)
 
                 [skip_record(self.file) for _ in range(cols)]
-                cols: int = unpack(">h", self.file.read(2))[0]
+                cols: int = unpack("!h", self.file.read(2))[0]
 
             self.num_columns = max(all_cols)
             self.file.seek(19)
@@ -114,7 +114,7 @@ class PGCopy:
     def read_raw(self) -> list[Optional[Any], None, None]:
         """Read single row."""
 
-        cols: int = unpack(">h", self.file.read(2))[0]
+        cols: int = unpack("!h", self.file.read(2))[0]
 
         if cols == -1:
             raise PGCopyEOFError("PGCopy end of file!")

@@ -118,7 +118,7 @@ def to_array(binary_data: bytes) -> list[Any]:
     """Unpack array values."""
 
     buffer = BytesIO(binary_data)
-    nested, _, oid = unpack(">3I", buffer.read(12))
+    nested, _, oid = unpack("!3I", buffer.read(12))
 
     try:
         array_type = PGOid(oid)
@@ -127,7 +127,7 @@ def to_array(binary_data: bytes) -> list[Any]:
 
     to_dtype = DtypeFunc[PGOidToDType[array_type]]
     array_struct = [
-        unpack(">2I", buffer.read(8))[0]
+        unpack("!2I", buffer.read(8))[0]
         for _ in range(nested)
     ]
     elements = [

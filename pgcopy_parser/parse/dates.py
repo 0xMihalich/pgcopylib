@@ -21,7 +21,7 @@ def to_date(binary_data: bytes) -> date:
     default_date = date(2000, 1, 1)
 
     return default_date + timedelta(
-        days=unpack(">i", binary_data)[0]
+        days=unpack("!i", binary_data)[0]
     )
 
 
@@ -32,7 +32,7 @@ def to_timestamp(binary_data: bytes) -> datetime:
     default_date = datetime(2000, 1, 1)
 
     return default_date + timedelta(
-        microseconds=unpack(">q", binary_data)[0]
+        microseconds=unpack("!q", binary_data)[0]
     )
 
 
@@ -49,7 +49,7 @@ def to_timestamptz(binary_data: bytes) -> datetime:
 def to_time(binary_data: bytes) -> time:
     """Unpack time value."""
 
-    microseconds: int = unpack_from(">q", binary_data)[0]
+    microseconds: int = unpack_from("!q", binary_data)[0]
     seconds, microsecond = divmod(microseconds, 1_000_000)
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)

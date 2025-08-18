@@ -17,7 +17,7 @@ def to_macaddr(binary_data: bytes) -> str:
     return ":".join(
         f"{byte:02x}"
         for byte in unpack(
-            f">{len(binary_data)}B",
+            f"!{len(binary_data)}B",
             binary_data,
         )
     ).upper()
@@ -28,7 +28,7 @@ def to_bits(binary_data: bytes) -> str:
     """Unpack bit and varbit value."""
 
     length, bit_data = unpack(
-        f">I{len(binary_data) - 4}s",
+        f"!I{len(binary_data) - 4}s",
         binary_data,
     )
 
