@@ -104,5 +104,5 @@ pip install .
 ### From git
 
 ```bash
-pip install git+https://github.com/0xMihalich/pgcopy_parser
+pip install git+https://github.com/0xMihalich/pgcopylib
 ```
