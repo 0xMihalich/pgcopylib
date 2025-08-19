@@ -1,4 +1,4 @@
-# pgcopylib
+# pgcopylib v0.0.2
 
 Library for reading data from binary format PosgreSQL
 
