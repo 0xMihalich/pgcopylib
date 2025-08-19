@@ -31,4 +31,4 @@ __all__ = (
     "PGOidToDType",
 )
 __author__ = "0xMihalich"
-__version__ = "0.0.1"
+__version__ = "0.0.2"

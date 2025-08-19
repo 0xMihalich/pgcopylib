@@ -21,24 +21,26 @@ from .dates import (
 )
 from .digits import (
     to_bool,
-    to_box,
-    to_circle,
     to_float4,
     to_float8,
     to_int2,
     to_int4,
     to_int8,
-    to_line,
-    to_lseg,
     to_money,
     to_numeric,
     to_oid,
-    to_path,
-    to_point,
-    to_polygon,
     to_serial2,
     to_serial4,
     to_serial8,
+)
+from .geometrics import (
+    to_box,
+    to_circle,
+    to_line,
+    to_lseg,
+    to_path,
+    to_point,
+    to_polygon,
 )
 from .ipaddrs import to_network
 from .jsons import to_json
