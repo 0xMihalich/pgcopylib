@@ -26,13 +26,13 @@ class PGCopy:
     def __init__(
         self,
         file: BufferedReader,
-        colums: list[str] = [],
+        columns: list[str] = [],
         dtypes: list[PGDataType] = [],
     ) -> None:
         """Class initialization."""
 
         self.file = file
-        self.colums = colums
+        self.columns = columns
         self.dtypes = dtypes
 
         self.file.seek(0)
@@ -100,7 +100,7 @@ class PGCopy:
 
             self.num_columns = max(all_cols)
             self.file.seek(19)
-            self.colums = self.colums or list(range(self.num_columns))
+            self.columns = self.columns or list(range(self.num_columns))
 
     @to_dtypes
     def _reader(
@@ -162,7 +162,7 @@ class PGCopy:
         return f"""PGCopy dump
 Total columns: {self.num_columns}
 Total raws: {self.num_rows}
-Columns: {self.colums}
+Columns: {self.columns}
 DTypes: {[dtype.name for dtype in self.dtypes]
          or ["Raw" for _ in range(self.num_columns)]}
 """
