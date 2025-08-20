@@ -28,12 +28,14 @@ class PGCopy:
         file: BufferedReader,
         columns: list[str] = [],
         dtypes: list[PGDataType] = [],
+        length: Optional[int] = None,
     ) -> None:
         """Class initialization."""
 
         self.file = file
         self.columns = columns
         self.dtypes = dtypes
+        self.length = length
 
         self.file.seek(0)
 
@@ -53,8 +55,11 @@ class PGCopy:
         self.num_columns: Optional[int] = None
         self.num_rows: Optional[int] = None
 
-        self.file.seek(0, 2)
-        self.file.seek(self.file.tell() - 2)
+        if not self.length:
+            self.file.seek(0, 2)
+            self.length = self.file.tell()
+
+        self.file.seek(self.length - 2)
 
         if self.file.read(2) != b"\xff\xff":
             raise PGCopyEOFError("PGCopy file corrupt!")
