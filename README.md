@@ -95,6 +95,12 @@ Library for reading data from binary format PosgreSQL
 
 ## Installation
 
+### From pip
+
+```bash
+pip install pgcopylib
+```
+
 ### From local directory
 
 ```bash
