@@ -55,17 +55,6 @@ class PGCopy:
         self.num_columns: Optional[int] = None
         self.num_rows: Optional[int] = None
 
-        if not self.length:
-            self.file.seek(0, 2)
-            self.length = self.file.tell()
-
-        self.file.seek(self.length - 2)
-
-        if self.file.read(2) != b"\xff\xff":
-            raise PGCopyEOFError("PGCopy file corrupt!")
-
-        self.file.seek(19)
-
     @staticmethod
     def to_dtypes(reader: FunctionType):
         """Cast data types decorator."""
@@ -104,7 +93,6 @@ class PGCopy:
                 cols: int = unpack("!h", self.file.read(2))[0]
 
             self.num_columns = max(all_cols)
-            self.file.seek(19)
             self.columns = self.columns or list(range(self.num_columns))
 
     @to_dtypes
