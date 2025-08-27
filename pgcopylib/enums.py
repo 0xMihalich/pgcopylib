@@ -210,6 +210,47 @@ PGOidToDType: dict[PGOid, PGDataType] = {
 }
 
 
+ArrayOidToOid: dict[PGOid, PGOid] = {
+    PGOid._bit: PGOid.bit,
+    PGOid._bool: PGOid.bool,
+    PGOid._box: PGOid.box,
+    PGOid._bpchar: PGOid.bpchar,
+    PGOid._bytea: PGOid.bytea,
+    PGOid._char: PGOid.char,
+    PGOid._cidr: PGOid.cidr,
+    PGOid._circle: PGOid.circle,
+    PGOid._date: PGOid.date,
+    PGOid._float4: PGOid.float4,
+    PGOid._float8: PGOid.float8,
+    PGOid._inet: PGOid.inet,
+    PGOid._int2: PGOid.int2,
+    PGOid._int4: PGOid.int4,
+    PGOid._int8: PGOid.int8,
+    PGOid._interval: PGOid.interval,
+    PGOid._json: PGOid.json,
+    PGOid._jsonb: PGOid.jsonb,
+    PGOid._line: PGOid.line,
+    PGOid._lseg: PGOid.lseg,
+    PGOid._macaddr: PGOid.macaddr,
+    PGOid._macaddr8: PGOid.macaddr8,
+    PGOid._money: PGOid.money,
+    PGOid._numeric: PGOid.numeric,
+    PGOid._oid: PGOid.oid,
+    PGOid._path: PGOid.path,
+    PGOid._point: PGOid.point,
+    PGOid._polygon: PGOid.polygon,
+    PGOid._text: PGOid.text,
+    PGOid._time: PGOid.time,
+    PGOid._timestamp: PGOid.timestamp,
+    PGOid._timestamptz: PGOid.timestamptz,
+    PGOid._timetz: PGOid.timetz,
+    PGOid._uuid: PGOid.uuid,
+    PGOid._varbit: PGOid.varbit,
+    PGOid._varchar: PGOid.varchar,
+    PGOid._xml: PGOid.xml,
+}
+
+
 PGDataTypeLength: dict[PGDataType, int] = {
     # Length for current data type.
     PGDataType.Array: -1,

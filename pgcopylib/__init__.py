@@ -1,5 +1,6 @@
 """PGCopy bynary dump parser."""
 
+from .dtypes import AssociateDtypes
 from .enums import (
     PGDataType,
     PGDataTypeLength,
@@ -13,8 +14,8 @@ from .errors import (
     PGCopyRecordError,
     PGCopySignatureError,
 )
-from .parse import AssociateDtypes
-from .structs import PGCopy
+from .pgcopy import PGCopy
+from .writer import PGCopyWriter
 
 
 __all__ = (
@@ -25,10 +26,11 @@ __all__ = (
     "PGCopyOidNotSupportError",
     "PGCopyRecordError",
     "PGCopySignatureError",
+    "PGCopyWriter",
     "PGDataType",
     "PGDataTypeLength",
     "PGOid",
     "PGOidToDType",
 )
 __author__ = "0xMihalich"
-__version__ = "0.0.3"
+__version__ = "0.1.0"

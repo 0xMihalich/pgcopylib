@@ -1,6 +1,6 @@
 from io import BufferedReader
-from typing import Optional
 from struct import unpack
+from typing import Optional
 
 
 def read_record(file: BufferedReader) -> Optional[bytes]:
