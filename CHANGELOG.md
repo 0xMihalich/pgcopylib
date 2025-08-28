@@ -1,5 +1,8 @@
 # Version History
 
+## 0.1.1
+ * Fix read functions
+
 ## 0.1.0
 
 * Refactor over 60% code
