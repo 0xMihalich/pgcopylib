@@ -133,9 +133,14 @@ class PGCopy:
     ]:
         """Read all rows."""
 
+        self.num_rows = 0
+
         while 1:
             try:
-                yield self.read_raw()
+                raw = self.read_raw()
+                self.num_columns = len(raw)
+                self.num_rows += 1
+                yield raw
             except PGCopyEOFError:
                 break
 
@@ -143,7 +148,6 @@ class PGCopy:
         """Read all raws."""
 
         self.file.seek(19)
-        self._col_rows()
 
         return list(self.read_raws())
 
