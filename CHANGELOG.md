@@ -1,7 +1,8 @@
 # Version History
 
 ## 0.1.1
- * Fix read functions
+
+* Fix read functions
 
 ## 0.1.0
 

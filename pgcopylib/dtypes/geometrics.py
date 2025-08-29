@@ -40,22 +40,20 @@ def from_line(dtype_value: tuple[float, float, float], pg_oid: PGOid) -> bytes:
 
 
 @read_nullable
-def to_circle(binary_data: bytes) -> tuple[tuple[float, float], float]:
+def to_circle(binary_data: bytes) -> tuple[float, float, float]:
     """Unpack circle value."""
 
-    *x_y, r = unpack("!3d", binary_data)
-
-    return x_y, r
+    return to_line(binary_data)
 
 
 @write_nullable
 def from_circle(
-    dtype_value: tuple[tuple[float, float], float],
+    dtype_value: tuple[float, float, float],
     pg_oid: PGOid,
 ) -> bytes:
     """Pack circle value."""
 
-    return pack("!3d", *dtype_value[0], dtype_value[1])
+    return from_line(dtype_value)
 
 
 @read_nullable

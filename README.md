@@ -13,13 +13,13 @@ Library for reading data from binary format PosgreSQL
 | PostgreSQL data type  | Python data type                                             |
 |:----------------------|:-------------------------------------------------------------|
 | _bit                  | list[str]                                                    |
-| _bool                 | list[bool]                                                   | 
+| _bool                 | list[bool]                                                   |
 | _box                  | list[tuple[tuple[float, float], tuple[float, float]]]        |
 | _bpchar               | list[str]                                                    |
 | _bytea                | list[bytes]                                                  |
 | _char                 | list[str]                                                    |
 | _cidr                 | list[ipaddress.IPv4Network / ipaddress.IPv6Network]          |
-| _circle               | list[tuple[tuple[float, float], float]]                      |
+| _circle               | list[tuple[float, float, float]]                             |
 | _date                 | list[datetime.date]                                          |
 | _float4               | list[float]                                                  |
 | _float8               | list[float]                                                  |
@@ -59,7 +59,7 @@ Library for reading data from binary format PosgreSQL
 | bytea                 | bytes                                                        |
 | char                  | str                                                          |
 | cidr                  | ipaddress.IPv4Network / ipaddress.IPv6Network                |
-| circle                | tuple[tuple[float, float], float]                            |
+| circle                | tuple[float, float, float]                                   |
 | date                  | datetime.date                                                |
 | float4                | float                                                        |
 | float8                | float                                                        |
