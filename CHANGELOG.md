@@ -1,8 +1,13 @@
 # Version History
 
+## 0.1.2
+
+* Add size parameter to PGCopy.read() method
+
 ## 0.1.1
 
 * Fix read functions
+* Add initialize PGCopyWriter from PGCopy object with method writer()
 
 ## 0.1.0
 

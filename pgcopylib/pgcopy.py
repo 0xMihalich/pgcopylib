@@ -8,7 +8,10 @@ from typing import (
     Generator,
     Optional,
 )
-from struct import unpack
+from struct import (
+    error as UnpackError,
+    unpack,
+)
 
 from .constants import HEADER
 from .dtypes import AssociateDtypes
@@ -144,12 +147,27 @@ class PGCopy:
             except PGCopyEOFError:
                 break
 
-    def read(self) -> list[list[bytes]]:
-        """Read all raws."""
+    def read(self, size: int = -1) -> list[list[Any]]:
+        """Read raws."""
 
-        self.file.seek(19)
+        for _ in range(2):
+            try:
+                row_iter = iter(self.read_raws())
+                rows: list[list[Any]] = [next(row_iter)]
+                break
+            except (StopIteration, UnpackError):
+                self.file.seek(19)
 
-        return list(self.read_raws())
+        if size == -1:
+            rows.extend(self.read_raws())
+        else:
+            for _ in range(size - 1):
+                try:
+                    rows.append(next(row_iter))
+                except StopIteration:
+                    break
+
+        return rows
 
     def writer(self, file: BufferedWriter) -> PGCopyWriter:
         """Initialize PGCopyWriter from PGCopy."""
