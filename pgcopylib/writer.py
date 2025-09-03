@@ -35,14 +35,20 @@ class PGCopyWriter:
         ]
         self.num_columns: int = len(pgtypes)
         self.num_rows: int = 0
+        self.pos: int = 0
 
-        self.file.write(HEADER)
-        self.file.write(bytes(8))
+        self._write(HEADER)
+        self._write(bytes(8))
+
+    def _write(self, buffer: bytes) -> None:
+        """Write with safe current position."""
+
+        self.pos += self.file.write(buffer)
 
     def write_record(self, dtype_value: Any, column: int) -> None:
         """Write single record to file."""
 
-        self.file.write(self.from_dtypes[column](
+        self._write(self.from_dtypes[column](
             dtype_value,
             self.pgtypes[column],
         ))
@@ -53,7 +59,7 @@ class PGCopyWriter:
         if len(dtype_values) != self.num_columns:
             raise PGCopyRecordError()
 
-        self.file.write(pack("!h", len(dtype_values)))
+        self._write(pack("!h", len(dtype_values)))
         [
             self.write_record(dtype_value, column)
             for column, dtype_value in enumerate(dtype_values)
@@ -68,11 +74,16 @@ class PGCopyWriter:
             for dtype_values in dtype_data
         ]
 
-    def close(self) -> None:
+    def finalize(self) -> None:
         """Finalize file."""
 
-        self.file.write(b"\xff\xff")
+        self._write(b"\xff\xff")
         self.file.flush()
+
+    def tell(self) -> int:
+        """Return current position."""
+
+        return self.pos
 
     def __repr__(self) -> str:
         """PGCopy info in interpreter."""

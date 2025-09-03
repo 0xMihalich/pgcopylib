@@ -1,5 +1,10 @@
 # Version History
 
+## 0.1.3
+
+* Rename PGCopyWriter.close() method to PGCopyWriter.finalize()
+* Add PGCopyWriter.tell() method
+
 ## 0.1.2
 
 * Add size parameter to PGCopy.read() method
