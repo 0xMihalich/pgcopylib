@@ -34,4 +34,4 @@ packages = {find = {where = ["src"]}}
 package-dir = {"" = "src"}
 
 [tool.setuptools.package-data]
-"*" = ["*.pyx", "*.pxd", "*.md", "*.txt"]
+"*" = ["*.pyx", "*.md", "*.txt"]
