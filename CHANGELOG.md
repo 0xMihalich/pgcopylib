@@ -1,5 +1,14 @@
 # Version History
 
+## 0.2.0.0
+
+* Full refactor project
+* Rewrite code to Cython for more performance
+* Change PGCopy to PGCopyReader
+* Speed up converter functions
+* PGCopyReader now have only read_row generator to read one row and to_rows generator to read all rows
+* PGCopyWriter now have methods write_row, from_rows, write and tell. fileobj now is optional.
+
 ## 0.1.3
 
 * Rename PGCopyWriter.close() method to PGCopyWriter.finalize()

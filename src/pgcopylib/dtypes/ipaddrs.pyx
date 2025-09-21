@@ -9,15 +9,8 @@ from struct import (
     unpack,
 )
 
-from ..enums import PGOid
-from ..errors import PGCopyRecordError
-from .nullables import (
-    read_nullable,
-    write_nullable,
-)
 
-
-IpAddr = {
+cdef dict IpAddr = {
     2: IPv4Address,
     3: IPv6Address,
     IPv4Address: 2,
@@ -25,27 +18,24 @@ IpAddr = {
     IPv6Network: 3,
     IPv6Address: 3,
 }
-IpNet = {
+cdef dict IpNet = {
     IPv4Address: IPv4Network,
     IPv6Address: IPv6Network,
 }
 
 
-@read_nullable
-def to_network(
-    binary_data: bytes,
-) -> IPv4Address | IPv6Address | IPv4Network | IPv6Network:
+cpdef object read_network(bytes binary_data, object array_function, object buffer, long pgoid):
     """Unpack inet or cidr value."""
 
+    cdef int binary_length = len(binary_data) - 4
+    cdef unsigned char ip_family, ip_netmask, is_cidr, ip_length
+    cdef bytes ip_data
     ip_family, ip_netmask, is_cidr, ip_length, ip_data = unpack(
-        f"!4B{len(binary_data) - 4}s",
+        f"!4B{binary_length}s",
         binary_data,
     )
 
-    if ip_length != len(ip_data):
-        raise PGCopyRecordError("Invalid IP data")
-
-    ip_addr: IPv4Address | IPv6Address = IpAddr[ip_family](ip_data)
+    cdef object ip_addr = IpAddr[ip_family](ip_data)
 
     if is_cidr:
         return IpNet[ip_addr.__class__](
@@ -56,12 +46,11 @@ def to_network(
     return ip_addr
 
 
-@write_nullable
-def from_network(
-    dtype_value: IPv4Address | IPv6Address | IPv4Network | IPv6Network,
-    pg_oid: PGOid,
-) -> bytes:
+cpdef bytes write_network(object dtype_value, object array_function, object buffer, long pgoid):
     """Pack inet or cidr value."""
+
+    cdef unsigned char ip_family, ip_netmask, is_cidr, ip_length
+    cdef bytes ip_addr
 
     if isinstance(dtype_value, IPv4Address | IPv6Address):
         ip_addr = dtype_value.packed
@@ -72,13 +61,14 @@ def from_network(
         ip_netmask = dtype_value._prefixlen
         is_cidr = 1
 
-    ip_family: int = IpAddr[dtype_value]
+    ip_family = IpAddr[dtype_value]
+    ip_length = len(ip_addr)
 
     return pack(
-        f"!4B{len(ip_addr)}s",
+        f"!4B{ip_length}s",
         ip_family,
         ip_netmask,
         is_cidr,
-        len(ip_addr),
+        ip_length,
         ip_addr,
     )

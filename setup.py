@@ -1,25 +1,29 @@
-import shutil
-from setuptools import (
-    find_packages,
-    setup,
-)
+# setup.py
+from setuptools import setup, Extension, find_packages
+from Cython.Build import cythonize
+import os
 
-
-shutil.rmtree("build", ignore_errors=True)
-shutil.rmtree("pgcopylib.egg-info", ignore_errors=True)
-
-with open(file="README.md", encoding="utf-8") as f:
-    long_description = f.read()
+def find_cython_extensions():
+    extensions = []
+    for root, _, files in os.walk("src"):
+        for file in files:
+            if file.endswith(".pyx"):
+                pyx_path = os.path.join(root, file)
+                module_name = pyx_path.replace(os.path.sep, ".")[4:-4]
+                extensions.append(
+                    Extension(
+                        module_name,
+                        [pyx_path],
+                        include_dirs=["src"]
+                    )
+                )
+    return extensions
 
 setup(
-    name="pgcopylib",
-    version="0.1.3",
-    packages=find_packages(),
-    author="0xMihalich",
-    author_email="bayanmobile87@gmail.com",
-    description="PGCopy bynary dump parser.",
-    url="https://github.com/0xMihalich/pgcopylib",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    zip_safe=False,
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
+    ext_modules=cythonize(find_cython_extensions(), language_level=3),
+    package_data={
+        "pgcopylib": ["*.pxd", "*.md", "*.txt"]
+    },
 )
