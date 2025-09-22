@@ -1,4 +1,5 @@
 from decimal import Decimal, ROUND_HALF_UP
+from libc.math cimport round
 from struct import (
     pack,
     unpack,
@@ -111,7 +112,7 @@ cpdef double read_money(bytes binary_data, object array_function, object buffer,
 cpdef bytes write_money(double dtype_value, object array_function, object buffer, long pgoid):
     """Pack money value."""
 
-    return write_int8(int(dtype_value / 0.01), array_function, buffer, pgoid)
+    return write_int8(<long long>round(dtype_value / 0.01), array_function, buffer, pgoid)
 
 
 cpdef float read_float4(bytes binary_data, object array_function, object buffer, long pgoid):

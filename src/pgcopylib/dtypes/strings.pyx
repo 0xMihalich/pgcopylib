@@ -13,8 +13,8 @@ cpdef bytes write_text(str dtype_value, object array_function, object buffer, lo
 cpdef str read_macaddr(bytes binary_data, object array_function, object buffer, long pgoid):
     """Unpack macaddr and macaddr8 value."""
 
-    cdef Py_ssize_t i
-    cdef Py_ssize_t data_len = len(binary_data)
+    cdef long i
+    cdef long data_len = len(binary_data)
     cdef const unsigned char[:] view = binary_data
     cdef list parts = []
 
@@ -37,10 +37,10 @@ cpdef str read_bits(bytes binary_data, object array_function, object buffer, lon
 
     cdef unsigned int length
     cdef const unsigned char[:] view = binary_data
-    cdef Py_ssize_t data_len = len(binary_data)
-    cdef Py_ssize_t bit_data_len = data_len - 4
+    cdef long data_len = len(binary_data)
+    cdef long bit_data_len = data_len - 4
     cdef list bits = []
-    cdef Py_ssize_t i, j
+    cdef short i, j
     cdef unsigned char byte_val
 
     length = (view[0] << 24) | (view[1] << 16) | (view[2] << 8) | view[3]
@@ -57,8 +57,8 @@ cpdef str read_bits(bytes binary_data, object array_function, object buffer, lon
 cpdef bytes write_bits(str dtype_value, object array_function, object buffer, long pgoid):
     """Pack bit and varbit value."""
     
-    cdef Py_ssize_t bit_length = len(dtype_value)
-    cdef Py_ssize_t byte_length = (bit_length + 7) // 8
+    cdef long bit_length = len(dtype_value)
+    cdef long byte_length = (bit_length + 7) // 8
     cdef int int_value = int(dtype_value, 2)
     
     return int_value.to_bytes(byte_length, "big")

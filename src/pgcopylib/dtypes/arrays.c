@@ -1856,8 +1856,8 @@ static CYTHON_INLINE PyObject* __Pyx_CallUnboundCMethod0(__Pyx_CachedCFunction* 
 #define __Pyx_CallUnboundCMethod0(cfunc, self)  __Pyx__CallUnboundCMethod0(cfunc, self)
 #endif
 
-/* DivInt[Py_ssize_t].proto */
-static CYTHON_INLINE Py_ssize_t __Pyx_div_Py_ssize_t(Py_ssize_t, Py_ssize_t, int b_is_constant);
+/* DivInt[long].proto */
+static CYTHON_INLINE long __Pyx_div_long(long, long, int b_is_constant);
 
 /* UnaryNegOverflows.proto */
 #define __Pyx_UNARY_NEG_WOULD_OVERFLOW(x)\
@@ -2141,7 +2141,7 @@ static CYTHON_INLINE PyObject* __Pyx_PyUnicode_FromOrdinal_Padded(int value, Py_
 #include <stdlib.h>
 
 /* CIntToPyUnicode.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_Py_ssize_t(Py_ssize_t value, Py_ssize_t width, char padding_char, char format_char);
+static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_short(short value, Py_ssize_t width, char padding_char, char format_char);
 
 /* JoinPyUnicode.proto */
 static PyObject* __Pyx_PyUnicode_Join(PyObject** values, Py_ssize_t value_count, Py_ssize_t result_ulength,
@@ -2775,7 +2775,7 @@ static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_pgcopylib_dtypes_arrays[] = "pgcopylib.dtypes.arrays";
 static const char __pyx_k_write_array_locals_genexpr[] = "write_array.<locals>.genexpr";
-static const char __pyx_k_1A_AQ_IQ_z_WAQ_WAQ_a_U_Q_1_q_5[] = "\200\001\360\006\000\005\031\230\013\2401\240A\330\004!\240\023\240A\240Q\360\010\000\005\031\230\001\330\010\030\230\001\330\010\014\210I\220Q\330\014\017\210z\230\021\230'\240\021\330\020\035\230W\240A\240Q\340\020\035\230W\240A\240Q\330\010\026\220a\340\004\035\230U\240#\240Q\330\004\033\2301\360\006\000\005\t\210\007\210q\330\010\022\220'\230\021\230!\2305\240\001\340\004(\250\003\2501\250A\340\004\n\210&\220\001\220\024\220Q\220g\230\\\250\035\260a\330\004\n\210&\220\001\220\024\220Q\220b\230\005\320\0351\260\021\340\004\010\210\t\220\021\330\010\013\2106\220\023\220A\330\014\022\220&\230\001\230\021\340\014\022\220&\230\001\230\036\240q\250\007\250v\260Q\340\004\035\230V\2409\250A\330\004\n\210%\210q\220\001\330\004\n\210)\2201\330\004\013\2101";
+static const char __pyx_k_1A_Cq_IQ_z_WAQ_WAQ_a_U_Q_1_q_5[] = "\200\001\360\006\000\005\031\230\013\2401\240A\330\004\034\230C\230q\240\001\360\010\000\005\031\230\001\330\010\030\230\001\330\010\014\210I\220Q\330\014\017\210z\230\021\230'\240\021\330\020\035\230W\240A\240Q\340\020\035\230W\240A\240Q\330\010\026\220a\340\004\035\230U\240#\240Q\330\004\033\2301\360\006\000\005\t\210\007\210q\330\010\022\220'\230\021\230!\2305\240\001\340\004#\2403\240a\240q\340\004\n\210&\220\001\220\024\220Q\220g\230\\\250\035\260a\330\004\n\210&\220\001\220\024\220Q\220b\230\005\320\0351\260\021\340\004\010\210\t\220\021\330\010\013\2106\220\023\220A\330\014\022\220&\230\001\230\021\340\014\022\220&\230\001\230\036\240q\250\007\250v\260Q\340\004\035\230V\2409\250A\330\004\n\210%\210q\220\001\330\004\n\210)\2201\330\004\013\2101";
 static const char __pyx_k_q_S_fAWF_q_Q_q_U_1_G1F_7_Qc_U_4[] = "\200\001\360\006\000\005\013\210&\220\001\220\021\330\004\n\210%\210q\220\001\360\006\000\005\016\210S\220\006\220f\230A\230W\240F\250%\250q\260\001\330\004\035\230Q\330\004\037\230q\340\004\010\210\005\210U\220!\2201\330\010\024\220G\2301\230F\240!\2407\250&\260\005\260Q\260c\270\021\270!\340\004\010\210\005\210U\220!\2204\220q\230\001\330\010\026\220g\230Q\230g\240Q\240h\250a\340\004\n\210%\210q\220\001\330\004\n\210)\2201\330\004\013\320\013\035\230Q\320\036.\250a";
 static const char __pyx_k_src_pgcopylib_dtypes_arrays_pyx[] = "src/pgcopylib/dtypes/arrays.pyx";
 static const char __pyx_k_Note_that_Cython_is_deliberately[] = "Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.";
@@ -3338,31 +3338,32 @@ static CYTHON_INLINE PyObject *__pyx_f_7cpython_11contextvars_get_value_no_defau
 */
 
 static PyObject *__pyx_f_9pgcopylib_6dtypes_6arrays_recursive_elements(PyObject *__pyx_v_elements, PyObject *__pyx_v_array_struct) {
-  Py_ssize_t __pyx_v_chunk;
-  Py_ssize_t __pyx_v_i;
-  Py_ssize_t __pyx_v_elements_len;
-  Py_ssize_t __pyx_v_num_chunks;
+  long __pyx_v_chunk;
+  long __pyx_v_i;
+  long __pyx_v_elements_len;
+  long __pyx_v_num_chunks;
   PyObject *__pyx_v_result = 0;
-  Py_ssize_t __pyx_v_start;
-  Py_ssize_t __pyx_v_end;
+  long __pyx_v_start;
+  long __pyx_v_end;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   Py_ssize_t __pyx_t_1;
   int __pyx_t_2;
   int __pyx_t_3;
   PyObject *__pyx_t_4 = NULL;
-  Py_ssize_t __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
-  int __pyx_t_7;
+  long __pyx_t_5;
+  long __pyx_t_6;
+  long __pyx_t_7;
+  int __pyx_t_8;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("recursive_elements", 0);
 
   /* "pgcopylib/dtypes/arrays.pyx":16
- *     cdef Py_ssize_t chunk
- *     cdef Py_ssize_t i
- *     cdef Py_ssize_t elements_len = len(elements)             # <<<<<<<<<<<<<<
+ *     cdef long chunk
+ *     cdef long i
+ *     cdef long elements_len = len(elements)             # <<<<<<<<<<<<<<
  * 
  *     if not array_struct:
 */
@@ -3374,7 +3375,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_6arrays_recursive_elements(PyObject 
   __pyx_v_elements_len = __pyx_t_1;
 
   /* "pgcopylib/dtypes/arrays.pyx":18
- *     cdef Py_ssize_t elements_len = len(elements)
+ *     cdef long elements_len = len(elements)
  * 
  *     if not array_struct:             # <<<<<<<<<<<<<<
  *         return elements
@@ -3404,7 +3405,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_6arrays_recursive_elements(PyObject 
     goto __pyx_L0;
 
     /* "pgcopylib/dtypes/arrays.pyx":18
- *     cdef Py_ssize_t elements_len = len(elements)
+ *     cdef long elements_len = len(elements)
  * 
  *     if not array_struct:             # <<<<<<<<<<<<<<
  *         return elements
@@ -3425,9 +3426,9 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_6arrays_recursive_elements(PyObject 
   }
   __pyx_t_4 = __Pyx_PyList_Pop(__pyx_v_array_struct); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyIndex_AsSsize_t(__pyx_t_4); if (unlikely((__pyx_t_1 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_As_long(__pyx_t_4); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_chunk = __pyx_t_1;
+  __pyx_v_chunk = __pyx_t_5;
 
   /* "pgcopylib/dtypes/arrays.pyx":23
  *     chunk = array_struct.pop()
@@ -3444,7 +3445,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_6arrays_recursive_elements(PyObject 
  *     if elements_len == chunk:
  *         return recursive_elements(elements, array_struct)             # <<<<<<<<<<<<<<
  * 
- *     cdef Py_ssize_t num_chunks = (elements_len + chunk - 1) // chunk
+ *     cdef long num_chunks = (elements_len + chunk - 1) // chunk
 */
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_4 = __pyx_f_9pgcopylib_6dtypes_6arrays_recursive_elements(__pyx_v_elements, __pyx_v_array_struct); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
@@ -3465,26 +3466,26 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_6arrays_recursive_elements(PyObject 
   /* "pgcopylib/dtypes/arrays.pyx":26
  *         return recursive_elements(elements, array_struct)
  * 
- *     cdef Py_ssize_t num_chunks = (elements_len + chunk - 1) // chunk             # <<<<<<<<<<<<<<
+ *     cdef long num_chunks = (elements_len + chunk - 1) // chunk             # <<<<<<<<<<<<<<
  *     cdef list result = []
- *     cdef Py_ssize_t start, end
+ *     cdef long start, end
 */
-  __pyx_t_1 = ((__pyx_v_elements_len + __pyx_v_chunk) - 1);
+  __pyx_t_5 = ((__pyx_v_elements_len + __pyx_v_chunk) - 1);
   if (unlikely(__pyx_v_chunk == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
     __PYX_ERR(0, 26, __pyx_L1_error)
   }
-  else if (sizeof(Py_ssize_t) == sizeof(long) && (!(((Py_ssize_t)-1) > 0)) && unlikely(__pyx_v_chunk == (Py_ssize_t)-1)  && unlikely(__Pyx_UNARY_NEG_WOULD_OVERFLOW(__pyx_t_1))) {
+  else if (sizeof(long) == sizeof(long) && (!(((long)-1) > 0)) && unlikely(__pyx_v_chunk == (long)-1)  && unlikely(__Pyx_UNARY_NEG_WOULD_OVERFLOW(__pyx_t_5))) {
     PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
     __PYX_ERR(0, 26, __pyx_L1_error)
   }
-  __pyx_v_num_chunks = __Pyx_div_Py_ssize_t(__pyx_t_1, __pyx_v_chunk, 0);
+  __pyx_v_num_chunks = __Pyx_div_long(__pyx_t_5, __pyx_v_chunk, 0);
 
   /* "pgcopylib/dtypes/arrays.pyx":27
  * 
- *     cdef Py_ssize_t num_chunks = (elements_len + chunk - 1) // chunk
+ *     cdef long num_chunks = (elements_len + chunk - 1) // chunk
  *     cdef list result = []             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t start, end
+ *     cdef long start, end
  * 
 */
   __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L1_error)
@@ -3493,16 +3494,16 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_6arrays_recursive_elements(PyObject 
   __pyx_t_4 = 0;
 
   /* "pgcopylib/dtypes/arrays.pyx":30
- *     cdef Py_ssize_t start, end
+ *     cdef long start, end
  * 
  *     for i in range(num_chunks):             # <<<<<<<<<<<<<<
  *         start = i * chunk
  *         end = start + chunk
 */
-  __pyx_t_1 = __pyx_v_num_chunks;
-  __pyx_t_5 = __pyx_t_1;
-  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
-    __pyx_v_i = __pyx_t_6;
+  __pyx_t_5 = __pyx_v_num_chunks;
+  __pyx_t_6 = __pyx_t_5;
+  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+    __pyx_v_i = __pyx_t_7;
 
     /* "pgcopylib/dtypes/arrays.pyx":31
  * 
@@ -3563,7 +3564,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_6arrays_recursive_elements(PyObject 
     }
     __pyx_t_4 = __Pyx_PyList_GetSlice(__pyx_v_elements, __pyx_v_start, __pyx_v_end); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_4); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 36, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_4); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
 
@@ -4790,13 +4791,13 @@ static PyObject *__pyx_gb_9pgcopylib_6dtypes_6arrays_11write_array_2generator(__
 
 static PyObject *__pyx_pf_9pgcopylib_6dtypes_6arrays_2write_array(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_dtype_value, PyObject *__pyx_v_array_function, PyObject *__pyx_v_buffer, long __pyx_v_pgoid) {
   PyObject *__pyx_v_num_dim = 0;
-  Py_ssize_t __pyx_v_dim_length;
+  short __pyx_v_dim_length;
   PyObject *__pyx_v_expand_values = 0;
   PyObject *__pyx_v_value = 0;
   short __pyx_v_is_nullable;
   PyObject *__pyx_v_dimensions = 0;
   short __pyx_v_dim;
-  Py_ssize_t __pyx_v_length_dimensions;
+  short __pyx_v_length_dimensions;
   PyObject *__pyx_v_binary_data = 0;
   PyObject *__pyx_gb_9pgcopylib_6dtypes_6arrays_11write_array_2generator = 0;
   PyObject *__pyx_r = NULL;
@@ -4826,7 +4827,7 @@ static PyObject *__pyx_pf_9pgcopylib_6dtypes_6arrays_2write_array(CYTHON_UNUSED 
  *     """Pack array values."""
  * 
  *     cdef list num_dim = get_num_dim(dtype_value)             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t dim_length = len(num_dim)
+ *     cdef short dim_length = len(num_dim)
  *     cdef list expand_values
 */
   __pyx_t_1 = __pyx_f_9pgcopylib_6dtypes_6arrays_get_num_dim(__pyx_v_dtype_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
@@ -4837,7 +4838,7 @@ static PyObject *__pyx_pf_9pgcopylib_6dtypes_6arrays_2write_array(CYTHON_UNUSED 
   /* "pgcopylib/dtypes/arrays.pyx":104
  * 
  *     cdef list num_dim = get_num_dim(dtype_value)
- *     cdef Py_ssize_t dim_length = len(num_dim)             # <<<<<<<<<<<<<<
+ *     cdef short dim_length = len(num_dim)             # <<<<<<<<<<<<<<
  *     cdef list expand_values
  *     cdef object value
 */
@@ -5023,7 +5024,7 @@ static PyObject *__pyx_pf_9pgcopylib_6dtypes_6arrays_2write_array(CYTHON_UNUSED 
  *     for dim in num_dim:
  *         dimensions.extend([dim, 1])             # <<<<<<<<<<<<<<
  * 
- *     cdef Py_ssize_t length_dimensions = len(dimensions)
+ *     cdef short length_dimensions = len(dimensions)
 */
     __pyx_t_1 = __Pyx_PyLong_From_short(__pyx_v_dim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
@@ -5045,7 +5046,7 @@ static PyObject *__pyx_pf_9pgcopylib_6dtypes_6arrays_2write_array(CYTHON_UNUSED 
   /* "pgcopylib/dtypes/arrays.pyx":124
  *         dimensions.extend([dim, 1])
  * 
- *     cdef Py_ssize_t length_dimensions = len(dimensions)             # <<<<<<<<<<<<<<
+ *     cdef short length_dimensions = len(dimensions)             # <<<<<<<<<<<<<<
  * 
  *     buffer.write(pack("!3I", dim_length, is_nullable, pgoid))
 */
@@ -5053,7 +5054,7 @@ static PyObject *__pyx_pf_9pgcopylib_6dtypes_6arrays_2write_array(CYTHON_UNUSED 
   __pyx_v_length_dimensions = __pyx_t_2;
 
   /* "pgcopylib/dtypes/arrays.pyx":126
- *     cdef Py_ssize_t length_dimensions = len(dimensions)
+ *     cdef short length_dimensions = len(dimensions)
  * 
  *     buffer.write(pack("!3I", dim_length, is_nullable, pgoid))             # <<<<<<<<<<<<<<
  *     buffer.write(pack(f"!{length_dimensions}I", *dimensions))
@@ -5064,7 +5065,7 @@ static PyObject *__pyx_pf_9pgcopylib_6dtypes_6arrays_2write_array(CYTHON_UNUSED 
   __pyx_t_9 = NULL;
   __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_pack); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_11 = PyLong_FromSsize_t(__pyx_v_dim_length); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyLong_From_short(__pyx_v_dim_length); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __pyx_t_12 = __Pyx_PyLong_From_short(__pyx_v_is_nullable); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
@@ -5115,7 +5116,7 @@ static PyObject *__pyx_pf_9pgcopylib_6dtypes_6arrays_2write_array(CYTHON_UNUSED 
   __Pyx_INCREF(__pyx_t_8);
   __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_pack); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_10 = __Pyx_PyUnicode_From_Py_ssize_t(__pyx_v_length_dimensions, 0, ' ', 'd'); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyUnicode_From_short(__pyx_v_length_dimensions, 0, ' ', 'd'); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __pyx_t_15[0] = __pyx_mstate_global->__pyx_kp_u_;
   __pyx_t_15[1] = __pyx_t_10;
@@ -6237,7 +6238,7 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 15, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 100, 231};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_dtype_value, __pyx_mstate->__pyx_n_u_array_function, __pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_pgoid, __pyx_mstate->__pyx_n_u_num_dim, __pyx_mstate->__pyx_n_u_dim_length, __pyx_mstate->__pyx_n_u_expand_values, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_is_nullable, __pyx_mstate->__pyx_n_u_dimensions, __pyx_mstate->__pyx_n_u_dim, __pyx_mstate->__pyx_n_u_length_dimensions, __pyx_mstate->__pyx_n_u_binary_data, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_n_u_genexpr};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_arrays_pyx, __pyx_mstate->__pyx_n_u_write_array, __pyx_k_1A_AQ_IQ_z_WAQ_WAQ_a_U_Q_1_q_5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_arrays_pyx, __pyx_mstate->__pyx_n_u_write_array, __pyx_k_1A_Cq_IQ_z_WAQ_WAQ_a_U_Q_1_q_5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
@@ -6967,11 +6968,11 @@ static CYTHON_INLINE PyObject* __Pyx_PyList_Pop(PyObject* L) {
 }
 #endif
 
-/* DivInt[Py_ssize_t] */
-static CYTHON_INLINE Py_ssize_t __Pyx_div_Py_ssize_t(Py_ssize_t a, Py_ssize_t b, int b_is_constant) {
-    Py_ssize_t q = a / b;
-    Py_ssize_t r = a - q*b;
-    Py_ssize_t adapt_python = (b_is_constant ?
+/* DivInt[long] */
+static CYTHON_INLINE long __Pyx_div_long(long a, long b, int b_is_constant) {
+    long q = a / b;
+    long r = a - q*b;
+    long adapt_python = (b_is_constant ?
         ((r != 0) & ((r < 0) ^ (b < 0))) :
         ((r != 0) & ((r ^ b) < 0))
     );
@@ -8277,25 +8278,25 @@ static PyObject* __Pyx_PyUnicode_FromOrdinal_Padded(int value, Py_ssize_t ulengt
 }
 
 /* CIntToPyUnicode */
-static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_Py_ssize_t(Py_ssize_t value, Py_ssize_t width, char padding_char, char format_char) {
-    char digits[sizeof(Py_ssize_t)*3+2];
-    char *dpos, *end = digits + sizeof(Py_ssize_t)*3+2;
+static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_short(short value, Py_ssize_t width, char padding_char, char format_char) {
+    char digits[sizeof(short)*3+2];
+    char *dpos, *end = digits + sizeof(short)*3+2;
     const char *hex_digits = DIGITS_HEX;
     Py_ssize_t length, ulength;
     int prepend_sign, last_one_off;
-    Py_ssize_t remaining;
+    short remaining;
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wconversion"
 #endif
-    const Py_ssize_t neg_one = (Py_ssize_t) -1, const_zero = (Py_ssize_t) 0;
+    const short neg_one = (short) -1, const_zero = (short) 0;
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
 #pragma GCC diagnostic pop
 #endif
     const int is_unsigned = neg_one > const_zero;
     if (format_char == 'c') {
         if (unlikely(!(is_unsigned || value == 0 || value > 0) ||
-                     !(sizeof(value) <= 2 || value & ~ (Py_ssize_t) 0x01fffff || __Pyx_CheckUnicodeValue((int) value)))) {
+                     !(sizeof(value) <= 2 || value & ~ (short) 0x01fffff || __Pyx_CheckUnicodeValue((int) value)))) {
             PyErr_SetString(PyExc_OverflowError, "%c arg not in range(0x110000)");
             return NULL;
         }
@@ -8316,21 +8317,21 @@ static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_Py_ssize_t(Py_ssize_t value,
         switch (format_char) {
         case 'o':
             digit_pos = abs((int)(remaining % (8*8)));
-            remaining = (Py_ssize_t) (remaining / (8*8));
+            remaining = (short) (remaining / (8*8));
             dpos -= 2;
             memcpy(dpos, DIGIT_PAIRS_8 + digit_pos * 2, 2);
             last_one_off = (digit_pos < 8);
             break;
         case 'd':
             digit_pos = abs((int)(remaining % (10*10)));
-            remaining = (Py_ssize_t) (remaining / (10*10));
+            remaining = (short) (remaining / (10*10));
             dpos -= 2;
             memcpy(dpos, DIGIT_PAIRS_10 + digit_pos * 2, 2);
             last_one_off = (digit_pos < 10);
             break;
         case 'x':
             *(--dpos) = hex_digits[abs((int)(remaining % 16))];
-            remaining = (Py_ssize_t) (remaining / 16);
+            remaining = (short) (remaining / 16);
             break;
         default:
             assert(0);

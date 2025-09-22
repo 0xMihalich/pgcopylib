@@ -2300,6 +2300,7 @@ static const char __pyx_k_struct[] = "struct";
 static const char __pyx_k_tzinfo[] = "tzinfo";
 static const char __pyx_k_unpack[] = "unpack";
 static const char __pyx_k_7xvXQgU[] = "\200\001\360\006\000\005\014\210>\230\021\230-\320'7\260x\270v\300X\310Q\310g\320U]\320]^";
+static const char __pyx_k_l_1_A_6[] = "\200\001\360\006\000\005\037\230l\250\"\320,=\270^\3101\330\004\"\240(\250\"\250A\330\004\013\2106\220\021\220&\230\001";
 static const char __pyx_k_minutes[] = "minutes";
 static const char __pyx_k_replace[] = "replace";
 static const char __pyx_k_seconds[] = "seconds";
@@ -2317,7 +2318,6 @@ static const char __pyx_k_Biq_V1F_aq[] = "\200\001\360\006\000\005\014\320\013\0
 static const char __pyx_k_astimezone[] = "astimezone";
 static const char __pyx_k_write_date[] = "write_date";
 static const char __pyx_k_write_time[] = "write_time";
-static const char __pyx_k_S_b0A_q_A_6[] = "\200\001\360\006\000\005\036\230S\240\002\240,\250b\3200A\300\036\310q\330\004\"\240(\250\"\250A\330\004\013\2106\220\021\220&\230\001";
 static const char __pyx_k_binary_data[] = "binary_data";
 static const char __pyx_k_dtype_value[] = "dtype_value";
 static const char __pyx_k_microsecond[] = "microsecond";
@@ -2342,7 +2342,7 @@ static const char __pyx_k_pgcopylib_dtypes_dates[] = "pgcopylib.dtypes.dates";
 static const char __pyx_k_IQm3C81_fAV_b_AQ_IQha_9HAWHAQ[] = "\200\001\360\006\000\005\035\230I\240Q\240m\3203C\3008\3101\330\004\036\230f\240A\240V\250;\260b\270\004\270A\270Q\330\004\034\230I\240Q\240h\250a\330\004\013\2109\220H\230A\230W\240H\250A\250Q";
 static const char __pyx_k_src_pgcopylib_dtypes_dates_pyx[] = "src/pgcopylib/dtypes/dates.pyx";
 static const char __pyx_k_V2_NbPQ_KxrATTVVW_Kxr_Q_q_q_1_4[] = "\200\001\360\006\000\005+\250+\260V\2702\320=N\310b\320PQ\330\004,\250K\260x\270r\320AT\320TV\320VW\330\004,\250K\260x\270r\300\021\330\004\005\330\010\035\230Q\330\010\037\230q\330\010\037\230q\330\010\023\2201\340\004\013\2104\210q\220\006\220a";
-static const char __pyx_k_V2_NbPQ_KxrATTVVW_Kxr_Q_q_q_1_K[] = "\200\001\360\006\000\005+\250+\260V\2702\320=N\310b\320PQ\330\004,\250K\260x\270r\320AT\320TV\320VW\330\004,\250K\260x\270r\300\021\330\004\005\330\010\035\230Q\330\010\037\230q\330\010\037\230q\330\010\023\2201\340\004\034\230K\240w\250j\270\001\270\021\330\004\026\220c\230\021\230)\240>\260\021\330\004\013\2104\210q\220\007\320\027+\2501";
+static const char __pyx_k_V2_NbPQ_KxrATTVVW_Kxr_Q_q_q_1_K[] = "\200\001\360\006\000\005+\250+\260V\2702\320=N\310b\320PQ\330\004,\250K\260x\270r\320AT\320TV\320VW\330\004,\250K\260x\270r\300\021\330\004\005\330\010\035\230Q\330\010\037\230q\330\010\037\230q\330\010\023\2201\340\004\034\230K\240w\250j\270\001\270\021\330\004\026\220i\230~\250Q\330\004\013\2104\210q\220\007\320\027+\2501";
 static const char __pyx_k_V3a_Kxs_gS_A_A_3a_2C2Q_HB6I_1_H[] = "\200\001\360\006\000\005\033\230+\240V\2503\250a\330\004\034\230K\240x\250s\260!\330\004\033\230;\240g\250S\260\001\330\004\035\230[\250\t\260\023\260A\330\004\035\230[\250\t\260\023\260A\330\004\"\240+\250^\2703\270a\330\004*\250&\260\002\3202C\3002\300Q\330\004,\250H\260B\3206I\310\022\3101\330\004,\250H\260B\260a\330\004\005\330\010\035\230Q\330\010\037\230q\330\010\037\230q\330\010\t\340\004\013\2104\210q\220\010\320\030,\250F\260!";
 static const char __pyx_k_av_M_A_r_nBa_N_Q_nBa_N_Q_F_A_4q[] = "\200\001\360\n\000\005\024\220;\230a\230v\240\\\260\021\260!\330\004\024\220M\240\023\240A\330\004\022\220-\230r\240\021\330\004\016\210n\230B\230a\330\004\024\220N\240#\240Q\330\004\016\210n\230B\230a\330\004\014\210N\230#\230Q\330\004\014\210F\220\"\220A\340\004\013\2104\210q\220\007\220y\240\t\250\021";
 static const char __pyx_k_Note_that_Cython_is_deliberately[] = "Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.";
@@ -3375,7 +3375,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_5dates_write_timestamp(PyObject *__p
   /* "pgcopylib/dtypes/dates.pyx":46
  *     """Pack timestamp value."""
  * 
- *     cdef long long seconds = int((dtype_value - DEFAULT_DATETIME).total_seconds())             # <<<<<<<<<<<<<<
+ *     cdef long long seconds = (dtype_value - DEFAULT_DATETIME).total_seconds()             # <<<<<<<<<<<<<<
  *     cdef long long microseconds = seconds * MICROSECONDS_PER_SECOND
  *     return unpack("!q", microseconds)
 */
@@ -3392,16 +3392,13 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_5dates_write_timestamp(PyObject *__p
     if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = __Pyx_PyLong_As_PY_LONG_LONG(__pyx_t_1); if (unlikely((__pyx_t_5 == (PY_LONG_LONG)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_5 = __Pyx_PyLong_As_PY_LONG_LONG(__pyx_t_3); if (unlikely((__pyx_t_5 == (PY_LONG_LONG)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_seconds = __pyx_t_5;
 
   /* "pgcopylib/dtypes/dates.pyx":47
  * 
- *     cdef long long seconds = int((dtype_value - DEFAULT_DATETIME).total_seconds())
+ *     cdef long long seconds = (dtype_value - DEFAULT_DATETIME).total_seconds()
  *     cdef long long microseconds = seconds * MICROSECONDS_PER_SECOND             # <<<<<<<<<<<<<<
  *     return unpack("!q", microseconds)
  * 
@@ -3409,14 +3406,14 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_5dates_write_timestamp(PyObject *__p
   __pyx_v_microseconds = (__pyx_v_seconds * __pyx_v_9pgcopylib_6dtypes_5dates_MICROSECONDS_PER_SECOND);
 
   /* "pgcopylib/dtypes/dates.pyx":48
- *     cdef long long seconds = int((dtype_value - DEFAULT_DATETIME).total_seconds())
+ *     cdef long long seconds = (dtype_value - DEFAULT_DATETIME).total_seconds()
  *     cdef long long microseconds = seconds * MICROSECONDS_PER_SECOND
  *     return unpack("!q", microseconds)             # <<<<<<<<<<<<<<
  * 
  * 
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = NULL;
+  __pyx_t_3 = NULL;
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_unpack); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = __Pyx_PyLong_From_PY_LONG_LONG(__pyx_v_microseconds); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 48, __pyx_L1_error)
@@ -3424,27 +3421,27 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_5dates_write_timestamp(PyObject *__p
   __pyx_t_4 = 1;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
-    assert(__pyx_t_1);
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    assert(__pyx_t_3);
     PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_2);
-    __Pyx_INCREF(__pyx_t_1);
+    __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx__function);
     __Pyx_DECREF_SET(__pyx_t_2, __pyx__function);
     __pyx_t_4 = 0;
   }
   #endif
   {
-    PyObject *__pyx_callargs[3] = {__pyx_t_1, __pyx_mstate_global->__pyx_kp_u_q, __pyx_t_6};
-    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+__pyx_t_4, (3-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+    PyObject *__pyx_callargs[3] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_q, __pyx_t_6};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+__pyx_t_4, (3-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 48, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
   }
-  if (!(likely(PyBytes_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None) || __Pyx_RaiseUnexpectedTypeError("bytes", __pyx_t_3))) __PYX_ERR(0, 48, __pyx_L1_error)
-  __pyx_r = ((PyObject*)__pyx_t_3);
-  __pyx_t_3 = 0;
+  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("bytes", __pyx_t_1))) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_r = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
   goto __pyx_L0;
 
   /* "pgcopylib/dtypes/dates.pyx":43
@@ -5283,7 +5280,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_5dates_write_timetz(PyObject *__pyx_
  *         dtype_value.microsecond
  *     )
  *     cdef object tz_offset = dtype_value.tzinfo.utcoffset(None)             # <<<<<<<<<<<<<<
- *     cdef int offset = int(tz_offset.total_seconds())
+ *     cdef int offset = tz_offset.total_seconds()
  *     return pack("!qi", total_microseconds, offset)
 */
   __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_dtype_value, __pyx_mstate_global->__pyx_n_u_tzinfo); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
@@ -5305,7 +5302,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_5dates_write_timetz(PyObject *__pyx_
   /* "pgcopylib/dtypes/dates.pyx":117
  *     )
  *     cdef object tz_offset = dtype_value.tzinfo.utcoffset(None)
- *     cdef int offset = int(tz_offset.total_seconds())             # <<<<<<<<<<<<<<
+ *     cdef int offset = tz_offset.total_seconds()             # <<<<<<<<<<<<<<
  *     return pack("!qi", total_microseconds, offset)
  * 
 */
@@ -5319,22 +5316,19 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_5dates_write_timetz(PyObject *__pyx_
     if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_3); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_offset = __pyx_t_6;
 
   /* "pgcopylib/dtypes/dates.pyx":118
  *     cdef object tz_offset = dtype_value.tzinfo.utcoffset(None)
- *     cdef int offset = int(tz_offset.total_seconds())
+ *     cdef int offset = tz_offset.total_seconds()
  *     return pack("!qi", total_microseconds, offset)             # <<<<<<<<<<<<<<
  * 
  * 
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = NULL;
+  __pyx_t_3 = NULL;
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_pack); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_7 = __Pyx_PyLong_From_PY_LONG_LONG(__pyx_v_total_microseconds); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 118, __pyx_L1_error)
@@ -5344,28 +5338,28 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_5dates_write_timetz(PyObject *__pyx_
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
-    assert(__pyx_t_1);
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    assert(__pyx_t_3);
     PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_2);
-    __Pyx_INCREF(__pyx_t_1);
+    __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx__function);
     __Pyx_DECREF_SET(__pyx_t_2, __pyx__function);
     __pyx_t_5 = 0;
   }
   #endif
   {
-    PyObject *__pyx_callargs[4] = {__pyx_t_1, __pyx_mstate_global->__pyx_kp_u_qi, __pyx_t_7, __pyx_t_8};
-    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+__pyx_t_5, (4-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+    PyObject *__pyx_callargs[4] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_qi, __pyx_t_7, __pyx_t_8};
+    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+__pyx_t_5, (4-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
   }
-  if (!(likely(PyBytes_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None) || __Pyx_RaiseUnexpectedTypeError("bytes", __pyx_t_3))) __PYX_ERR(0, 118, __pyx_L1_error)
-  __pyx_r = ((PyObject*)__pyx_t_3);
-  __pyx_t_3 = 0;
+  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("bytes", __pyx_t_1))) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_r = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
   goto __pyx_L0;
 
   /* "pgcopylib/dtypes/dates.pyx":104
@@ -7194,9 +7188,9 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_dates_pyx, __pyx_mstate->__pyx_n_u_read_timestamp, __pyx_k_Biq_V1F_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 43, 42};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 43, 38};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_dtype_value, __pyx_mstate->__pyx_n_u_array_function, __pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_pgoid};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_dates_pyx, __pyx_mstate->__pyx_n_u_write_timestamp, __pyx_k_S_b0A_q_A_6, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_dates_pyx, __pyx_mstate->__pyx_n_u_write_timestamp, __pyx_k_l_1_A_6, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 51, 32};
@@ -7224,7 +7218,7 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_dates_pyx, __pyx_mstate->__pyx_n_u_read_timetz, __pyx_k_IQm3C81_fAV_b_AQ_IQha_9HAWHAQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 104, 113};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 104, 109};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_dtype_value, __pyx_mstate->__pyx_n_u_array_function, __pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_pgoid};
     __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_dates_pyx, __pyx_mstate->__pyx_n_u_write_timetz, __pyx_k_V2_NbPQ_KxrATTVVW_Kxr_Q_q_q_1_K, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
   }

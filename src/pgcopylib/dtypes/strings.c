@@ -2691,16 +2691,19 @@ static CYTHON_INLINE void __Pyx_XCLEAR_MEMVIEW(__Pyx_memviewslice *, int, int);
 static CYTHON_INLINE long __Pyx_PyLong_As_long(PyObject *);
 
 /* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyLong_From_long(long value);
+
+/* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyLong_From_unsigned_char(unsigned char value);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE short __Pyx_PyLong_As_short(PyObject *);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyLong_As_int(PyObject *);
 
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value);
-
-/* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyLong_From_long(long value);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE char __Pyx_PyLong_As_char(PyObject *);
@@ -2964,13 +2967,13 @@ static const char __pyx_k_initializing[] = "_initializing";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_read_macaddr[] = "read_macaddr";
+static const char __pyx_k_3aq_S_A_9IQm1[] = "\200\001\360\006\000\005\034\2303\230a\230q\330\004\035\230[\250\002\250#\250S\260\001\330\004\031\230\023\230A\230]\250!\340\004\013\2109\220I\230Q\230m\2501";
 static const char __pyx_k_MemoryView_of[] = "<MemoryView of ";
 static const char __pyx_k_class_getitem[] = "__class_getitem__";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_write_macaddr[] = "write_macaddr";
 static const char __pyx_k_AssertionError[] = "AssertionError";
 static const char __pyx_k_array_function[] = "array_function";
-static const char __pyx_k_AQ_b_3a_A_9IQm1[] = "\200\001\360\006\000\005\"\240\023\240A\240Q\330\004#\240;\250b\260\003\2603\260a\330\004\031\230\023\230A\230]\250!\340\004\013\2109\220I\230Q\230m\2501";
 static const char __pyx_k_View_MemoryView[] = "View.MemoryView";
 static const char __pyx_k_allocate_buffer[] = "allocate_buffer";
 static const char __pyx_k_collections_abc[] = "collections.abc";
@@ -2981,10 +2984,10 @@ static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
+static const char __pyx_k_AQ_q_a_U_1_WCt4q_3e1F[] = "\200\001\360\010\000\005\032\230\023\230A\230Q\330\004'\240q\330\004\026\220a\340\004\t\210\030\220\021\220!\340\004\010\210\005\210U\220!\2201\330\010\r\210W\220C\220t\2304\230q\240\001\340\004\013\2103\210e\2201\220F\230&\240\001";
 static const char __pyx_k_Invalid_shape_in_axis[] = "Invalid shape in axis ";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
 static const char __pyx_k_Cannot_index_with_type[] = "Cannot index with type '";
-static const char __pyx_k_s_1_q_a_U_1_WCt4q_3e1F[] = "\200\001\360\010\000\005 \230s\240!\2401\330\004'\240q\330\004\026\220a\340\004\t\210\030\220\021\220!\340\004\010\210\005\210U\220!\2201\330\010\r\210W\220C\220t\2304\230q\240\001\340\004\013\2103\210e\2201\220F\230&\240\001";
 static const char __pyx_k_contiguous_and_indirect[] = "<contiguous and indirect>";
 static const char __pyx_k_pgcopylib_dtypes_strings[] = "pgcopylib.dtypes.strings";
 static const char __pyx_k_Dimension_d_is_not_direct[] = "Dimension %d is not direct";
@@ -2992,8 +2995,8 @@ static const char __pyx_k_Index_out_of_bounds_axis_d[] = "Index out of bounds (a
 static const char __pyx_k_Step_may_not_be_zero_axis_d[] = "Step may not be zero (axis %d)";
 static const char __pyx_k_itemsize_0_for_cython_array[] = "itemsize <= 0 for cython.array";
 static const char __pyx_k_unable_to_allocate_array_data[] = "unable to allocate array data.";
+static const char __pyx_k_q_AQ_Yb_Q_d_3c_S_AS_4s_as_S_aq[] = "\200\001\360\010\000\005(\240q\330\004\031\230\023\230A\230Q\330\004\035\230Y\240b\250\001\330\004\025\220Q\360\010\000\005\017\210d\220!\2203\220c\230\024\230S\240\004\240A\240S\250\003\2504\250s\260$\260a\260s\270#\270S\300\002\300$\300a\300q\330\004\010\210\010\220\001\220\035\230b\240\001\340\004\010\210\005\210U\220!\2203\220a\330\010\023\2204\220q\230\001\330\010\014\210E\220\025\220a\220t\2304\230q\330\014\020\220\007\220q\230\003\2302\230Y\240c\250\023\250B\250a\340\004\013\2102\210U\220!\2205\230\002\230!";
 static const char __pyx_k_strided_and_direct_or_indirect[] = "<strided and direct or indirect>";
-static const char __pyx_k_q_s_1_9Ba_Q_d_3c_S_AS_4s_as_S_a[] = "\200\001\360\010\000\005(\240q\330\004\037\230s\240!\2401\330\004#\2409\250B\250a\330\004\025\220Q\360\010\000\005\017\210d\220!\2203\220c\230\024\230S\240\004\240A\240S\250\003\2504\250s\260$\260a\260s\270#\270S\300\002\300$\300a\300q\330\004\010\210\010\220\001\220\035\230b\240\001\340\004\010\210\005\210U\220!\2203\220a\330\010\023\2204\220q\230\001\330\010\014\210E\220\025\220a\220t\2304\230q\330\014\020\220\007\220q\230\003\2302\230Y\240c\250\023\250B\250a\340\004\013\2102\210U\220!\2205\230\002\230!";
 static const char __pyx_k_All_dimensions_preceding_dimensi[] = "All dimensions preceding dimension %d must be indexed and not sliced";
 static const char __pyx_k_Buffer_view_does_not_expose_stri[] = "Buffer view does not expose strides";
 static const char __pyx_k_Can_only_create_a_buffer_that_is[] = "Can only create a buffer that is contiguous in memory.";
@@ -17190,8 +17193,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
 static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_macaddr(PyObject *__pyx_v_binary_data, CYTHON_UNUSED PyObject *__pyx_v_array_function, CYTHON_UNUSED PyObject *__pyx_v_buffer, CYTHON_UNUSED long __pyx_v_pgoid, CYTHON_UNUSED int __pyx_skip_dispatch) {
-  Py_ssize_t __pyx_v_i;
-  Py_ssize_t __pyx_v_data_len;
+  long __pyx_v_i;
+  long __pyx_v_data_len;
   __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_v_parts = 0;
   PyObject *__pyx_r = NULL;
@@ -17200,13 +17203,14 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_macaddr(PyObject *__py
   __Pyx_memviewslice __pyx_t_2 = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
-  Py_ssize_t __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
-  Py_ssize_t __pyx_t_7;
-  int __pyx_t_8;
+  long __pyx_t_5;
+  long __pyx_t_6;
+  long __pyx_t_7;
+  Py_ssize_t __pyx_t_8;
   int __pyx_t_9;
-  PyObject *__pyx_t_10 = NULL;
-  size_t __pyx_t_11;
+  int __pyx_t_10;
+  PyObject *__pyx_t_11 = NULL;
+  size_t __pyx_t_12;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -17214,8 +17218,8 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_macaddr(PyObject *__py
 
   /* "pgcopylib/dtypes/strings.pyx":17
  * 
- *     cdef Py_ssize_t i
- *     cdef Py_ssize_t data_len = len(binary_data)             # <<<<<<<<<<<<<<
+ *     cdef long i
+ *     cdef long data_len = len(binary_data)             # <<<<<<<<<<<<<<
  *     cdef const unsigned char[:] view = binary_data
  *     cdef list parts = []
 */
@@ -17227,8 +17231,8 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_macaddr(PyObject *__py
   __pyx_v_data_len = __pyx_t_1;
 
   /* "pgcopylib/dtypes/strings.pyx":18
- *     cdef Py_ssize_t i
- *     cdef Py_ssize_t data_len = len(binary_data)
+ *     cdef long i
+ *     cdef long data_len = len(binary_data)
  *     cdef const unsigned char[:] view = binary_data             # <<<<<<<<<<<<<<
  *     cdef list parts = []
  * 
@@ -17239,7 +17243,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_macaddr(PyObject *__py
   __pyx_t_2.data = NULL;
 
   /* "pgcopylib/dtypes/strings.pyx":19
- *     cdef Py_ssize_t data_len = len(binary_data)
+ *     cdef long data_len = len(binary_data)
  *     cdef const unsigned char[:] view = binary_data
  *     cdef list parts = []             # <<<<<<<<<<<<<<
  * 
@@ -17257,7 +17261,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_macaddr(PyObject *__py
  * 
  *     for i in range(data_len):
 */
-  __pyx_t_3 = PyLong_FromSsize_t(__pyx_v_data_len); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_long(__pyx_v_data_len); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = __Pyx_CallUnboundCMethod1(&__pyx_mstate_global->__pyx_umethod_PyList_Type__reserve, __pyx_v_parts, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -17271,10 +17275,10 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_macaddr(PyObject *__py
  *         parts.append(f"{view[i]:02x}")
  * 
 */
-  __pyx_t_1 = __pyx_v_data_len;
-  __pyx_t_5 = __pyx_t_1;
-  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
-    __pyx_v_i = __pyx_t_6;
+  __pyx_t_5 = __pyx_v_data_len;
+  __pyx_t_6 = __pyx_t_5;
+  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+    __pyx_v_i = __pyx_t_7;
 
     /* "pgcopylib/dtypes/strings.pyx":24
  * 
@@ -17283,22 +17287,22 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_macaddr(PyObject *__py
  * 
  *     return ":".join(parts).upper()
 */
-    __pyx_t_7 = __pyx_v_i;
-    __pyx_t_8 = -1;
-    if (__pyx_t_7 < 0) {
-      __pyx_t_7 += __pyx_v_view.shape[0];
-      if (unlikely(__pyx_t_7 < 0)) __pyx_t_8 = 0;
-    } else if (unlikely(__pyx_t_7 >= __pyx_v_view.shape[0])) __pyx_t_8 = 0;
-    if (unlikely(__pyx_t_8 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_8);
+    __pyx_t_8 = __pyx_v_i;
+    __pyx_t_9 = -1;
+    if (__pyx_t_8 < 0) {
+      __pyx_t_8 += __pyx_v_view.shape[0];
+      if (unlikely(__pyx_t_8 < 0)) __pyx_t_9 = 0;
+    } else if (unlikely(__pyx_t_8 >= __pyx_v_view.shape[0])) __pyx_t_9 = 0;
+    if (unlikely(__pyx_t_9 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_9);
       __PYX_ERR(0, 24, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_PyLong_From_unsigned_char((*((unsigned char const  *) ( /* dim=0 */ (__pyx_v_view.data + __pyx_t_7 * __pyx_v_view.strides[0]) )))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyLong_From_unsigned_char((*((unsigned char const  *) ( /* dim=0 */ (__pyx_v_view.data + __pyx_t_8 * __pyx_v_view.strides[0]) )))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = __Pyx_PyObject_Format(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_02x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_parts, __pyx_t_3); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_parts, __pyx_t_3); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
 
@@ -17310,16 +17314,16 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_macaddr(PyObject *__py
  * 
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_10 = PyUnicode_Join(__pyx_mstate_global->__pyx_kp_u__6, __pyx_v_parts); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 26, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_4 = __pyx_t_10;
+  __pyx_t_11 = PyUnicode_Join(__pyx_mstate_global->__pyx_kp_u__6, __pyx_v_parts); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_11);
+  __pyx_t_4 = __pyx_t_11;
   __Pyx_INCREF(__pyx_t_4);
-  __pyx_t_11 = 0;
+  __pyx_t_12 = 0;
   {
     PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
-    __pyx_t_3 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_upper, __pyx_callargs+__pyx_t_11, (1-__pyx_t_11) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __pyx_t_3 = __Pyx_PyObject_FastCallMethod(__pyx_mstate_global->__pyx_n_u_upper, __pyx_callargs+__pyx_t_12, (1-__pyx_t_12) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   }
@@ -17340,7 +17344,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_macaddr(PyObject *__py
   __PYX_XCLEAR_MEMVIEW(&__pyx_t_2, 1);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_11);
   __Pyx_AddTraceback("pgcopylib.dtypes.strings.read_macaddr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
@@ -17739,11 +17743,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_bits(PyObject *__pyx_v_binary_data, CYTHON_UNUSED PyObject *__pyx_v_array_function, CYTHON_UNUSED PyObject *__pyx_v_buffer, CYTHON_UNUSED long __pyx_v_pgoid, CYTHON_UNUSED int __pyx_skip_dispatch) {
   unsigned int __pyx_v_length;
   __Pyx_memviewslice __pyx_v_view = { 0, 0, { 0 }, { 0 }, { 0 } };
-  Py_ssize_t __pyx_v_data_len;
-  Py_ssize_t __pyx_v_bit_data_len;
+  long __pyx_v_data_len;
+  long __pyx_v_bit_data_len;
   PyObject *__pyx_v_bits = 0;
-  Py_ssize_t __pyx_v_i;
-  Py_ssize_t __pyx_v_j;
+  short __pyx_v_i;
+  short __pyx_v_j;
   unsigned char __pyx_v_byte_val;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -17756,10 +17760,11 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_bits(PyObject *__pyx_v
   Py_ssize_t __pyx_t_7;
   Py_ssize_t __pyx_t_8;
   PyObject *__pyx_t_9 = NULL;
-  Py_ssize_t __pyx_t_10;
-  Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
-  int __pyx_t_13;
+  long __pyx_t_10;
+  long __pyx_t_11;
+  short __pyx_t_12;
+  short __pyx_t_13;
+  int __pyx_t_14;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -17769,8 +17774,8 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_bits(PyObject *__pyx_v
  * 
  *     cdef unsigned int length
  *     cdef const unsigned char[:] view = binary_data             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t data_len = len(binary_data)
- *     cdef Py_ssize_t bit_data_len = data_len - 4
+ *     cdef long data_len = len(binary_data)
+ *     cdef long bit_data_len = data_len - 4
 */
   __pyx_t_1 = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char__const__(__pyx_v_binary_data, 0); if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 39, __pyx_L1_error)
   __pyx_v_view = __pyx_t_1;
@@ -17780,8 +17785,8 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_bits(PyObject *__pyx_v
   /* "pgcopylib/dtypes/strings.pyx":40
  *     cdef unsigned int length
  *     cdef const unsigned char[:] view = binary_data
- *     cdef Py_ssize_t data_len = len(binary_data)             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t bit_data_len = data_len - 4
+ *     cdef long data_len = len(binary_data)             # <<<<<<<<<<<<<<
+ *     cdef long bit_data_len = data_len - 4
  *     cdef list bits = []
 */
   if (unlikely(__pyx_v_binary_data == Py_None)) {
@@ -17793,18 +17798,18 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_bits(PyObject *__pyx_v
 
   /* "pgcopylib/dtypes/strings.pyx":41
  *     cdef const unsigned char[:] view = binary_data
- *     cdef Py_ssize_t data_len = len(binary_data)
- *     cdef Py_ssize_t bit_data_len = data_len - 4             # <<<<<<<<<<<<<<
+ *     cdef long data_len = len(binary_data)
+ *     cdef long bit_data_len = data_len - 4             # <<<<<<<<<<<<<<
  *     cdef list bits = []
- *     cdef Py_ssize_t i, j
+ *     cdef short i, j
 */
   __pyx_v_bit_data_len = (__pyx_v_data_len - 4);
 
   /* "pgcopylib/dtypes/strings.pyx":42
- *     cdef Py_ssize_t data_len = len(binary_data)
- *     cdef Py_ssize_t bit_data_len = data_len - 4
+ *     cdef long data_len = len(binary_data)
+ *     cdef long bit_data_len = data_len - 4
  *     cdef list bits = []             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t i, j
+ *     cdef short i, j
  *     cdef unsigned char byte_val
 */
   __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
@@ -17868,7 +17873,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_bits(PyObject *__pyx_v
  * 
  *     for i in range(4, data_len):
 */
-  __pyx_t_3 = PyLong_FromSsize_t((__pyx_v_bit_data_len * 8)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_long((__pyx_v_bit_data_len * 8)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_9 = __Pyx_CallUnboundCMethod1(&__pyx_mstate_global->__pyx_umethod_PyList_Type__reserve, __pyx_v_bits, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
@@ -17882,10 +17887,10 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_bits(PyObject *__pyx_v
  *         byte_val = view[i]
  *         for j in range(7, -1, -1):
 */
-  __pyx_t_2 = __pyx_v_data_len;
-  __pyx_t_10 = __pyx_t_2;
-  for (__pyx_t_11 = 4; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
+  __pyx_t_10 = __pyx_v_data_len;
+  __pyx_t_11 = __pyx_t_10;
+  for (__pyx_t_12 = 4; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+    __pyx_v_i = __pyx_t_12;
 
     /* "pgcopylib/dtypes/strings.pyx":50
  * 
@@ -17913,8 +17918,8 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_bits(PyObject *__pyx_v
  *             bits.append(str((byte_val >> j) & 1))
  * 
 */
-    for (__pyx_t_12 = 7; __pyx_t_12 > -1L; __pyx_t_12-=1) {
-      __pyx_v_j = __pyx_t_12;
+    for (__pyx_t_13 = 7; __pyx_t_13 > -1; __pyx_t_13-=1) {
+      __pyx_v_j = __pyx_t_13;
 
       /* "pgcopylib/dtypes/strings.pyx":52
  *         byte_val = view[i]
@@ -17923,12 +17928,12 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_read_bits(PyObject *__pyx_v
  * 
  *     return "".join(bits)[:length]
 */
-      __pyx_t_9 = PyLong_FromSsize_t(((__pyx_v_byte_val >> __pyx_v_j) & 1)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 52, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyLong_From_long(((__pyx_v_byte_val >> __pyx_v_j) & 1)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 52, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __pyx_t_3 = __Pyx_PyObject_Unicode(__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_bits, __pyx_t_3); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 52, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_bits, __pyx_t_3); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 52, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
   }
@@ -18135,8 +18140,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
 static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_write_bits(PyObject *__pyx_v_dtype_value, CYTHON_UNUSED PyObject *__pyx_v_array_function, CYTHON_UNUSED PyObject *__pyx_v_buffer, CYTHON_UNUSED long __pyx_v_pgoid, CYTHON_UNUSED int __pyx_skip_dispatch) {
-  Py_ssize_t __pyx_v_bit_length;
-  Py_ssize_t __pyx_v_byte_length;
+  long __pyx_v_bit_length;
+  long __pyx_v_byte_length;
   int __pyx_v_int_value;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -18155,8 +18160,8 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_write_bits(PyObject *__pyx_
   /* "pgcopylib/dtypes/strings.pyx":60
  *     """Pack bit and varbit value."""
  * 
- *     cdef Py_ssize_t bit_length = len(dtype_value)             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t byte_length = (bit_length + 7) // 8
+ *     cdef long bit_length = len(dtype_value)             # <<<<<<<<<<<<<<
+ *     cdef long byte_length = (bit_length + 7) // 8
  *     cdef int int_value = int(dtype_value, 2)
 */
   if (unlikely(__pyx_v_dtype_value == Py_None)) {
@@ -18168,16 +18173,16 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_write_bits(PyObject *__pyx_
 
   /* "pgcopylib/dtypes/strings.pyx":61
  * 
- *     cdef Py_ssize_t bit_length = len(dtype_value)
- *     cdef Py_ssize_t byte_length = (bit_length + 7) // 8             # <<<<<<<<<<<<<<
+ *     cdef long bit_length = len(dtype_value)
+ *     cdef long byte_length = (bit_length + 7) // 8             # <<<<<<<<<<<<<<
  *     cdef int int_value = int(dtype_value, 2)
  * 
 */
-  __pyx_v_byte_length = __Pyx_div_Py_ssize_t((__pyx_v_bit_length + 7), 8, 1);
+  __pyx_v_byte_length = __Pyx_div_long((__pyx_v_bit_length + 7), 8, 1);
 
   /* "pgcopylib/dtypes/strings.pyx":62
- *     cdef Py_ssize_t bit_length = len(dtype_value)
- *     cdef Py_ssize_t byte_length = (bit_length + 7) // 8
+ *     cdef long bit_length = len(dtype_value)
+ *     cdef long byte_length = (bit_length + 7) // 8
  *     cdef int int_value = int(dtype_value, 2)             # <<<<<<<<<<<<<<
  * 
  *     return int_value.to_bytes(byte_length, "big")
@@ -18210,7 +18215,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_7strings_write_bits(PyObject *__pyx_
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = __pyx_t_3;
   __Pyx_INCREF(__pyx_t_4);
-  __pyx_t_7 = PyLong_FromSsize_t(__pyx_v_byte_length); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyLong_From_long(__pyx_v_byte_length); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_5 = 0;
   {
@@ -21138,7 +21143,7 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 13, 73};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_binary_data, __pyx_mstate->__pyx_n_u_array_function, __pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_pgoid};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_strings_pyx, __pyx_mstate->__pyx_n_u_read_macaddr, __pyx_k_s_1_q_a_U_1_WCt4q_3e1F, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_strings_pyx, __pyx_mstate->__pyx_n_u_read_macaddr, __pyx_k_AQ_q_a_U_1_WCt4q_3e1F, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 29, 23};
@@ -21148,12 +21153,12 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 35, 165};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_binary_data, __pyx_mstate->__pyx_n_u_array_function, __pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_pgoid};
-    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_strings_pyx, __pyx_mstate->__pyx_n_u_read_bits, __pyx_k_q_s_1_9Ba_Q_d_3c_S_AS_4s_as_S_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_strings_pyx, __pyx_mstate->__pyx_n_u_read_bits, __pyx_k_q_AQ_Yb_Q_d_3c_S_AS_4s_as_S_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 57, 50};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_dtype_value, __pyx_mstate->__pyx_n_u_array_function, __pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_pgoid};
-    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_strings_pyx, __pyx_mstate->__pyx_n_u_write_bits, __pyx_k_AQ_b_3a_A_9IQm1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_strings_pyx, __pyx_mstate->__pyx_n_u_write_bits, __pyx_k_3aq_S_A_9IQm1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 67, 9};
@@ -27763,6 +27768,77 @@ raise_neg_overflow:
 }
 
 /* CIntToPy */
+  static CYTHON_INLINE PyObject* __Pyx_PyLong_From_long(long value) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const long neg_one = (long) -1, const_zero = (long) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(long) < sizeof(long)) {
+            return PyLong_FromLong((long) value);
+        } else if (sizeof(long) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#if defined(HAVE_LONG_LONG) && !CYTHON_COMPILING_IN_PYPY
+        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(long) <= sizeof(long)) {
+            return PyLong_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        unsigned char *bytes = (unsigned char *)&value;
+#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
+        if (is_unsigned) {
+            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
+        } else {
+            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
+        }
+#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        return _PyLong_FromByteArray(bytes, sizeof(long),
+                                     little, !is_unsigned);
+#else
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        PyObject *from_bytes, *result = NULL, *kwds = NULL;
+        PyObject *py_bytes = NULL, *order_str = NULL;
+        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
+        if (!from_bytes) return NULL;
+        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(long));
+        if (!py_bytes) goto limited_bad;
+        order_str = PyUnicode_FromString(little ? "little" : "big");
+        if (!order_str) goto limited_bad;
+        {
+            PyObject *args[3+(CYTHON_VECTORCALL ? 1 : 0)] = { NULL, py_bytes, order_str };
+            if (!is_unsigned) {
+                kwds = __Pyx_MakeVectorcallBuilderKwds(1);
+                if (!kwds) goto limited_bad;
+                if (__Pyx_VectorcallBuilder_AddArgStr("signed", __Pyx_NewRef(Py_True), kwds, args+3, 0) < 0) goto limited_bad;
+            }
+            result = __Pyx_Object_Vectorcall_CallFromBuilder(from_bytes, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET, kwds);
+        }
+        limited_bad:
+        Py_XDECREF(kwds);
+        Py_XDECREF(order_str);
+        Py_XDECREF(py_bytes);
+        Py_XDECREF(from_bytes);
+        return result;
+#endif
+    }
+}
+
+/* CIntToPy */
   static CYTHON_INLINE PyObject* __Pyx_PyLong_From_unsigned_char(unsigned char value) {
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
 #pragma GCC diagnostic push
@@ -27831,6 +27907,260 @@ raise_neg_overflow:
         return result;
 #endif
     }
+}
+
+/* CIntFromPy */
+  static CYTHON_INLINE short __Pyx_PyLong_As_short(PyObject *x) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const short neg_one = (short) -1, const_zero = (short) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (unlikely(!PyLong_Check(x))) {
+        short val;
+        PyObject *tmp = __Pyx_PyNumber_Long(x);
+        if (!tmp) return (short) -1;
+        val = __Pyx_PyLong_As_short(tmp);
+        Py_DECREF(tmp);
+        return val;
+    }
+    if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+        if (unlikely(__Pyx_PyLong_IsNeg(x))) {
+            goto raise_neg_overflow;
+        } else if (__Pyx_PyLong_IsCompact(x)) {
+            __PYX_VERIFY_RETURN_INT(short, __Pyx_compact_upylong, __Pyx_PyLong_CompactValueUnsigned(x))
+        } else {
+            const digit* digits = __Pyx_PyLong_Digits(x);
+            assert(__Pyx_PyLong_DigitCount(x) > 1);
+            switch (__Pyx_PyLong_DigitCount(x)) {
+                case 2:
+                    if ((8 * sizeof(short) > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) >= 2 * PyLong_SHIFT)) {
+                            return (short) (((((short)digits[1]) << PyLong_SHIFT) | (short)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if ((8 * sizeof(short) > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) >= 3 * PyLong_SHIFT)) {
+                            return (short) (((((((short)digits[2]) << PyLong_SHIFT) | (short)digits[1]) << PyLong_SHIFT) | (short)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if ((8 * sizeof(short) > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) >= 4 * PyLong_SHIFT)) {
+                            return (short) (((((((((short)digits[3]) << PyLong_SHIFT) | (short)digits[2]) << PyLong_SHIFT) | (short)digits[1]) << PyLong_SHIFT) | (short)digits[0]));
+                        }
+                    }
+                    break;
+            }
+        }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX < 0x030C00A7
+        if (unlikely(Py_SIZE(x) < 0)) {
+            goto raise_neg_overflow;
+        }
+#else
+        {
+            int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+            if (unlikely(result < 0))
+                return (short) -1;
+            if (unlikely(result == 1))
+                goto raise_neg_overflow;
+        }
+#endif
+        if ((sizeof(short) <= sizeof(unsigned long))) {
+            __PYX_VERIFY_RETURN_INT_EXC(short, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+        } else if ((sizeof(short) <= sizeof(unsigned PY_LONG_LONG))) {
+            __PYX_VERIFY_RETURN_INT_EXC(short, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+        }
+    } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+        if (__Pyx_PyLong_IsCompact(x)) {
+            __PYX_VERIFY_RETURN_INT(short, __Pyx_compact_pylong, __Pyx_PyLong_CompactValue(x))
+        } else {
+            const digit* digits = __Pyx_PyLong_Digits(x);
+            assert(__Pyx_PyLong_DigitCount(x) > 1);
+            switch (__Pyx_PyLong_SignedDigitCount(x)) {
+                case -2:
+                    if ((8 * sizeof(short) - 1 > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) - 1 > 2 * PyLong_SHIFT)) {
+                            return (short) (((short)-1)*(((((short)digits[1]) << PyLong_SHIFT) | (short)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if ((8 * sizeof(short) > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) - 1 > 2 * PyLong_SHIFT)) {
+                            return (short) ((((((short)digits[1]) << PyLong_SHIFT) | (short)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if ((8 * sizeof(short) - 1 > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) - 1 > 3 * PyLong_SHIFT)) {
+                            return (short) (((short)-1)*(((((((short)digits[2]) << PyLong_SHIFT) | (short)digits[1]) << PyLong_SHIFT) | (short)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if ((8 * sizeof(short) > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) - 1 > 3 * PyLong_SHIFT)) {
+                            return (short) ((((((((short)digits[2]) << PyLong_SHIFT) | (short)digits[1]) << PyLong_SHIFT) | (short)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if ((8 * sizeof(short) - 1 > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) - 1 > 4 * PyLong_SHIFT)) {
+                            return (short) (((short)-1)*(((((((((short)digits[3]) << PyLong_SHIFT) | (short)digits[2]) << PyLong_SHIFT) | (short)digits[1]) << PyLong_SHIFT) | (short)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if ((8 * sizeof(short) > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) - 1 > 4 * PyLong_SHIFT)) {
+                            return (short) ((((((((((short)digits[3]) << PyLong_SHIFT) | (short)digits[2]) << PyLong_SHIFT) | (short)digits[1]) << PyLong_SHIFT) | (short)digits[0])));
+                        }
+                    }
+                    break;
+            }
+        }
+#endif
+        if ((sizeof(short) <= sizeof(long))) {
+            __PYX_VERIFY_RETURN_INT_EXC(short, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+        } else if ((sizeof(short) <= sizeof(PY_LONG_LONG))) {
+            __PYX_VERIFY_RETURN_INT_EXC(short, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+        }
+    }
+    {
+        short val;
+        int ret = -1;
+#if PY_VERSION_HEX >= 0x030d00A6 && !CYTHON_COMPILING_IN_LIMITED_API
+        Py_ssize_t bytes_copied = PyLong_AsNativeBytes(
+            x, &val, sizeof(val), Py_ASNATIVEBYTES_NATIVE_ENDIAN | (is_unsigned ? Py_ASNATIVEBYTES_UNSIGNED_BUFFER | Py_ASNATIVEBYTES_REJECT_NEGATIVE : 0));
+        if (unlikely(bytes_copied == -1)) {
+        } else if (unlikely(bytes_copied > (Py_ssize_t) sizeof(val))) {
+            goto raise_overflow;
+        } else {
+            ret = 0;
+        }
+#elif PY_VERSION_HEX < 0x030d0000 && !(CYTHON_COMPILING_IN_PYPY || CYTHON_COMPILING_IN_LIMITED_API) || defined(_PyLong_AsByteArray)
+        int one = 1; int is_little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&val;
+        ret = _PyLong_AsByteArray((PyLongObject *)x,
+                                    bytes, sizeof(val),
+                                    is_little, !is_unsigned);
+#else
+        PyObject *v;
+        PyObject *stepval = NULL, *mask = NULL, *shift = NULL;
+        int bits, remaining_bits, is_negative = 0;
+        int chunk_size = (sizeof(long) < 8) ? 30 : 62;
+        if (likely(PyLong_CheckExact(x))) {
+            v = __Pyx_NewRef(x);
+        } else {
+            v = PyNumber_Long(x);
+            if (unlikely(!v)) return (short) -1;
+            assert(PyLong_CheckExact(v));
+        }
+        {
+            int result = PyObject_RichCompareBool(v, Py_False, Py_LT);
+            if (unlikely(result < 0)) {
+                Py_DECREF(v);
+                return (short) -1;
+            }
+            is_negative = result == 1;
+        }
+        if (is_unsigned && unlikely(is_negative)) {
+            Py_DECREF(v);
+            goto raise_neg_overflow;
+        } else if (is_negative) {
+            stepval = PyNumber_Invert(v);
+            Py_DECREF(v);
+            if (unlikely(!stepval))
+                return (short) -1;
+        } else {
+            stepval = v;
+        }
+        v = NULL;
+        val = (short) 0;
+        mask = PyLong_FromLong((1L << chunk_size) - 1); if (unlikely(!mask)) goto done;
+        shift = PyLong_FromLong(chunk_size); if (unlikely(!shift)) goto done;
+        for (bits = 0; bits < (int) sizeof(short) * 8 - chunk_size; bits += chunk_size) {
+            PyObject *tmp, *digit;
+            long idigit;
+            digit = PyNumber_And(stepval, mask);
+            if (unlikely(!digit)) goto done;
+            idigit = PyLong_AsLong(digit);
+            Py_DECREF(digit);
+            if (unlikely(idigit < 0)) goto done;
+            val |= ((short) idigit) << bits;
+            tmp = PyNumber_Rshift(stepval, shift);
+            if (unlikely(!tmp)) goto done;
+            Py_DECREF(stepval); stepval = tmp;
+        }
+        Py_DECREF(shift); shift = NULL;
+        Py_DECREF(mask); mask = NULL;
+        {
+            long idigit = PyLong_AsLong(stepval);
+            if (unlikely(idigit < 0)) goto done;
+            remaining_bits = ((int) sizeof(short) * 8) - bits - (is_unsigned ? 0 : 1);
+            if (unlikely(idigit >= (1L << remaining_bits)))
+                goto raise_overflow;
+            val |= ((short) idigit) << bits;
+        }
+        if (!is_unsigned) {
+            if (unlikely(val & (((short) 1) << (sizeof(short) * 8 - 1))))
+                goto raise_overflow;
+            if (is_negative)
+                val = ~val;
+        }
+        ret = 0;
+    done:
+        Py_XDECREF(shift);
+        Py_XDECREF(mask);
+        Py_XDECREF(stepval);
+#endif
+        if (unlikely(ret))
+            return (short) -1;
+        return val;
+    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to short");
+    return (short) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to short");
+    return (short) -1;
 }
 
 /* CIntFromPy */
@@ -28136,77 +28466,6 @@ raise_neg_overflow:
         from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
         if (!from_bytes) return NULL;
         py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(int));
-        if (!py_bytes) goto limited_bad;
-        order_str = PyUnicode_FromString(little ? "little" : "big");
-        if (!order_str) goto limited_bad;
-        {
-            PyObject *args[3+(CYTHON_VECTORCALL ? 1 : 0)] = { NULL, py_bytes, order_str };
-            if (!is_unsigned) {
-                kwds = __Pyx_MakeVectorcallBuilderKwds(1);
-                if (!kwds) goto limited_bad;
-                if (__Pyx_VectorcallBuilder_AddArgStr("signed", __Pyx_NewRef(Py_True), kwds, args+3, 0) < 0) goto limited_bad;
-            }
-            result = __Pyx_Object_Vectorcall_CallFromBuilder(from_bytes, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET, kwds);
-        }
-        limited_bad:
-        Py_XDECREF(kwds);
-        Py_XDECREF(order_str);
-        Py_XDECREF(py_bytes);
-        Py_XDECREF(from_bytes);
-        return result;
-#endif
-    }
-}
-
-/* CIntToPy */
-  static CYTHON_INLINE PyObject* __Pyx_PyLong_From_long(long value) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const long neg_one = (long) -1, const_zero = (long) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(long) < sizeof(long)) {
-            return PyLong_FromLong((long) value);
-        } else if (sizeof(long) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#if defined(HAVE_LONG_LONG) && !CYTHON_COMPILING_IN_PYPY
-        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(long) <= sizeof(long)) {
-            return PyLong_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
-    }
-    {
-        unsigned char *bytes = (unsigned char *)&value;
-#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
-        if (is_unsigned) {
-            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
-        } else {
-            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
-        }
-#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        return _PyLong_FromByteArray(bytes, sizeof(long),
-                                     little, !is_unsigned);
-#else
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        PyObject *from_bytes, *result = NULL, *kwds = NULL;
-        PyObject *py_bytes = NULL, *order_str = NULL;
-        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
-        if (!from_bytes) return NULL;
-        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(long));
         if (!py_bytes) goto limited_bad;
         order_str = PyUnicode_FromString(little ? "little" : "big");
         if (!order_str) goto limited_bad;

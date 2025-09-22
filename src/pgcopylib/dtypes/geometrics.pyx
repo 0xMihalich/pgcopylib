@@ -63,12 +63,12 @@ cpdef object read_path(bytes binary_data, object array_function, object buffer, 
     cdef int length
     cdef tuple coords_data
     cdef list path_data = []
-    cdef Py_ssize_t i
+    cdef long i
 
     is_closed = unpack("!?", binary_data[:1])[0]
     length = unpack("!l", binary_data[1:5])[0]
 
-    cdef Py_ssize_t coords_count = (len(binary_data) - 5) // 8
+    cdef long coords_count = (len(binary_data) - 5) // 8
     coords_data = unpack(f"!{coords_count}d", binary_data[5:])
 
     for i in range(0, coords_count, 2):
@@ -84,16 +84,15 @@ cpdef bytes write_path(object dtype_value, object array_function, object buffer,
     """Pack path value."""
 
     cdef bint is_closed = isinstance(dtype_value, tuple)
-    cdef Py_ssize_t length = len(dtype_value)
+    cdef short length = len(dtype_value)
     cdef list path_data = []
-    cdef Py_ssize_t i, j
+    cdef short i
     cdef object point
 
     for i in range(length):
         point = dtype_value[i]
-        if len(point) >= 2:
-            path_data.append(point[0])
-            path_data.append(point[1])
+        path_data.append(point[0])
+        path_data.append(point[1])
 
     return pack(
         f"?l{len(path_data)}d",
@@ -109,14 +108,13 @@ cpdef tuple read_polygon(bytes binary_data, object array_function, object buffer
     cdef int length
     cdef tuple coords_data
     cdef list points = []
-    cdef Py_ssize_t i
+    cdef short i
     length = unpack("!l", binary_data[:4])[0]
-    cdef Py_ssize_t coords_count = (len(binary_data) - 4) // 8
+    cdef short coords_count = (len(binary_data) - 4) // 8
     coords_data = unpack(f"!{coords_count}d", binary_data[4:])
 
     for i in range(0, coords_count, 2):
-        if i + 1 < coords_count:
-            points.append((coords_data[i], coords_data[i + 1]))
+        points.append((coords_data[i], coords_data[i + 1]))
 
     return tuple(points)
 
@@ -124,9 +122,9 @@ cpdef tuple read_polygon(bytes binary_data, object array_function, object buffer
 cpdef bytes write_polygon(tuple dtype_value, object array_function, object buffer, long pgoid):
     """Pack polygon value."""
 
-    cdef Py_ssize_t length = len(dtype_value)
+    cdef short length = len(dtype_value)
     cdef list path_data = []
-    cdef Py_ssize_t i
+    cdef short i
     cdef tuple point
 
     for i in range(length):

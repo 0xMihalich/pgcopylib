@@ -1,5 +1,11 @@
 # Version History
 
+## 0.2.0.1
+
+* Setup.py code refactor
+* Some fixes
+* Cast Py_ssize_t data types to Cython data types
+
 ## 0.2.0.0
 
 * Full refactor project

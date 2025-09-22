@@ -1966,7 +1966,7 @@ static CYTHON_INLINE PyObject* __Pyx_PyUnicode_FromOrdinal_Padded(int value, Py_
 #include <stdlib.h>
 
 /* CIntToPyUnicode.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_Py_ssize_t(Py_ssize_t value, Py_ssize_t width, char padding_char, char format_char);
+static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_long(long value, Py_ssize_t width, char padding_char, char format_char);
 
 /* JoinPyUnicode.proto */
 static PyObject* __Pyx_PyUnicode_Join(PyObject** values, Py_ssize_t value_count, Py_ssize_t result_ulength,
@@ -1992,6 +1992,12 @@ static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
 #else
 #define __Pyx_PyList_Append(L,x) PyList_Append(L,x)
 #endif
+
+/* CIntToPyUnicode.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_Py_ssize_t(Py_ssize_t value, Py_ssize_t width, char padding_char, char format_char);
+
+/* CIntToPyUnicode.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_short(short value, Py_ssize_t width, char padding_char, char format_char);
 
 /* ListExtend.proto */
 static CYTHON_INLINE int __Pyx_PyList_Extend(PyObject* L, PyObject* v) {
@@ -2231,6 +2237,12 @@ static CYTHON_INLINE PyObject* __Pyx_PyLong_From_long(long value);
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyLong_As_int(PyObject *);
 
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyLong_From_short(short value);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE short __Pyx_PyLong_As_short(PyObject *);
+
 /* FormatTypeName.proto */
 #if CYTHON_COMPILING_IN_LIMITED_API
 typedef PyObject *__Pyx_TypeName;
@@ -2396,13 +2408,13 @@ static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_read_polygon[] = "read_polygon";
 static const char __pyx_k_write_polygon[] = "write_polygon";
 static const char __pyx_k_array_function[] = "array_function";
-static const char __pyx_k_S_U_1_1A_4q_s_1[] = "\200\001\360\006\000\005\036\230S\240\001\240\021\330\004\032\230!\360\010\000\005\t\210\005\210U\220!\2201\330\010\020\220\013\2301\230A\330\010\021\220\027\230\001\230\021\340\004\013\2104\210q\330\010\n\210%\210s\220!\2201\330\010\t\330\t\n";
+static const char __pyx_k_1A_U_1_1A_4q_s_1[] = "\200\001\360\006\000\005\031\230\003\2301\230A\330\004\032\230!\360\010\000\005\t\210\005\210U\220!\2201\330\010\020\220\013\2301\230A\330\010\021\220\027\230\001\230\021\340\004\013\2104\210q\330\010\n\210%\210s\220!\2201\330\010\t\330\t\n";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
+static const char __pyx_k_A_1A_U_1_1A_aq_aq_4q_1A[] = "\200\001\360\006\000\005\033\230*\240A\240]\260!\330\004\030\230\003\2301\230A\330\004\032\230!\360\010\000\005\t\210\005\210U\220!\2201\330\010\020\220\013\2301\230A\330\010\021\220\027\230\001\230\025\230a\230q\330\010\021\220\027\230\001\230\025\230a\230q\340\004\013\2104\210q\330\010\n\210&\220\003\2201\220A\330\010\t\330\010\t\330\t\n";
 static const char __pyx_k_pgcopylib_dtypes_geometrics[] = "pgcopylib.dtypes.geometrics";
-static const char __pyx_k_A_S_U_1_1A_3awc_WAU_1_WAU_1_4q[] = "\200\001\360\006\000\005\033\230*\240A\240]\260!\330\004\035\230S\240\001\240\021\330\004\032\230!\360\010\000\005\t\210\005\210U\220!\2201\330\010\020\220\013\2301\230A\330\010\013\2103\210a\210w\220c\230\021\330\014\025\220W\230A\230U\240!\2401\330\014\025\220W\230A\230U\240!\2401\340\004\013\2104\210q\330\010\n\210&\220\003\2201\220A\330\010\t\330\010\t\330\t\n";
-static const char __pyx_k_av_Qa_V1F_Qb_1A_Cq_Rs_Q_5_k_U_3[] = "\200\001\360\014\000\005\033\230!\360\006\000\005\021\220\006\220a\220v\230[\250\002\250#\250Q\250a\330\004\r\210V\2201\220F\230+\240Q\240b\250\003\2501\250A\340\004$\240C\240q\250\r\260R\260s\270#\270Q\330\004\022\220&\230\001\230\022\2305\240\016\250k\270\021\270!\340\004\010\210\005\210U\220!\2203\220n\240A\330\010\013\2102\210R\210r\220\022\2201\330\014\025\220W\230B\230k\250\021\250$\250k\270\021\270\"\270B\270a\340\004\007\200q\330\010\017\210u\220A\220Q\330\004\013\2101";
-static const char __pyx_k_q_V1F_Rs_1_Cq_Rs_Q_5_k_U_3nA_2R[] = "\200\001\360\n\000\005\030\220q\340\004\r\210V\2201\220F\230+\240R\240s\250!\2501\330\004$\240C\240q\250\r\260R\260s\270#\270Q\330\004\022\220&\230\001\230\022\2305\240\016\250k\270\021\270!\340\004\010\210\005\210U\220!\2203\220n\240A\330\010\013\2102\210R\210r\220\022\2201\330\014\022\220'\230\022\230;\240a\240t\250;\260a\260r\270\022\2701\340\004\013\2105\220\001\220\021";
+static const char __pyx_k_av_Qa_V1F_Qb_1A_c_r_Cq_5_k_U_3n[] = "\200\001\360\014\000\005\033\230!\360\006\000\005\021\220\006\220a\220v\230[\250\002\250#\250Q\250a\330\004\r\210V\2201\220F\230+\240Q\240b\250\003\2501\250A\340\004\036\230c\240\021\240-\250r\260\023\260C\260q\330\004\022\220&\230\001\230\022\2305\240\016\250k\270\021\270!\340\004\010\210\005\210U\220!\2203\220n\240A\330\010\013\2102\210R\210r\220\022\2201\330\014\025\220W\230B\230k\250\021\250$\250k\270\021\270\"\270B\270a\340\004\007\200q\330\010\017\210u\220A\220Q\330\004\013\2101";
+static const char __pyx_k_q_V1F_Rs_1_s_S_5_k_U_3nA_gR_4_2[] = "\200\001\360\n\000\005\030\220q\340\004\r\210V\2201\220F\230+\240R\240s\250!\2501\330\004\037\230s\240!\240=\260\002\260#\260S\270\001\330\004\022\220&\230\001\230\022\2305\240\016\250k\270\021\270!\340\004\010\210\005\210U\220!\2203\220n\240A\330\010\016\210g\220R\220{\240!\2404\240{\260!\2602\260R\260q\340\004\013\2105\220\001\220\021";
 static const char __pyx_k_src_pgcopylib_dtypes_geometrics[] = "src/pgcopylib/dtypes/geometrics.pyx";
 static const char __pyx_k_Note_that_Cython_is_deliberately[] = "Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.";
 /* #### Code section: decls ### */
@@ -4659,8 +4671,8 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_path(PyObject *__p
   CYTHON_UNUSED int __pyx_v_length;
   PyObject *__pyx_v_coords_data = 0;
   PyObject *__pyx_v_path_data = 0;
-  Py_ssize_t __pyx_v_i;
-  Py_ssize_t __pyx_v_coords_count;
+  long __pyx_v_i;
+  long __pyx_v_coords_count;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4673,10 +4685,11 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_path(PyObject *__p
   Py_ssize_t __pyx_t_8;
   PyObject *__pyx_t_9[3];
   PyObject *__pyx_t_10 = NULL;
-  Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
-  Py_ssize_t __pyx_t_13;
-  int __pyx_t_14;
+  long __pyx_t_11;
+  long __pyx_t_12;
+  long __pyx_t_13;
+  long __pyx_t_14;
+  int __pyx_t_15;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4686,7 +4699,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_path(PyObject *__p
  *     cdef int length
  *     cdef tuple coords_data
  *     cdef list path_data = []             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t i
+ *     cdef long i
  * 
 */
   __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
@@ -4695,7 +4708,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_path(PyObject *__p
   __pyx_t_1 = 0;
 
   /* "pgcopylib/dtypes/geometrics.pyx":68
- *     cdef Py_ssize_t i
+ *     cdef long i
  * 
  *     is_closed = unpack("!?", binary_data[:1])[0]             # <<<<<<<<<<<<<<
  *     length = unpack("!l", binary_data[1:5])[0]
@@ -4743,7 +4756,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_path(PyObject *__p
  *     is_closed = unpack("!?", binary_data[:1])[0]
  *     length = unpack("!l", binary_data[1:5])[0]             # <<<<<<<<<<<<<<
  * 
- *     cdef Py_ssize_t coords_count = (len(binary_data) - 5) // 8
+ *     cdef long coords_count = (len(binary_data) - 5) // 8
 */
   __pyx_t_1 = NULL;
   __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_unpack); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
@@ -4785,7 +4798,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_path(PyObject *__p
   /* "pgcopylib/dtypes/geometrics.pyx":71
  *     length = unpack("!l", binary_data[1:5])[0]
  * 
- *     cdef Py_ssize_t coords_count = (len(binary_data) - 5) // 8             # <<<<<<<<<<<<<<
+ *     cdef long coords_count = (len(binary_data) - 5) // 8             # <<<<<<<<<<<<<<
  *     coords_data = unpack(f"!{coords_count}d", binary_data[5:])
  * 
 */
@@ -4798,7 +4811,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_path(PyObject *__p
 
   /* "pgcopylib/dtypes/geometrics.pyx":72
  * 
- *     cdef Py_ssize_t coords_count = (len(binary_data) - 5) // 8
+ *     cdef long coords_count = (len(binary_data) - 5) // 8
  *     coords_data = unpack(f"!{coords_count}d", binary_data[5:])             # <<<<<<<<<<<<<<
  * 
  *     for i in range(0, coords_count, 2):
@@ -4806,7 +4819,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_path(PyObject *__p
   __pyx_t_3 = NULL;
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_unpack); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyUnicode_From_Py_ssize_t(__pyx_v_coords_count, 0, ' ', 'd'); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyUnicode_From_long(__pyx_v_coords_count, 0, ' ', 'd'); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_9[0] = __pyx_mstate_global->__pyx_kp_u__2;
   __pyx_t_9[1] = __pyx_t_1;
@@ -4854,10 +4867,10 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_path(PyObject *__p
  *         if i + 1 < coords_count:
  *             path_data.append((coords_data[i], coords_data[i + 1]))
 */
-  __pyx_t_8 = __pyx_v_coords_count;
-  __pyx_t_11 = __pyx_t_8;
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=2) {
-    __pyx_v_i = __pyx_t_12;
+  __pyx_t_11 = __pyx_v_coords_count;
+  __pyx_t_12 = __pyx_t_11;
+  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=2) {
+    __pyx_v_i = __pyx_t_13;
 
     /* "pgcopylib/dtypes/geometrics.pyx":75
  * 
@@ -4880,14 +4893,14 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_path(PyObject *__p
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
         __PYX_ERR(0, 76, __pyx_L1_error)
       }
-      __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_coords_data, __pyx_v_i, Py_ssize_t, 1, PyLong_FromSsize_t, 0, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_coords_data, __pyx_v_i, long, 1, __Pyx_PyLong_From_long, 0, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 76, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       if (unlikely(__pyx_v_coords_data == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
         __PYX_ERR(0, 76, __pyx_L1_error)
       }
-      __pyx_t_13 = (__pyx_v_i + 1);
-      __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_coords_data, __pyx_t_13, Py_ssize_t, 1, PyLong_FromSsize_t, 0, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_14 = (__pyx_v_i + 1);
+      __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_coords_data, __pyx_t_14, long, 1, __Pyx_PyLong_From_long, 0, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
@@ -4897,7 +4910,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_path(PyObject *__p
       if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 76, __pyx_L1_error);
       __pyx_t_4 = 0;
       __pyx_t_2 = 0;
-      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_path_data, __pyx_t_1); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_15 = __Pyx_PyList_Append(__pyx_v_path_data, __pyx_t_1); if (unlikely(__pyx_t_15 == ((int)-1))) __PYX_ERR(0, 76, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
       /* "pgcopylib/dtypes/geometrics.pyx":75
@@ -5142,18 +5155,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 ); /*proto*/
 static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_write_path(PyObject *__pyx_v_dtype_value, CYTHON_UNUSED PyObject *__pyx_v_array_function, CYTHON_UNUSED PyObject *__pyx_v_buffer, CYTHON_UNUSED long __pyx_v_pgoid, CYTHON_UNUSED int __pyx_skip_dispatch) {
   int __pyx_v_is_closed;
-  Py_ssize_t __pyx_v_length;
+  short __pyx_v_length;
   PyObject *__pyx_v_path_data = 0;
-  Py_ssize_t __pyx_v_i;
+  short __pyx_v_i;
   PyObject *__pyx_v_point = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   Py_ssize_t __pyx_t_2;
   PyObject *__pyx_t_3 = NULL;
-  Py_ssize_t __pyx_t_4;
-  Py_ssize_t __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
+  short __pyx_t_4;
+  short __pyx_t_5;
+  short __pyx_t_6;
   int __pyx_t_7;
   PyObject *__pyx_t_8 = NULL;
   PyObject *__pyx_t_9[3];
@@ -5169,7 +5182,7 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_write_path(PyObject *__
  *     """Pack path value."""
  * 
  *     cdef bint is_closed = isinstance(dtype_value, tuple)             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t length = len(dtype_value)
+ *     cdef short length = len(dtype_value)
  *     cdef list path_data = []
 */
   __pyx_t_1 = PyTuple_Check(__pyx_v_dtype_value); 
@@ -5178,18 +5191,18 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_write_path(PyObject *__
   /* "pgcopylib/dtypes/geometrics.pyx":87
  * 
  *     cdef bint is_closed = isinstance(dtype_value, tuple)
- *     cdef Py_ssize_t length = len(dtype_value)             # <<<<<<<<<<<<<<
+ *     cdef short length = len(dtype_value)             # <<<<<<<<<<<<<<
  *     cdef list path_data = []
- *     cdef Py_ssize_t i, j
+ *     cdef short i
 */
   __pyx_t_2 = PyObject_Length(__pyx_v_dtype_value); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 87, __pyx_L1_error)
   __pyx_v_length = __pyx_t_2;
 
   /* "pgcopylib/dtypes/geometrics.pyx":88
  *     cdef bint is_closed = isinstance(dtype_value, tuple)
- *     cdef Py_ssize_t length = len(dtype_value)
+ *     cdef short length = len(dtype_value)
  *     cdef list path_data = []             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t i, j
+ *     cdef short i
  *     cdef object point
 */
   __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
@@ -5202,21 +5215,21 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_write_path(PyObject *__
  * 
  *     for i in range(length):             # <<<<<<<<<<<<<<
  *         point = dtype_value[i]
- *         if len(point) >= 2:
+ *         path_data.append(point[0])
 */
-  __pyx_t_2 = __pyx_v_length;
-  __pyx_t_4 = __pyx_t_2;
-  for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
-    __pyx_v_i = __pyx_t_5;
+  __pyx_t_4 = __pyx_v_length;
+  __pyx_t_5 = __pyx_t_4;
+  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+    __pyx_v_i = __pyx_t_6;
 
     /* "pgcopylib/dtypes/geometrics.pyx":93
  * 
  *     for i in range(length):
  *         point = dtype_value[i]             # <<<<<<<<<<<<<<
- *         if len(point) >= 2:
- *             path_data.append(point[0])
+ *         path_data.append(point[0])
+ *         path_data.append(point[1])
 */
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_dtype_value, __pyx_v_i, Py_ssize_t, 1, PyLong_FromSsize_t, 0, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_dtype_value, __pyx_v_i, short, 1, __Pyx_PyLong_From_short, 0, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v_point, __pyx_t_3);
     __pyx_t_3 = 0;
@@ -5224,142 +5237,122 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_write_path(PyObject *__
     /* "pgcopylib/dtypes/geometrics.pyx":94
  *     for i in range(length):
  *         point = dtype_value[i]
- *         if len(point) >= 2:             # <<<<<<<<<<<<<<
- *             path_data.append(point[0])
- *             path_data.append(point[1])
-*/
-    __pyx_t_6 = PyObject_Length(__pyx_v_point); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 94, __pyx_L1_error)
-    __pyx_t_1 = (__pyx_t_6 >= 2);
-    if (__pyx_t_1) {
-
-      /* "pgcopylib/dtypes/geometrics.pyx":95
- *         point = dtype_value[i]
- *         if len(point) >= 2:
- *             path_data.append(point[0])             # <<<<<<<<<<<<<<
- *             path_data.append(point[1])
+ *         path_data.append(point[0])             # <<<<<<<<<<<<<<
+ *         path_data.append(point[1])
  * 
 */
-      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_path_data, __pyx_t_3); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 95, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_path_data, __pyx_t_3); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 94, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "pgcopylib/dtypes/geometrics.pyx":96
- *         if len(point) >= 2:
- *             path_data.append(point[0])
- *             path_data.append(point[1])             # <<<<<<<<<<<<<<
+    /* "pgcopylib/dtypes/geometrics.pyx":95
+ *         point = dtype_value[i]
+ *         path_data.append(point[0])
+ *         path_data.append(point[1])             # <<<<<<<<<<<<<<
  * 
  *     return pack(
 */
-      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_path_data, __pyx_t_3); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 96, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-      /* "pgcopylib/dtypes/geometrics.pyx":94
- *     for i in range(length):
- *         point = dtype_value[i]
- *         if len(point) >= 2:             # <<<<<<<<<<<<<<
- *             path_data.append(point[0])
- *             path_data.append(point[1])
-*/
-    }
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_path_data, __pyx_t_3); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 95, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
 
-  /* "pgcopylib/dtypes/geometrics.pyx":98
- *             path_data.append(point[1])
+  /* "pgcopylib/dtypes/geometrics.pyx":97
+ *         path_data.append(point[1])
  * 
  *     return pack(             # <<<<<<<<<<<<<<
  *         f"?l{len(path_data)}d",
  *         is_closed,
 */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_pack); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_pack); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "pgcopylib/dtypes/geometrics.pyx":99
+  /* "pgcopylib/dtypes/geometrics.pyx":98
  * 
  *     return pack(
  *         f"?l{len(path_data)}d",             # <<<<<<<<<<<<<<
  *         is_closed,
  *         length,
 */
-  __pyx_t_2 = __Pyx_PyList_GET_SIZE(__pyx_v_path_data); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 99, __pyx_L1_error)
-  __pyx_t_8 = __Pyx_PyUnicode_From_Py_ssize_t(__pyx_t_2, 0, ' ', 'd'); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyList_GET_SIZE(__pyx_v_path_data); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyUnicode_From_Py_ssize_t(__pyx_t_2, 0, ' ', 'd'); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_9[0] = __pyx_mstate_global->__pyx_kp_u_l_2;
   __pyx_t_9[1] = __pyx_t_8;
   __pyx_t_9[2] = __pyx_mstate_global->__pyx_n_u_d;
   __pyx_t_10 = __Pyx_PyUnicode_Join(__pyx_t_9, 3, 2 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_8) + 1, 127);
-  if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 99, __pyx_L1_error)
+  if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "pgcopylib/dtypes/geometrics.pyx":100
+  /* "pgcopylib/dtypes/geometrics.pyx":99
  *     return pack(
  *         f"?l{len(path_data)}d",
  *         is_closed,             # <<<<<<<<<<<<<<
  *         length,
  *         *path_data
 */
-  __pyx_t_8 = __Pyx_PyBool_FromLong(__pyx_v_is_closed); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyBool_FromLong(__pyx_v_is_closed); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
 
-  /* "pgcopylib/dtypes/geometrics.pyx":101
+  /* "pgcopylib/dtypes/geometrics.pyx":100
  *         f"?l{len(path_data)}d",
  *         is_closed,
  *         length,             # <<<<<<<<<<<<<<
  *         *path_data
  *     )
 */
-  __pyx_t_11 = PyLong_FromSsize_t(__pyx_v_length); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyLong_From_short(__pyx_v_length); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
 
-  /* "pgcopylib/dtypes/geometrics.pyx":98
- *             path_data.append(point[1])
+  /* "pgcopylib/dtypes/geometrics.pyx":97
+ *         path_data.append(point[1])
  * 
  *     return pack(             # <<<<<<<<<<<<<<
  *         f"?l{len(path_data)}d",
  *         is_closed,
 */
-  __pyx_t_12 = PyTuple_New(3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_12 = PyTuple_New(3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_GIVEREF(__pyx_t_10);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_10) != (0)) __PYX_ERR(0, 98, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_10) != (0)) __PYX_ERR(0, 97, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_8);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_8) != (0)) __PYX_ERR(0, 98, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_8) != (0)) __PYX_ERR(0, 97, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_11);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 2, __pyx_t_11) != (0)) __PYX_ERR(0, 98, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 2, __pyx_t_11) != (0)) __PYX_ERR(0, 97, __pyx_L1_error);
   __pyx_t_10 = 0;
   __pyx_t_8 = 0;
   __pyx_t_11 = 0;
 
-  /* "pgcopylib/dtypes/geometrics.pyx":102
+  /* "pgcopylib/dtypes/geometrics.pyx":101
  *         is_closed,
  *         length,
  *         *path_data             # <<<<<<<<<<<<<<
  *     )
  * 
 */
-  __pyx_t_11 = PySequence_Tuple(__pyx_v_path_data); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_11 = PySequence_Tuple(__pyx_v_path_data); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
 
-  /* "pgcopylib/dtypes/geometrics.pyx":98
- *             path_data.append(point[1])
+  /* "pgcopylib/dtypes/geometrics.pyx":97
+ *         path_data.append(point[1])
  * 
  *     return pack(             # <<<<<<<<<<<<<<
  *         f"?l{len(path_data)}d",
  *         is_closed,
 */
-  __pyx_t_8 = PyNumber_Add(__pyx_t_12, __pyx_t_11); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_8 = PyNumber_Add(__pyx_t_12, __pyx_t_11); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-  __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (!(likely(PyBytes_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None) || __Pyx_RaiseUnexpectedTypeError("bytes", __pyx_t_11))) __PYX_ERR(0, 98, __pyx_L1_error)
+  if (!(likely(PyBytes_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None) || __Pyx_RaiseUnexpectedTypeError("bytes", __pyx_t_11))) __PYX_ERR(0, 97, __pyx_L1_error)
   __pyx_r = ((PyObject*)__pyx_t_11);
   __pyx_t_11 = 0;
   goto __pyx_L0;
@@ -5525,7 +5518,7 @@ static PyObject *__pyx_pf_9pgcopylib_6dtypes_10geometrics_18write_path(CYTHON_UN
   return __pyx_r;
 }
 
-/* "pgcopylib/dtypes/geometrics.pyx":106
+/* "pgcopylib/dtypes/geometrics.pyx":105
  * 
  * 
  * cpdef tuple read_polygon(bytes binary_data, object array_function, object buffer, long pgoid):             # <<<<<<<<<<<<<<
@@ -5544,8 +5537,8 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_polygon(PyObject *
   CYTHON_UNUSED int __pyx_v_length;
   PyObject *__pyx_v_coords_data = 0;
   PyObject *__pyx_v_points = 0;
-  Py_ssize_t __pyx_v_i;
-  Py_ssize_t __pyx_v_coords_count;
+  short __pyx_v_i;
+  short __pyx_v_coords_count;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5557,43 +5550,43 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_polygon(PyObject *
   Py_ssize_t __pyx_t_7;
   PyObject *__pyx_t_8[3];
   PyObject *__pyx_t_9 = NULL;
-  Py_ssize_t __pyx_t_10;
-  Py_ssize_t __pyx_t_11;
-  int __pyx_t_12;
-  Py_ssize_t __pyx_t_13;
+  short __pyx_t_10;
+  short __pyx_t_11;
+  short __pyx_t_12;
+  long __pyx_t_13;
   int __pyx_t_14;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("read_polygon", 0);
 
-  /* "pgcopylib/dtypes/geometrics.pyx":111
+  /* "pgcopylib/dtypes/geometrics.pyx":110
  *     cdef int length
  *     cdef tuple coords_data
  *     cdef list points = []             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t i
+ *     cdef short i
  *     length = unpack("!l", binary_data[:4])[0]
 */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_points = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pgcopylib/dtypes/geometrics.pyx":113
+  /* "pgcopylib/dtypes/geometrics.pyx":112
  *     cdef list points = []
- *     cdef Py_ssize_t i
+ *     cdef short i
  *     length = unpack("!l", binary_data[:4])[0]             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t coords_count = (len(binary_data) - 4) // 8
+ *     cdef short coords_count = (len(binary_data) - 4) // 8
  *     coords_data = unpack(f"!{coords_count}d", binary_data[4:])
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_unpack); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_unpack); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (unlikely(__pyx_v_binary_data == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 113, __pyx_L1_error)
+    __PYX_ERR(0, 112, __pyx_L1_error)
   }
-  __pyx_t_4 = PySequence_GetSlice(__pyx_v_binary_data, 0, 4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_4 = PySequence_GetSlice(__pyx_v_binary_data, 0, 4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -5613,54 +5606,54 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_polygon(PyObject *
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_3); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_3); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_length = __pyx_t_6;
 
-  /* "pgcopylib/dtypes/geometrics.pyx":114
- *     cdef Py_ssize_t i
+  /* "pgcopylib/dtypes/geometrics.pyx":113
+ *     cdef short i
  *     length = unpack("!l", binary_data[:4])[0]
- *     cdef Py_ssize_t coords_count = (len(binary_data) - 4) // 8             # <<<<<<<<<<<<<<
+ *     cdef short coords_count = (len(binary_data) - 4) // 8             # <<<<<<<<<<<<<<
  *     coords_data = unpack(f"!{coords_count}d", binary_data[4:])
  * 
 */
   if (unlikely(__pyx_v_binary_data == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 114, __pyx_L1_error)
+    __PYX_ERR(0, 113, __pyx_L1_error)
   }
-  __pyx_t_7 = __Pyx_PyBytes_GET_SIZE(__pyx_v_binary_data); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyBytes_GET_SIZE(__pyx_v_binary_data); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 113, __pyx_L1_error)
   __pyx_v_coords_count = __Pyx_div_Py_ssize_t((__pyx_t_7 - 4), 8, 1);
 
-  /* "pgcopylib/dtypes/geometrics.pyx":115
+  /* "pgcopylib/dtypes/geometrics.pyx":114
  *     length = unpack("!l", binary_data[:4])[0]
- *     cdef Py_ssize_t coords_count = (len(binary_data) - 4) // 8
+ *     cdef short coords_count = (len(binary_data) - 4) // 8
  *     coords_data = unpack(f"!{coords_count}d", binary_data[4:])             # <<<<<<<<<<<<<<
  * 
  *     for i in range(0, coords_count, 2):
 */
   __pyx_t_1 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_unpack); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_unpack); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyUnicode_From_Py_ssize_t(__pyx_v_coords_count, 0, ' ', 'd'); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyUnicode_From_short(__pyx_v_coords_count, 0, ' ', 'd'); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_8[0] = __pyx_mstate_global->__pyx_kp_u__2;
   __pyx_t_8[1] = __pyx_t_2;
   __pyx_t_8[2] = __pyx_mstate_global->__pyx_n_u_d;
   __pyx_t_9 = __Pyx_PyUnicode_Join(__pyx_t_8, 3, 1 * 2 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_2), 127);
-  if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (unlikely(__pyx_v_binary_data == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 115, __pyx_L1_error)
+    __PYX_ERR(0, 114, __pyx_L1_error)
   }
-  __pyx_t_2 = PySequence_GetSlice(__pyx_v_binary_data, 4, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_2 = PySequence_GetSlice(__pyx_v_binary_data, 4, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -5681,91 +5674,72 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_read_polygon(PyObject *
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   }
-  if (!(likely(PyTuple_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_3))) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (!(likely(PyTuple_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_3))) __PYX_ERR(0, 114, __pyx_L1_error)
   __pyx_v_coords_data = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "pgcopylib/dtypes/geometrics.pyx":117
+  /* "pgcopylib/dtypes/geometrics.pyx":116
  *     coords_data = unpack(f"!{coords_count}d", binary_data[4:])
  * 
  *     for i in range(0, coords_count, 2):             # <<<<<<<<<<<<<<
- *         if i + 1 < coords_count:
- *             points.append((coords_data[i], coords_data[i + 1]))
-*/
-  __pyx_t_7 = __pyx_v_coords_count;
-  __pyx_t_10 = __pyx_t_7;
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=2) {
-    __pyx_v_i = __pyx_t_11;
-
-    /* "pgcopylib/dtypes/geometrics.pyx":118
- * 
- *     for i in range(0, coords_count, 2):
- *         if i + 1 < coords_count:             # <<<<<<<<<<<<<<
- *             points.append((coords_data[i], coords_data[i + 1]))
+ *         points.append((coords_data[i], coords_data[i + 1]))
  * 
 */
-    __pyx_t_12 = ((__pyx_v_i + 1) < __pyx_v_coords_count);
-    if (__pyx_t_12) {
+  __pyx_t_10 = __pyx_v_coords_count;
+  __pyx_t_11 = __pyx_t_10;
+  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=2) {
+    __pyx_v_i = __pyx_t_12;
 
-      /* "pgcopylib/dtypes/geometrics.pyx":119
+    /* "pgcopylib/dtypes/geometrics.pyx":117
+ * 
  *     for i in range(0, coords_count, 2):
- *         if i + 1 < coords_count:
- *             points.append((coords_data[i], coords_data[i + 1]))             # <<<<<<<<<<<<<<
+ *         points.append((coords_data[i], coords_data[i + 1]))             # <<<<<<<<<<<<<<
  * 
  *     return tuple(points)
 */
-      if (unlikely(__pyx_v_coords_data == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 119, __pyx_L1_error)
-      }
-      __pyx_t_3 = __Pyx_GetItemInt_Tuple(__pyx_v_coords_data, __pyx_v_i, Py_ssize_t, 1, PyLong_FromSsize_t, 0, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      if (unlikely(__pyx_v_coords_data == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 119, __pyx_L1_error)
-      }
-      __pyx_t_13 = (__pyx_v_i + 1);
-      __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_coords_data, __pyx_t_13, Py_ssize_t, 1, PyLong_FromSsize_t, 0, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_GIVEREF(__pyx_t_3);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 119, __pyx_L1_error);
-      __Pyx_GIVEREF(__pyx_t_4);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 119, __pyx_L1_error);
-      __pyx_t_3 = 0;
-      __pyx_t_4 = 0;
-      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_points, __pyx_t_2); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 119, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-      /* "pgcopylib/dtypes/geometrics.pyx":118
- * 
- *     for i in range(0, coords_count, 2):
- *         if i + 1 < coords_count:             # <<<<<<<<<<<<<<
- *             points.append((coords_data[i], coords_data[i + 1]))
- * 
-*/
+    if (unlikely(__pyx_v_coords_data == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+      __PYX_ERR(0, 117, __pyx_L1_error)
     }
+    __pyx_t_3 = __Pyx_GetItemInt_Tuple(__pyx_v_coords_data, __pyx_v_i, short, 1, __Pyx_PyLong_From_short, 0, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    if (unlikely(__pyx_v_coords_data == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+      __PYX_ERR(0, 117, __pyx_L1_error)
+    }
+    __pyx_t_13 = (__pyx_v_i + 1);
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_coords_data, __pyx_t_13, long, 1, __Pyx_PyLong_From_long, 0, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GIVEREF(__pyx_t_3);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 117, __pyx_L1_error);
+    __Pyx_GIVEREF(__pyx_t_4);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 117, __pyx_L1_error);
+    __pyx_t_3 = 0;
+    __pyx_t_4 = 0;
+    __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_points, __pyx_t_2); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 117, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
 
-  /* "pgcopylib/dtypes/geometrics.pyx":121
- *             points.append((coords_data[i], coords_data[i + 1]))
+  /* "pgcopylib/dtypes/geometrics.pyx":119
+ *         points.append((coords_data[i], coords_data[i + 1]))
  * 
  *     return tuple(points)             # <<<<<<<<<<<<<<
  * 
  * 
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyList_AsTuple(__pyx_v_points); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_2 = PyList_AsTuple(__pyx_v_points); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "pgcopylib/dtypes/geometrics.pyx":106
+  /* "pgcopylib/dtypes/geometrics.pyx":105
  * 
  * 
  * cpdef tuple read_polygon(bytes binary_data, object array_function, object buffer, long pgoid):             # <<<<<<<<<<<<<<
@@ -5833,53 +5807,53 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_binary_data,&__pyx_mstate_global->__pyx_n_u_array_function,&__pyx_mstate_global->__pyx_n_u_buffer,&__pyx_mstate_global->__pyx_n_u_pgoid,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 106, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 105, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 106, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 105, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 106, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 105, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 106, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 105, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 106, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 105, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "read_polygon", 0) < 0) __PYX_ERR(0, 106, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "read_polygon", 0) < 0) __PYX_ERR(0, 105, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 4; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("read_polygon", 1, 4, 4, i); __PYX_ERR(0, 106, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("read_polygon", 1, 4, 4, i); __PYX_ERR(0, 105, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 4)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 106, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 105, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 106, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 105, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 106, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 105, __pyx_L3_error)
       values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 106, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 105, __pyx_L3_error)
     }
     __pyx_v_binary_data = ((PyObject*)values[0]);
     __pyx_v_array_function = values[1];
     __pyx_v_buffer = values[2];
-    __pyx_v_pgoid = __Pyx_PyLong_As_long(values[3]); if (unlikely((__pyx_v_pgoid == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 106, __pyx_L3_error)
+    __pyx_v_pgoid = __Pyx_PyLong_As_long(values[3]); if (unlikely((__pyx_v_pgoid == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("read_polygon", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 106, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("read_polygon", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 105, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5890,7 +5864,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_binary_data), (&PyBytes_Type), 1, "binary_data", 1))) __PYX_ERR(0, 106, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_binary_data), (&PyBytes_Type), 1, "binary_data", 1))) __PYX_ERR(0, 105, __pyx_L1_error)
   __pyx_r = __pyx_pf_9pgcopylib_6dtypes_10geometrics_20read_polygon(__pyx_self, __pyx_v_binary_data, __pyx_v_array_function, __pyx_v_buffer, __pyx_v_pgoid);
 
   /* function exit code */
@@ -5919,7 +5893,7 @@ static PyObject *__pyx_pf_9pgcopylib_6dtypes_10geometrics_20read_polygon(CYTHON_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("read_polygon", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_9pgcopylib_6dtypes_10geometrics_read_polygon(__pyx_v_binary_data, __pyx_v_array_function, __pyx_v_buffer, __pyx_v_pgoid, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9pgcopylib_6dtypes_10geometrics_read_polygon(__pyx_v_binary_data, __pyx_v_array_function, __pyx_v_buffer, __pyx_v_pgoid, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5936,7 +5910,7 @@ static PyObject *__pyx_pf_9pgcopylib_6dtypes_10geometrics_20read_polygon(CYTHON_
   return __pyx_r;
 }
 
-/* "pgcopylib/dtypes/geometrics.pyx":124
+/* "pgcopylib/dtypes/geometrics.pyx":122
  * 
  * 
  * cpdef bytes write_polygon(tuple dtype_value, object array_function, object buffer, long pgoid):             # <<<<<<<<<<<<<<
@@ -5952,65 +5926,66 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
 static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_write_polygon(PyObject *__pyx_v_dtype_value, CYTHON_UNUSED PyObject *__pyx_v_array_function, CYTHON_UNUSED PyObject *__pyx_v_buffer, CYTHON_UNUSED long __pyx_v_pgoid, CYTHON_UNUSED int __pyx_skip_dispatch) {
-  Py_ssize_t __pyx_v_length;
+  short __pyx_v_length;
   PyObject *__pyx_v_path_data = 0;
-  Py_ssize_t __pyx_v_i;
+  short __pyx_v_i;
   PyObject *__pyx_v_point = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   Py_ssize_t __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
-  Py_ssize_t __pyx_t_3;
-  Py_ssize_t __pyx_t_4;
-  int __pyx_t_5;
-  PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7[3];
-  PyObject *__pyx_t_8 = NULL;
+  short __pyx_t_3;
+  short __pyx_t_4;
+  short __pyx_t_5;
+  int __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8[3];
   PyObject *__pyx_t_9 = NULL;
+  PyObject *__pyx_t_10 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("write_polygon", 0);
 
-  /* "pgcopylib/dtypes/geometrics.pyx":127
+  /* "pgcopylib/dtypes/geometrics.pyx":125
  *     """Pack polygon value."""
  * 
- *     cdef Py_ssize_t length = len(dtype_value)             # <<<<<<<<<<<<<<
+ *     cdef short length = len(dtype_value)             # <<<<<<<<<<<<<<
  *     cdef list path_data = []
- *     cdef Py_ssize_t i
+ *     cdef short i
 */
   if (unlikely(__pyx_v_dtype_value == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 127, __pyx_L1_error)
+    __PYX_ERR(0, 125, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyTuple_GET_SIZE(__pyx_v_dtype_value); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyTuple_GET_SIZE(__pyx_v_dtype_value); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 125, __pyx_L1_error)
   __pyx_v_length = __pyx_t_1;
 
-  /* "pgcopylib/dtypes/geometrics.pyx":128
+  /* "pgcopylib/dtypes/geometrics.pyx":126
  * 
- *     cdef Py_ssize_t length = len(dtype_value)
+ *     cdef short length = len(dtype_value)
  *     cdef list path_data = []             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t i
+ *     cdef short i
  *     cdef tuple point
 */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_path_data = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "pgcopylib/dtypes/geometrics.pyx":132
+  /* "pgcopylib/dtypes/geometrics.pyx":130
  *     cdef tuple point
  * 
  *     for i in range(length):             # <<<<<<<<<<<<<<
  *         point = dtype_value[i]
  *         path_data.extend(point)
 */
-  __pyx_t_1 = __pyx_v_length;
-  __pyx_t_3 = __pyx_t_1;
-  for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
-    __pyx_v_i = __pyx_t_4;
+  __pyx_t_3 = __pyx_v_length;
+  __pyx_t_4 = __pyx_t_3;
+  for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
+    __pyx_v_i = __pyx_t_5;
 
-    /* "pgcopylib/dtypes/geometrics.pyx":133
+    /* "pgcopylib/dtypes/geometrics.pyx":131
  * 
  *     for i in range(length):
  *         point = dtype_value[i]             # <<<<<<<<<<<<<<
@@ -6019,25 +5994,25 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_write_polygon(PyObject 
 */
     if (unlikely(__pyx_v_dtype_value == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 133, __pyx_L1_error)
+      __PYX_ERR(0, 131, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_dtype_value, __pyx_v_i, Py_ssize_t, 1, PyLong_FromSsize_t, 0, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_dtype_value, __pyx_v_i, short, 1, __Pyx_PyLong_From_short, 0, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    if (!(likely(PyTuple_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_2))) __PYX_ERR(0, 133, __pyx_L1_error)
+    if (!(likely(PyTuple_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_2))) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_point, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "pgcopylib/dtypes/geometrics.pyx":134
+    /* "pgcopylib/dtypes/geometrics.pyx":132
  *     for i in range(length):
  *         point = dtype_value[i]
  *         path_data.extend(point)             # <<<<<<<<<<<<<<
  * 
  *     return pack(
 */
-    __pyx_t_5 = __Pyx_PyList_Extend(__pyx_v_path_data, __pyx_v_point); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 134, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyList_Extend(__pyx_v_path_data, __pyx_v_point); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 132, __pyx_L1_error)
   }
 
-  /* "pgcopylib/dtypes/geometrics.pyx":136
+  /* "pgcopylib/dtypes/geometrics.pyx":134
  *         path_data.extend(point)
  * 
  *     return pack(             # <<<<<<<<<<<<<<
@@ -6045,83 +6020,83 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_write_polygon(PyObject 
  *         length,
 */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_pack); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_pack); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "pgcopylib/dtypes/geometrics.pyx":137
+  /* "pgcopylib/dtypes/geometrics.pyx":135
  * 
  *     return pack(
  *         f"l{len(path_data)}d",             # <<<<<<<<<<<<<<
  *         length,
  *         *path_data
 */
-  __pyx_t_1 = __Pyx_PyList_GET_SIZE(__pyx_v_path_data); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 137, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_PyUnicode_From_Py_ssize_t(__pyx_t_1, 0, ' ', 'd'); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7[0] = __pyx_mstate_global->__pyx_n_u_l_3;
-  __pyx_t_7[1] = __pyx_t_6;
-  __pyx_t_7[2] = __pyx_mstate_global->__pyx_n_u_d;
-  __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_7, 3, 1 * 2 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_6), 127);
-  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_1 = __Pyx_PyList_GET_SIZE(__pyx_v_path_data); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyUnicode_From_Py_ssize_t(__pyx_t_1, 0, ' ', 'd'); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_8[0] = __pyx_mstate_global->__pyx_n_u_l_3;
+  __pyx_t_8[1] = __pyx_t_7;
+  __pyx_t_8[2] = __pyx_mstate_global->__pyx_n_u_d;
+  __pyx_t_9 = __Pyx_PyUnicode_Join(__pyx_t_8, 3, 1 * 2 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_7), 127);
+  if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "pgcopylib/dtypes/geometrics.pyx":138
+  /* "pgcopylib/dtypes/geometrics.pyx":136
  *     return pack(
  *         f"l{len(path_data)}d",
  *         length,             # <<<<<<<<<<<<<<
  *         *path_data
  *     )
 */
-  __pyx_t_6 = PyLong_FromSsize_t(__pyx_v_length); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 138, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_7 = __Pyx_PyLong_From_short(__pyx_v_length); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
 
-  /* "pgcopylib/dtypes/geometrics.pyx":136
+  /* "pgcopylib/dtypes/geometrics.pyx":134
  *         path_data.extend(point)
  * 
  *     return pack(             # <<<<<<<<<<<<<<
  *         f"l{len(path_data)}d",
  *         length,
 */
-  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 136, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_GIVEREF(__pyx_t_8);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8) != (0)) __PYX_ERR(0, 136, __pyx_L1_error);
-  __Pyx_GIVEREF(__pyx_t_6);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_6) != (0)) __PYX_ERR(0, 136, __pyx_L1_error);
-  __pyx_t_8 = 0;
-  __pyx_t_6 = 0;
+  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_10);
+  __Pyx_GIVEREF(__pyx_t_9);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9) != (0)) __PYX_ERR(0, 134, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_7);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_7) != (0)) __PYX_ERR(0, 134, __pyx_L1_error);
+  __pyx_t_9 = 0;
+  __pyx_t_7 = 0;
 
-  /* "pgcopylib/dtypes/geometrics.pyx":139
+  /* "pgcopylib/dtypes/geometrics.pyx":137
  *         f"l{len(path_data)}d",
  *         length,
  *         *path_data             # <<<<<<<<<<<<<<
  *     )
 */
-  __pyx_t_6 = PySequence_Tuple(__pyx_v_path_data); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 136, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_7 = PySequence_Tuple(__pyx_v_path_data); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
 
-  /* "pgcopylib/dtypes/geometrics.pyx":136
+  /* "pgcopylib/dtypes/geometrics.pyx":134
  *         path_data.extend(point)
  * 
  *     return pack(             # <<<<<<<<<<<<<<
  *         f"l{len(path_data)}d",
  *         length,
 */
-  __pyx_t_8 = PyNumber_Add(__pyx_t_9, __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 136, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_8, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 136, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_9 = PyNumber_Add(__pyx_t_10, __pyx_t_7); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (!(likely(PyBytes_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None) || __Pyx_RaiseUnexpectedTypeError("bytes", __pyx_t_6))) __PYX_ERR(0, 136, __pyx_L1_error)
-  __pyx_r = ((PyObject*)__pyx_t_6);
-  __pyx_t_6 = 0;
+  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+  if (!(likely(PyBytes_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None) || __Pyx_RaiseUnexpectedTypeError("bytes", __pyx_t_7))) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_r = ((PyObject*)__pyx_t_7);
+  __pyx_t_7 = 0;
   goto __pyx_L0;
 
-  /* "pgcopylib/dtypes/geometrics.pyx":124
+  /* "pgcopylib/dtypes/geometrics.pyx":122
  * 
  * 
  * cpdef bytes write_polygon(tuple dtype_value, object array_function, object buffer, long pgoid):             # <<<<<<<<<<<<<<
@@ -6132,9 +6107,9 @@ static PyObject *__pyx_f_9pgcopylib_6dtypes_10geometrics_write_polygon(PyObject 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_10);
   __Pyx_AddTraceback("pgcopylib.dtypes.geometrics.write_polygon", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
@@ -6188,53 +6163,53 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_dtype_value,&__pyx_mstate_global->__pyx_n_u_array_function,&__pyx_mstate_global->__pyx_n_u_buffer,&__pyx_mstate_global->__pyx_n_u_pgoid,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 124, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 122, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 124, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 122, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 124, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 122, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 124, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 122, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 124, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 122, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "write_polygon", 0) < 0) __PYX_ERR(0, 124, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "write_polygon", 0) < 0) __PYX_ERR(0, 122, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 4; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("write_polygon", 1, 4, 4, i); __PYX_ERR(0, 124, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("write_polygon", 1, 4, 4, i); __PYX_ERR(0, 122, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 4)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 124, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 122, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 124, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 122, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 124, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 122, __pyx_L3_error)
       values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 124, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 122, __pyx_L3_error)
     }
     __pyx_v_dtype_value = ((PyObject*)values[0]);
     __pyx_v_array_function = values[1];
     __pyx_v_buffer = values[2];
-    __pyx_v_pgoid = __Pyx_PyLong_As_long(values[3]); if (unlikely((__pyx_v_pgoid == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 124, __pyx_L3_error)
+    __pyx_v_pgoid = __Pyx_PyLong_As_long(values[3]); if (unlikely((__pyx_v_pgoid == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("write_polygon", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 124, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("write_polygon", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 122, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6245,7 +6220,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dtype_value), (&PyTuple_Type), 1, "dtype_value", 1))) __PYX_ERR(0, 124, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dtype_value), (&PyTuple_Type), 1, "dtype_value", 1))) __PYX_ERR(0, 122, __pyx_L1_error)
   __pyx_r = __pyx_pf_9pgcopylib_6dtypes_10geometrics_22write_polygon(__pyx_self, __pyx_v_dtype_value, __pyx_v_array_function, __pyx_v_buffer, __pyx_v_pgoid);
 
   /* function exit code */
@@ -6274,7 +6249,7 @@ static PyObject *__pyx_pf_9pgcopylib_6dtypes_10geometrics_22write_polygon(CYTHON
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("write_polygon", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_9pgcopylib_6dtypes_10geometrics_write_polygon(__pyx_v_dtype_value, __pyx_v_array_function, __pyx_v_buffer, __pyx_v_pgoid, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9pgcopylib_6dtypes_10geometrics_write_polygon(__pyx_v_dtype_value, __pyx_v_array_function, __pyx_v_buffer, __pyx_v_pgoid, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6803,28 +6778,28 @@ __Pyx_RefNannySetupContext("PyInit_geometrics", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_write_path, __pyx_t_3) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "pgcopylib/dtypes/geometrics.pyx":106
+  /* "pgcopylib/dtypes/geometrics.pyx":105
  * 
  * 
  * cpdef tuple read_polygon(bytes binary_data, object array_function, object buffer, long pgoid):             # <<<<<<<<<<<<<<
  *     """Unpack polygon value."""
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9pgcopylib_6dtypes_10geometrics_21read_polygon, 0, __pyx_mstate_global->__pyx_n_u_read_polygon, NULL, __pyx_mstate_global->__pyx_n_u_pgcopylib_dtypes_geometrics, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9pgcopylib_6dtypes_10geometrics_21read_polygon, 0, __pyx_mstate_global->__pyx_n_u_read_polygon, NULL, __pyx_mstate_global->__pyx_n_u_pgcopylib_dtypes_geometrics, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_read_polygon, __pyx_t_3) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_read_polygon, __pyx_t_3) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "pgcopylib/dtypes/geometrics.pyx":124
+  /* "pgcopylib/dtypes/geometrics.pyx":122
  * 
  * 
  * cpdef bytes write_polygon(tuple dtype_value, object array_function, object buffer, long pgoid):             # <<<<<<<<<<<<<<
  *     """Pack polygon value."""
  * 
 */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9pgcopylib_6dtypes_10geometrics_23write_polygon, 0, __pyx_mstate_global->__pyx_n_u_write_polygon, NULL, __pyx_mstate_global->__pyx_n_u_pgcopylib_dtypes_geometrics, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9pgcopylib_6dtypes_10geometrics_23write_polygon, 0, __pyx_mstate_global->__pyx_n_u_write_polygon, NULL, __pyx_mstate_global->__pyx_n_u_pgcopylib_dtypes_geometrics, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_write_polygon, __pyx_t_3) < 0) __PYX_ERR(0, 124, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_write_polygon, __pyx_t_3) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "pgcopylib/dtypes/geometrics.pyx":1
@@ -7081,22 +7056,22 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 59, 157};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_binary_data, __pyx_mstate->__pyx_n_u_array_function, __pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_pgoid};
-    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_geometrics, __pyx_mstate->__pyx_n_u_read_path, __pyx_k_av_Qa_V1F_Qb_1A_Cq_Rs_Q_5_k_U_3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_geometrics, __pyx_mstate->__pyx_n_u_read_path, __pyx_k_av_Qa_V1F_Qb_1A_c_r_Cq_5_k_U_3n, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 83, 117};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 83, 104};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_dtype_value, __pyx_mstate->__pyx_n_u_array_function, __pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_pgoid};
-    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_geometrics, __pyx_mstate->__pyx_n_u_write_path, __pyx_k_A_S_U_1_1A_3awc_WAU_1_WAU_1_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_geometrics, __pyx_mstate->__pyx_n_u_write_path, __pyx_k_A_1A_U_1_1A_aq_aq_4q_1A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 106, 124};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 105, 111};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_binary_data, __pyx_mstate->__pyx_n_u_array_function, __pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_pgoid};
-    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_geometrics, __pyx_mstate->__pyx_n_u_read_polygon, __pyx_k_q_V1F_Rs_1_Cq_Rs_Q_5_k_U_3nA_2R, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_geometrics, __pyx_mstate->__pyx_n_u_read_polygon, __pyx_k_q_V1F_Rs_1_s_S_5_k_U_3nA_gR_4_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 124, 73};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 122, 73};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_dtype_value, __pyx_mstate->__pyx_n_u_array_function, __pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_pgoid};
-    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_geometrics, __pyx_mstate->__pyx_n_u_write_polygon, __pyx_k_S_U_1_1A_4q_s_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_pgcopylib_dtypes_geometrics, __pyx_mstate->__pyx_n_u_write_polygon, __pyx_k_1A_U_1_1A_4q_s_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
@@ -8759,25 +8734,25 @@ static PyObject* __Pyx_PyUnicode_FromOrdinal_Padded(int value, Py_ssize_t ulengt
 }
 
 /* CIntToPyUnicode */
-static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_Py_ssize_t(Py_ssize_t value, Py_ssize_t width, char padding_char, char format_char) {
-    char digits[sizeof(Py_ssize_t)*3+2];
-    char *dpos, *end = digits + sizeof(Py_ssize_t)*3+2;
+static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_long(long value, Py_ssize_t width, char padding_char, char format_char) {
+    char digits[sizeof(long)*3+2];
+    char *dpos, *end = digits + sizeof(long)*3+2;
     const char *hex_digits = DIGITS_HEX;
     Py_ssize_t length, ulength;
     int prepend_sign, last_one_off;
-    Py_ssize_t remaining;
+    long remaining;
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wconversion"
 #endif
-    const Py_ssize_t neg_one = (Py_ssize_t) -1, const_zero = (Py_ssize_t) 0;
+    const long neg_one = (long) -1, const_zero = (long) 0;
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
 #pragma GCC diagnostic pop
 #endif
     const int is_unsigned = neg_one > const_zero;
     if (format_char == 'c') {
         if (unlikely(!(is_unsigned || value == 0 || value > 0) ||
-                     !(sizeof(value) <= 2 || value & ~ (Py_ssize_t) 0x01fffff || __Pyx_CheckUnicodeValue((int) value)))) {
+                     !(sizeof(value) <= 2 || value & ~ (long) 0x01fffff || __Pyx_CheckUnicodeValue((int) value)))) {
             PyErr_SetString(PyExc_OverflowError, "%c arg not in range(0x110000)");
             return NULL;
         }
@@ -8798,21 +8773,21 @@ static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_Py_ssize_t(Py_ssize_t value,
         switch (format_char) {
         case 'o':
             digit_pos = abs((int)(remaining % (8*8)));
-            remaining = (Py_ssize_t) (remaining / (8*8));
+            remaining = (long) (remaining / (8*8));
             dpos -= 2;
             memcpy(dpos, DIGIT_PAIRS_8 + digit_pos * 2, 2);
             last_one_off = (digit_pos < 8);
             break;
         case 'd':
             digit_pos = abs((int)(remaining % (10*10)));
-            remaining = (Py_ssize_t) (remaining / (10*10));
+            remaining = (long) (remaining / (10*10));
             dpos -= 2;
             memcpy(dpos, DIGIT_PAIRS_10 + digit_pos * 2, 2);
             last_one_off = (digit_pos < 10);
             break;
         case 'x':
             *(--dpos) = hex_digits[abs((int)(remaining % 16))];
-            remaining = (Py_ssize_t) (remaining / 16);
+            remaining = (long) (remaining / 16);
             break;
         default:
             assert(0);
@@ -8918,6 +8893,174 @@ bad:
     Py_DECREF(value_tuple);
     return result;
 #endif
+}
+
+/* CIntToPyUnicode */
+static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_Py_ssize_t(Py_ssize_t value, Py_ssize_t width, char padding_char, char format_char) {
+    char digits[sizeof(Py_ssize_t)*3+2];
+    char *dpos, *end = digits + sizeof(Py_ssize_t)*3+2;
+    const char *hex_digits = DIGITS_HEX;
+    Py_ssize_t length, ulength;
+    int prepend_sign, last_one_off;
+    Py_ssize_t remaining;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const Py_ssize_t neg_one = (Py_ssize_t) -1, const_zero = (Py_ssize_t) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (format_char == 'c') {
+        if (unlikely(!(is_unsigned || value == 0 || value > 0) ||
+                     !(sizeof(value) <= 2 || value & ~ (Py_ssize_t) 0x01fffff || __Pyx_CheckUnicodeValue((int) value)))) {
+            PyErr_SetString(PyExc_OverflowError, "%c arg not in range(0x110000)");
+            return NULL;
+        }
+        if (width <= 1) {
+            return PyUnicode_FromOrdinal((int) value);
+        }
+        return __Pyx_PyUnicode_FromOrdinal_Padded((int) value, width, padding_char);
+    }
+    if (format_char == 'X') {
+        hex_digits += 16;
+        format_char = 'x';
+    }
+    remaining = value;
+    last_one_off = 0;
+    dpos = end;
+    do {
+        int digit_pos;
+        switch (format_char) {
+        case 'o':
+            digit_pos = abs((int)(remaining % (8*8)));
+            remaining = (Py_ssize_t) (remaining / (8*8));
+            dpos -= 2;
+            memcpy(dpos, DIGIT_PAIRS_8 + digit_pos * 2, 2);
+            last_one_off = (digit_pos < 8);
+            break;
+        case 'd':
+            digit_pos = abs((int)(remaining % (10*10)));
+            remaining = (Py_ssize_t) (remaining / (10*10));
+            dpos -= 2;
+            memcpy(dpos, DIGIT_PAIRS_10 + digit_pos * 2, 2);
+            last_one_off = (digit_pos < 10);
+            break;
+        case 'x':
+            *(--dpos) = hex_digits[abs((int)(remaining % 16))];
+            remaining = (Py_ssize_t) (remaining / 16);
+            break;
+        default:
+            assert(0);
+            break;
+        }
+    } while (unlikely(remaining != 0));
+    assert(!last_one_off || *dpos == '0');
+    dpos += last_one_off;
+    length = end - dpos;
+    ulength = length;
+    prepend_sign = 0;
+    if (!is_unsigned && value <= neg_one) {
+        if (padding_char == ' ' || width <= length + 1) {
+            *(--dpos) = '-';
+            ++length;
+        } else {
+            prepend_sign = 1;
+        }
+        ++ulength;
+    }
+    if (width > ulength) {
+        ulength = width;
+    }
+    if (ulength == 1) {
+        return PyUnicode_FromOrdinal(*dpos);
+    }
+    return __Pyx_PyUnicode_BuildFromAscii(ulength, dpos, (int) length, prepend_sign, padding_char);
+}
+
+/* CIntToPyUnicode */
+static CYTHON_INLINE PyObject* __Pyx_PyUnicode_From_short(short value, Py_ssize_t width, char padding_char, char format_char) {
+    char digits[sizeof(short)*3+2];
+    char *dpos, *end = digits + sizeof(short)*3+2;
+    const char *hex_digits = DIGITS_HEX;
+    Py_ssize_t length, ulength;
+    int prepend_sign, last_one_off;
+    short remaining;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const short neg_one = (short) -1, const_zero = (short) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (format_char == 'c') {
+        if (unlikely(!(is_unsigned || value == 0 || value > 0) ||
+                     !(sizeof(value) <= 2 || value & ~ (short) 0x01fffff || __Pyx_CheckUnicodeValue((int) value)))) {
+            PyErr_SetString(PyExc_OverflowError, "%c arg not in range(0x110000)");
+            return NULL;
+        }
+        if (width <= 1) {
+            return PyUnicode_FromOrdinal((int) value);
+        }
+        return __Pyx_PyUnicode_FromOrdinal_Padded((int) value, width, padding_char);
+    }
+    if (format_char == 'X') {
+        hex_digits += 16;
+        format_char = 'x';
+    }
+    remaining = value;
+    last_one_off = 0;
+    dpos = end;
+    do {
+        int digit_pos;
+        switch (format_char) {
+        case 'o':
+            digit_pos = abs((int)(remaining % (8*8)));
+            remaining = (short) (remaining / (8*8));
+            dpos -= 2;
+            memcpy(dpos, DIGIT_PAIRS_8 + digit_pos * 2, 2);
+            last_one_off = (digit_pos < 8);
+            break;
+        case 'd':
+            digit_pos = abs((int)(remaining % (10*10)));
+            remaining = (short) (remaining / (10*10));
+            dpos -= 2;
+            memcpy(dpos, DIGIT_PAIRS_10 + digit_pos * 2, 2);
+            last_one_off = (digit_pos < 10);
+            break;
+        case 'x':
+            *(--dpos) = hex_digits[abs((int)(remaining % 16))];
+            remaining = (short) (remaining / 16);
+            break;
+        default:
+            assert(0);
+            break;
+        }
+    } while (unlikely(remaining != 0));
+    assert(!last_one_off || *dpos == '0');
+    dpos += last_one_off;
+    length = end - dpos;
+    ulength = length;
+    prepend_sign = 0;
+    if (!is_unsigned && value <= neg_one) {
+        if (padding_char == ' ' || width <= length + 1) {
+            *(--dpos) = '-';
+            ++length;
+        } else {
+            prepend_sign = 1;
+        }
+        ++ulength;
+    }
+    if (width > ulength) {
+        ulength = width;
+    }
+    if (ulength == 1) {
+        return PyUnicode_FromOrdinal(*dpos);
+    }
+    return __Pyx_PyUnicode_BuildFromAscii(ulength, dpos, (int) length, prepend_sign, padding_char);
 }
 
 /* ListPack */
@@ -11707,6 +11850,331 @@ raise_neg_overflow:
     PyErr_SetString(PyExc_OverflowError,
         "can't convert negative value to int");
     return (int) -1;
+}
+
+/* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyLong_From_short(short value) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const short neg_one = (short) -1, const_zero = (short) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(short) < sizeof(long)) {
+            return PyLong_FromLong((long) value);
+        } else if (sizeof(short) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#if defined(HAVE_LONG_LONG) && !CYTHON_COMPILING_IN_PYPY
+        } else if (sizeof(short) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(short) <= sizeof(long)) {
+            return PyLong_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(short) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        unsigned char *bytes = (unsigned char *)&value;
+#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
+        if (is_unsigned) {
+            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
+        } else {
+            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
+        }
+#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        return _PyLong_FromByteArray(bytes, sizeof(short),
+                                     little, !is_unsigned);
+#else
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        PyObject *from_bytes, *result = NULL, *kwds = NULL;
+        PyObject *py_bytes = NULL, *order_str = NULL;
+        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
+        if (!from_bytes) return NULL;
+        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(short));
+        if (!py_bytes) goto limited_bad;
+        order_str = PyUnicode_FromString(little ? "little" : "big");
+        if (!order_str) goto limited_bad;
+        {
+            PyObject *args[3+(CYTHON_VECTORCALL ? 1 : 0)] = { NULL, py_bytes, order_str };
+            if (!is_unsigned) {
+                kwds = __Pyx_MakeVectorcallBuilderKwds(1);
+                if (!kwds) goto limited_bad;
+                if (__Pyx_VectorcallBuilder_AddArgStr("signed", __Pyx_NewRef(Py_True), kwds, args+3, 0) < 0) goto limited_bad;
+            }
+            result = __Pyx_Object_Vectorcall_CallFromBuilder(from_bytes, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET, kwds);
+        }
+        limited_bad:
+        Py_XDECREF(kwds);
+        Py_XDECREF(order_str);
+        Py_XDECREF(py_bytes);
+        Py_XDECREF(from_bytes);
+        return result;
+#endif
+    }
+}
+
+/* CIntFromPy */
+static CYTHON_INLINE short __Pyx_PyLong_As_short(PyObject *x) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const short neg_one = (short) -1, const_zero = (short) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (unlikely(!PyLong_Check(x))) {
+        short val;
+        PyObject *tmp = __Pyx_PyNumber_Long(x);
+        if (!tmp) return (short) -1;
+        val = __Pyx_PyLong_As_short(tmp);
+        Py_DECREF(tmp);
+        return val;
+    }
+    if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+        if (unlikely(__Pyx_PyLong_IsNeg(x))) {
+            goto raise_neg_overflow;
+        } else if (__Pyx_PyLong_IsCompact(x)) {
+            __PYX_VERIFY_RETURN_INT(short, __Pyx_compact_upylong, __Pyx_PyLong_CompactValueUnsigned(x))
+        } else {
+            const digit* digits = __Pyx_PyLong_Digits(x);
+            assert(__Pyx_PyLong_DigitCount(x) > 1);
+            switch (__Pyx_PyLong_DigitCount(x)) {
+                case 2:
+                    if ((8 * sizeof(short) > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) >= 2 * PyLong_SHIFT)) {
+                            return (short) (((((short)digits[1]) << PyLong_SHIFT) | (short)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if ((8 * sizeof(short) > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) >= 3 * PyLong_SHIFT)) {
+                            return (short) (((((((short)digits[2]) << PyLong_SHIFT) | (short)digits[1]) << PyLong_SHIFT) | (short)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if ((8 * sizeof(short) > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) >= 4 * PyLong_SHIFT)) {
+                            return (short) (((((((((short)digits[3]) << PyLong_SHIFT) | (short)digits[2]) << PyLong_SHIFT) | (short)digits[1]) << PyLong_SHIFT) | (short)digits[0]));
+                        }
+                    }
+                    break;
+            }
+        }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX < 0x030C00A7
+        if (unlikely(Py_SIZE(x) < 0)) {
+            goto raise_neg_overflow;
+        }
+#else
+        {
+            int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+            if (unlikely(result < 0))
+                return (short) -1;
+            if (unlikely(result == 1))
+                goto raise_neg_overflow;
+        }
+#endif
+        if ((sizeof(short) <= sizeof(unsigned long))) {
+            __PYX_VERIFY_RETURN_INT_EXC(short, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+        } else if ((sizeof(short) <= sizeof(unsigned PY_LONG_LONG))) {
+            __PYX_VERIFY_RETURN_INT_EXC(short, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+        }
+    } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+        if (__Pyx_PyLong_IsCompact(x)) {
+            __PYX_VERIFY_RETURN_INT(short, __Pyx_compact_pylong, __Pyx_PyLong_CompactValue(x))
+        } else {
+            const digit* digits = __Pyx_PyLong_Digits(x);
+            assert(__Pyx_PyLong_DigitCount(x) > 1);
+            switch (__Pyx_PyLong_SignedDigitCount(x)) {
+                case -2:
+                    if ((8 * sizeof(short) - 1 > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) - 1 > 2 * PyLong_SHIFT)) {
+                            return (short) (((short)-1)*(((((short)digits[1]) << PyLong_SHIFT) | (short)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if ((8 * sizeof(short) > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) - 1 > 2 * PyLong_SHIFT)) {
+                            return (short) ((((((short)digits[1]) << PyLong_SHIFT) | (short)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if ((8 * sizeof(short) - 1 > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) - 1 > 3 * PyLong_SHIFT)) {
+                            return (short) (((short)-1)*(((((((short)digits[2]) << PyLong_SHIFT) | (short)digits[1]) << PyLong_SHIFT) | (short)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if ((8 * sizeof(short) > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) - 1 > 3 * PyLong_SHIFT)) {
+                            return (short) ((((((((short)digits[2]) << PyLong_SHIFT) | (short)digits[1]) << PyLong_SHIFT) | (short)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if ((8 * sizeof(short) - 1 > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) - 1 > 4 * PyLong_SHIFT)) {
+                            return (short) (((short)-1)*(((((((((short)digits[3]) << PyLong_SHIFT) | (short)digits[2]) << PyLong_SHIFT) | (short)digits[1]) << PyLong_SHIFT) | (short)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if ((8 * sizeof(short) > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(short, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(short) - 1 > 4 * PyLong_SHIFT)) {
+                            return (short) ((((((((((short)digits[3]) << PyLong_SHIFT) | (short)digits[2]) << PyLong_SHIFT) | (short)digits[1]) << PyLong_SHIFT) | (short)digits[0])));
+                        }
+                    }
+                    break;
+            }
+        }
+#endif
+        if ((sizeof(short) <= sizeof(long))) {
+            __PYX_VERIFY_RETURN_INT_EXC(short, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+        } else if ((sizeof(short) <= sizeof(PY_LONG_LONG))) {
+            __PYX_VERIFY_RETURN_INT_EXC(short, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+        }
+    }
+    {
+        short val;
+        int ret = -1;
+#if PY_VERSION_HEX >= 0x030d00A6 && !CYTHON_COMPILING_IN_LIMITED_API
+        Py_ssize_t bytes_copied = PyLong_AsNativeBytes(
+            x, &val, sizeof(val), Py_ASNATIVEBYTES_NATIVE_ENDIAN | (is_unsigned ? Py_ASNATIVEBYTES_UNSIGNED_BUFFER | Py_ASNATIVEBYTES_REJECT_NEGATIVE : 0));
+        if (unlikely(bytes_copied == -1)) {
+        } else if (unlikely(bytes_copied > (Py_ssize_t) sizeof(val))) {
+            goto raise_overflow;
+        } else {
+            ret = 0;
+        }
+#elif PY_VERSION_HEX < 0x030d0000 && !(CYTHON_COMPILING_IN_PYPY || CYTHON_COMPILING_IN_LIMITED_API) || defined(_PyLong_AsByteArray)
+        int one = 1; int is_little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&val;
+        ret = _PyLong_AsByteArray((PyLongObject *)x,
+                                    bytes, sizeof(val),
+                                    is_little, !is_unsigned);
+#else
+        PyObject *v;
+        PyObject *stepval = NULL, *mask = NULL, *shift = NULL;
+        int bits, remaining_bits, is_negative = 0;
+        int chunk_size = (sizeof(long) < 8) ? 30 : 62;
+        if (likely(PyLong_CheckExact(x))) {
+            v = __Pyx_NewRef(x);
+        } else {
+            v = PyNumber_Long(x);
+            if (unlikely(!v)) return (short) -1;
+            assert(PyLong_CheckExact(v));
+        }
+        {
+            int result = PyObject_RichCompareBool(v, Py_False, Py_LT);
+            if (unlikely(result < 0)) {
+                Py_DECREF(v);
+                return (short) -1;
+            }
+            is_negative = result == 1;
+        }
+        if (is_unsigned && unlikely(is_negative)) {
+            Py_DECREF(v);
+            goto raise_neg_overflow;
+        } else if (is_negative) {
+            stepval = PyNumber_Invert(v);
+            Py_DECREF(v);
+            if (unlikely(!stepval))
+                return (short) -1;
+        } else {
+            stepval = v;
+        }
+        v = NULL;
+        val = (short) 0;
+        mask = PyLong_FromLong((1L << chunk_size) - 1); if (unlikely(!mask)) goto done;
+        shift = PyLong_FromLong(chunk_size); if (unlikely(!shift)) goto done;
+        for (bits = 0; bits < (int) sizeof(short) * 8 - chunk_size; bits += chunk_size) {
+            PyObject *tmp, *digit;
+            long idigit;
+            digit = PyNumber_And(stepval, mask);
+            if (unlikely(!digit)) goto done;
+            idigit = PyLong_AsLong(digit);
+            Py_DECREF(digit);
+            if (unlikely(idigit < 0)) goto done;
+            val |= ((short) idigit) << bits;
+            tmp = PyNumber_Rshift(stepval, shift);
+            if (unlikely(!tmp)) goto done;
+            Py_DECREF(stepval); stepval = tmp;
+        }
+        Py_DECREF(shift); shift = NULL;
+        Py_DECREF(mask); mask = NULL;
+        {
+            long idigit = PyLong_AsLong(stepval);
+            if (unlikely(idigit < 0)) goto done;
+            remaining_bits = ((int) sizeof(short) * 8) - bits - (is_unsigned ? 0 : 1);
+            if (unlikely(idigit >= (1L << remaining_bits)))
+                goto raise_overflow;
+            val |= ((short) idigit) << bits;
+        }
+        if (!is_unsigned) {
+            if (unlikely(val & (((short) 1) << (sizeof(short) * 8 - 1))))
+                goto raise_overflow;
+            if (is_negative)
+                val = ~val;
+        }
+        ret = 0;
+    done:
+        Py_XDECREF(shift);
+        Py_XDECREF(mask);
+        Py_XDECREF(stepval);
+#endif
+        if (unlikely(ret))
+            return (short) -1;
+        return val;
+    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to short");
+    return (short) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to short");
+    return (short) -1;
 }
 
 /* FormatTypeName */

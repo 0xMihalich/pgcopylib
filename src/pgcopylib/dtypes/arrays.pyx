@@ -11,9 +11,9 @@ cdef bytes NULLABLE = b"\xff\xff\xff\xff"
 cdef list recursive_elements(list elements, list array_struct):
     """Recursive unpack array struct."""
 
-    cdef Py_ssize_t chunk
-    cdef Py_ssize_t i
-    cdef Py_ssize_t elements_len = len(elements)
+    cdef long chunk
+    cdef long i
+    cdef long elements_len = len(elements)
 
     if not array_struct:
         return elements
@@ -23,9 +23,9 @@ cdef list recursive_elements(list elements, list array_struct):
     if elements_len == chunk:
         return recursive_elements(elements, array_struct)
     
-    cdef Py_ssize_t num_chunks = (elements_len + chunk - 1) // chunk
+    cdef long num_chunks = (elements_len + chunk - 1) // chunk
     cdef list result = []
-    cdef Py_ssize_t start, end
+    cdef long start, end
 
     for i in range(num_chunks):
         start = i * chunk
@@ -101,7 +101,7 @@ def write_array(list dtype_value, object array_function, object buffer, long pgo
     """Pack array values."""
 
     cdef list num_dim = get_num_dim(dtype_value)
-    cdef Py_ssize_t dim_length = len(num_dim)
+    cdef short dim_length = len(num_dim)
     cdef list expand_values
     cdef object value
 
@@ -121,7 +121,7 @@ def write_array(list dtype_value, object array_function, object buffer, long pgo
     for dim in num_dim:
         dimensions.extend([dim, 1])
 
-    cdef Py_ssize_t length_dimensions = len(dimensions)
+    cdef short length_dimensions = len(dimensions)
 
     buffer.write(pack("!3I", dim_length, is_nullable, pgoid))
     buffer.write(pack(f"!{length_dimensions}I", *dimensions))

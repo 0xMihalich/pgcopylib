@@ -43,7 +43,7 @@ cpdef object read_timestamp(bytes binary_data, object array_function, object buf
 cpdef bytes write_timestamp(object dtype_value, object array_function, object buffer, long pgoid):
     """Pack timestamp value."""
 
-    cdef long long seconds = int((dtype_value - DEFAULT_DATETIME).total_seconds())
+    cdef long long seconds = (dtype_value - DEFAULT_DATETIME).total_seconds()
     cdef long long microseconds = seconds * MICROSECONDS_PER_SECOND
     return unpack("!q", microseconds)
 
@@ -114,7 +114,7 @@ cpdef bytes write_timetz(object dtype_value, object array_function, object buffe
         dtype_value.microsecond
     )
     cdef object tz_offset = dtype_value.tzinfo.utcoffset(None)
-    cdef int offset = int(tz_offset.total_seconds())
+    cdef int offset = tz_offset.total_seconds()
     return pack("!qi", total_microseconds, offset)
 
 

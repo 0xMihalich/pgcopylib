@@ -1,15 +1,23 @@
-# setup.py
-from setuptools import setup, Extension, find_packages
+from os import (
+    path,
+    walk,
+)
+
+from setuptools import (
+    Extension,
+    find_packages,
+    setup,
+)
 from Cython.Build import cythonize
-import os
+
 
 def find_cython_extensions():
     extensions = []
-    for root, _, files in os.walk("src"):
+    for root, _, files in walk("src"):
         for file in files:
             if file.endswith(".pyx"):
-                pyx_path = os.path.join(root, file)
-                module_name = pyx_path.replace(os.path.sep, ".")[4:-4]
+                pyx_path = path.join(root, file)
+                module_name = pyx_path.replace(path.sep, ".")[4:-4]
                 extensions.append(
                     Extension(
                         module_name,
@@ -18,6 +26,7 @@ def find_cython_extensions():
                     )
                 )
     return extensions
+
 
 setup(
     packages=find_packages(where="src"),
