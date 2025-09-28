@@ -4,31 +4,56 @@ from struct import (
 )
 
 
-cpdef (double, double) read_point(bytes binary_data, object array_function, object buffer, long pgoid):
+cpdef (double, double) read_point(
+    bytes binary_data,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Unpack point value."""
 
     return unpack("!2d", binary_data)
 
 
-cpdef bytes write_point((double, double) dtype_value, object array_function, object buffer, long pgoid):
+cpdef bytes write_point(
+    (double, double) dtype_value,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Pack point value."""
 
     return pack("!2d", *dtype_value)
 
 
-cpdef (double, double, double) read_line(bytes binary_data, object array_function, object buffer, long pgoid):
+cpdef (double, double, double) read_line(
+    bytes binary_data,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Unpack line value."""
 
     return unpack("!3d", binary_data)
 
 
-cpdef bytes write_line((double, double, double) dtype_value, object array_function, object buffer, long pgoid):
+cpdef bytes write_line(
+    (double, double, double) dtype_value,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Pack line value."""
 
     return pack("!3d", *dtype_value)
 
 
-cpdef list read_lseg(bytes binary_data, object array_function, object buffer, long pgoid):
+cpdef list read_lseg(
+    bytes binary_data,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Unpack lseg value."""
 
     cdef double x1, y1, x2, y2
@@ -36,13 +61,23 @@ cpdef list read_lseg(bytes binary_data, object array_function, object buffer, lo
     return [(x1, y1), (x2, y2)]
 
 
-cpdef bytes write_lseg(list dtype_value, object array_function, object buffer, long pgoid):
+cpdef bytes write_lseg(
+    list dtype_value,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Pack lseg value."""
 
     return pack("!4d", *dtype_value[0], *dtype_value[1])
 
 
-cpdef ((double, double), (double, double)) read_box(bytes binary_data, object array_function, object buffer, long pgoid):
+cpdef ((double, double), (double, double)) read_box(
+    bytes binary_data,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Unpack box value."""
 
     cdef double x1, y1, x2, y2
@@ -50,13 +85,23 @@ cpdef ((double, double), (double, double)) read_box(bytes binary_data, object ar
     return (x1, y1), (x2, y2)
 
 
-cpdef bytes write_box(((double, double), (double, double)) dtype_value, object array_function, object buffer, long pgoid):
+cpdef bytes write_box(
+    ((double, double), (double, double)) dtype_value,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Pack box value."""
 
     return pack("!4d", *dtype_value[0], *dtype_value[1])
 
 
-cpdef object read_path(bytes binary_data, object array_function, object buffer, long pgoid):
+cpdef object read_path(
+    bytes binary_data,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Unpack path value."""
 
     cdef bint is_closed
@@ -80,7 +125,12 @@ cpdef object read_path(bytes binary_data, object array_function, object buffer, 
     return path_data
 
 
-cpdef bytes write_path(object dtype_value, object array_function, object buffer, long pgoid):
+cpdef bytes write_path(
+    object dtype_value,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Pack path value."""
 
     cdef bint is_closed = isinstance(dtype_value, tuple)
@@ -102,7 +152,12 @@ cpdef bytes write_path(object dtype_value, object array_function, object buffer,
     )
 
 
-cpdef tuple read_polygon(bytes binary_data, object array_function, object buffer, long pgoid):
+cpdef tuple read_polygon(
+    bytes binary_data,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Unpack polygon value."""
 
     cdef int length
@@ -119,7 +174,12 @@ cpdef tuple read_polygon(bytes binary_data, object array_function, object buffer
     return tuple(points)
 
 
-cpdef bytes write_polygon(tuple dtype_value, object array_function, object buffer, long pgoid):
+cpdef bytes write_polygon(
+    tuple dtype_value,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Pack polygon value."""
 
     cdef short length = len(dtype_value)

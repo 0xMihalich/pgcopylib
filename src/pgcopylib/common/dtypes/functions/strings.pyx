@@ -1,16 +1,31 @@
-cpdef str read_text(bytes binary_data, object array_function, object buffer, long pgoid):
+cpdef str read_text(
+    bytes binary_data,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Unpack text value."""
 
     return binary_data.decode("utf-8", errors="replace")
 
 
-cpdef bytes write_text(str dtype_value, object array_function, object buffer, long pgoid):
+cpdef bytes write_text(
+    str dtype_value,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Pack text value."""
 
     return dtype_value.encode("utf-8")
 
 
-cpdef str read_macaddr(bytes binary_data, object array_function, object buffer, long pgoid):
+cpdef str read_macaddr(
+    bytes binary_data,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Unpack macaddr and macaddr8 value."""
 
     cdef long i
@@ -26,13 +41,23 @@ cpdef str read_macaddr(bytes binary_data, object array_function, object buffer, 
     return ":".join(parts).upper()
 
 
-cpdef bytes write_macaddr(str dtype_value, object array_function, object buffer, long pgoid):
+cpdef bytes write_macaddr(
+    str dtype_value,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Pack macaddr and macaddr8 value."""
 
     return bytes.fromhex(dtype_value.replace(":", ""))
 
 
-cpdef str read_bits(bytes binary_data, object array_function, object buffer, long pgoid):
+cpdef str read_bits(
+    bytes binary_data,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Unpack bit and varbit value."""
 
     cdef unsigned int length
@@ -54,7 +79,12 @@ cpdef str read_bits(bytes binary_data, object array_function, object buffer, lon
     return "".join(bits)[:length]
 
 
-cpdef bytes write_bits(str dtype_value, object array_function, object buffer, long pgoid):
+cpdef bytes write_bits(
+    str dtype_value,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Pack bit and varbit value."""
     
     cdef long bit_length = len(dtype_value)
@@ -64,13 +94,23 @@ cpdef bytes write_bits(str dtype_value, object array_function, object buffer, lo
     return int_value.to_bytes(byte_length, "big")
 
 
-cpdef bytes read_bytea(bytes binary_data, object array_function, object buffer, long pgoid):
+cpdef bytes read_bytea(
+    bytes binary_data,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Unpack bytea value."""
 
     return binary_data
 
 
-cpdef bytes write_bytea(bytes dtype_value, object array_function, object buffer, long pgoid):
+cpdef bytes write_bytea(
+    bytes dtype_value,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Pack bytea value."""
 
     return dtype_value

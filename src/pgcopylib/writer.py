@@ -8,14 +8,13 @@ from typing import (
     TYPE_CHECKING,
 )
 
-from .dtypes import AssociateDtypes
-from .enums import (
+from .common import (
     ArrayOidToOid,
     PGOid,
+    PGCopyRecordError,
     PGOidToDType,
 )
-from .errors import PGCopyRecordError
-from .common import (
+from .common.base import (
     make_rows,
     nullable_writer,
     writer,
@@ -44,13 +43,11 @@ class PGCopyWriter:
         self.num_rows = 0
         self.pos = 0
         self.write_functions: list[FunctionType] = [
-            AssociateDtypes[PGOidToDType[pgtype]].write
+            PGOidToDType[pgtype].write
             for pgtype in pgtypes
         ]
-        self.array_functions: list[FunctionType] = [
-            AssociateDtypes[
-                PGOidToDType[ArrayOidToOid[self.pgtypes[column]]]
-            ].read
+        self.pgoid_functions: list[FunctionType] = [
+            PGOidToDType[ArrayOidToOid[self.pgtypes[column]]].write
             if self.pgtypes and ArrayOidToOid.get(
                 self.pgtypes[column]
             ) else None
@@ -63,22 +60,22 @@ class PGCopyWriter:
             ) else 0
             for column in range(self.num_columns)
         ]
-        self.buffer = BytesIO()
+        self.buffer_object = BytesIO()
 
     def write_row(self, dtype_values: Any) -> Generator[Any, None, None]:
         """Write single row."""
 
-        for write_dtype, dtype_value, array_function, pgoid in zip(
+        for write_dtype, dtype_value, pgoid_function, pgoid in zip(
             self.write_functions,
             dtype_values,
-            self.array_functions,
+            self.pgoid_functions,
             self.pgoid,
         ):
             yield nullable_writer(
                 write_dtype,
                 dtype_value,
-                array_function,
-                self.buffer,
+                pgoid_function,
+                self.buffer_object,
                 pgoid,
             )
         self.num_rows += 1

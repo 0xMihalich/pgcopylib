@@ -1,38 +1,66 @@
-from os import (
-    path,
-    walk,
-)
-
 from setuptools import (
     Extension,
-    find_packages,
     setup,
 )
 from Cython.Build import cythonize
 
-
-def find_cython_extensions():
-    extensions = []
-    for root, _, files in walk("src"):
-        for file in files:
-            if file.endswith(".pyx"):
-                pyx_path = path.join(root, file)
-                module_name = pyx_path.replace(path.sep, ".")[4:-4]
-                extensions.append(
-                    Extension(
-                        module_name,
-                        [pyx_path],
-                        include_dirs=["src"]
-                    )
-                )
-    return extensions
-
+extensions = [
+    Extension(
+        "pgcopylib.common.base",
+        ["src/pgcopylib/common/base.pyx"],
+    ),
+    Extension(
+        "pgcopylib.common.dtypes.functions.arrays",
+        ["src/pgcopylib/common/dtypes/functions/arrays.pyx"],
+    ),
+    Extension(
+        "pgcopylib.common.dtypes.functions.dates",
+        ["src/pgcopylib/common/dtypes/functions/dates.pyx"],
+    ),
+    Extension(
+        "pgcopylib.common.dtypes.functions.digits",
+        ["src/pgcopylib/common/dtypes/functions/digits.pyx"],
+    ),
+    Extension(
+        "pgcopylib.common.dtypes.functions.geometrics",
+        ["src/pgcopylib/common/dtypes/functions/geometrics.pyx"],
+    ),
+    Extension(
+        "pgcopylib.common.dtypes.functions.ipaddrs",
+        ["src/pgcopylib/common/dtypes/functions/ipaddrs.pyx"],
+    ),
+    Extension(
+        "pgcopylib.common.dtypes.functions.jsons",
+        ["src/pgcopylib/common/dtypes/functions/jsons.pyx"],
+    ),
+    Extension(
+        "pgcopylib.common.dtypes.functions.strings",
+        ["src/pgcopylib/common/dtypes/functions/strings.pyx"],
+    ),
+    Extension(
+        "pgcopylib.common.dtypes.functions.uuids",
+        ["src/pgcopylib/common/dtypes/functions/uuids.pyx"],
+    ),
+]
 
 setup(
-    packages=find_packages(where="src"),
+    name="pgcopylib",
     package_dir={"": "src"},
-    ext_modules=cythonize(find_cython_extensions(), language_level=3),
+    ext_modules=cythonize(extensions, language_level="3"),
+    packages=[
+        "pgcopylib.common",
+        "pgcopylib.common.dtypes.functions",
+    ],
     package_data={
-        "pgcopylib": ["*.pxd", "*.md", "*.txt"]
+        "pgcopylib": [
+            "**/*.pyx", "**/*.pxd", "*.pxd", "*.pyd", "*.md", "*.txt",
+        ]
     },
+    exclude_package_data={
+        "": ["*.c"],
+        "pgcopylib": ["**/*.c"],
+    },
+    include_package_data=True,
+    setup_requires=["Cython>=3.0"],
+    zip_safe=False,
 )

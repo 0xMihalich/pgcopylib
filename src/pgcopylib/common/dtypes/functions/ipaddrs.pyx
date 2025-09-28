@@ -24,7 +24,12 @@ cdef dict IpNet = {
 }
 
 
-cpdef object read_network(bytes binary_data, object array_function, object buffer, long pgoid):
+cpdef object read_network(
+    bytes binary_data,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Unpack inet or cidr value."""
 
     cdef int binary_length = len(binary_data) - 4
@@ -46,7 +51,12 @@ cpdef object read_network(bytes binary_data, object array_function, object buffe
     return ip_addr
 
 
-cpdef bytes write_network(object dtype_value, object array_function, object buffer, long pgoid):
+cpdef bytes write_network(
+    object dtype_value,
+    object pgoid_function = None,
+    object buffer_object = None,
+    object pgoid = None,
+):
     """Pack inet or cidr value."""
 
     cdef unsigned char ip_family, ip_netmask, is_cidr, ip_length

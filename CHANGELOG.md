@@ -1,5 +1,11 @@
 # Version History
 
+## 0.2.1.0
+
+* Refactor project
+* Redistribute project directories
+* Improve some functions
+
 ## 0.2.0.1
 
 * Setup.py code refactor

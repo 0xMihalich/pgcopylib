@@ -11,9 +11,10 @@ cdef bytes NULLABLE = b"\xff\xff\xff\xff"
 cdef list recursive_elements(list elements, list array_struct):
     """Recursive unpack array struct."""
 
-    cdef long chunk
-    cdef long i
+    cdef long chunk, num_chunks
+    cdef long _i, start, end
     cdef long elements_len = len(elements)
+    cdef list result = []
 
     if not array_struct:
         return elements
@@ -23,12 +24,10 @@ cdef list recursive_elements(list elements, list array_struct):
     if elements_len == chunk:
         return recursive_elements(elements, array_struct)
     
-    cdef long num_chunks = (elements_len + chunk - 1) // chunk
-    cdef list result = []
-    cdef long start, end
+    num_chunks = (elements_len + chunk - 1) // chunk
 
-    for i in range(num_chunks):
-        start = i * chunk
+    for _i in range(num_chunks):
+        start = _i * chunk
         end = start + chunk
 
         if end > elements_len:
@@ -62,77 +61,100 @@ cdef long prod(list iterable):
     return result
 
 
-cdef object _reader(object buffer, object array_function):
+cdef object _reader(object buffer_object, object pgoid_function):
     """Read array record."""
 
-    cdef bytes _bytes = buffer.read(4)
-    cdef const unsigned char *buf = <const unsigned char*>PyBytes_AsString(_bytes)
+    cdef bytes _bytes = buffer_object.read(4)
+    cdef const unsigned char *buf = <const unsigned char*>PyBytes_AsString(
+        _bytes
+    )
     cdef int length = (buf[0] << 24) | (buf[1] << 16) | (buf[2] << 8) | buf[3]
 
     if length == 0xffffffff:
         return
 
-    return array_function(buffer.read(length), None, None)
+    return pgoid_function(buffer_object.read(length))
 
 
-cpdef list read_array(bytes binary_data, object array_function, object buffer, long pgoid):
+cpdef list read_array(
+    bytes binary_data,
+    object pgoid_function,
+    object buffer_object,
+    long pgoid,
+):
     """Unpack array values."""
 
-    buffer.write(binary_data)
-    buffer.seek(0)
-
     cdef unsigned int num_dim, _, oid
-    num_dim, _, oid = unpack("!3I", buffer.read(12))
     cdef list array_struct = []
     cdef list array_elements = []
 
+    buffer_object.write(binary_data)
+    buffer_object.seek(0)
+    num_dim, _, oid = unpack("!3I", buffer_object.read(12))
+
     for _ in range(num_dim):
-        array_struct.append(unpack("!2I", buffer.read(8))[0])
+        array_struct.append(unpack("!2I", buffer_object.read(8))[0])
 
     for _ in range(prod(array_struct)):
-        array_elements.append(_reader(buffer, array_function))
+        array_elements.append(_reader(buffer_object, pgoid_function))
 
-    buffer.seek(0)
-    buffer.truncate()
+    buffer_object.seek(0)
+    buffer_object.truncate()
     return recursive_elements(array_elements, array_struct)
 
 
-def write_array(list dtype_value, object array_function, object buffer, long pgoid):
+cpdef bytes write_array(
+    list dtype_value,
+    object pgoid_function,
+    object buffer_object,
+    long pgoid,
+):
     """Pack array values."""
 
     cdef list num_dim = get_num_dim(dtype_value)
-    cdef short dim_length = len(num_dim)
-    cdef list expand_values
+    cdef short is_nullable, dim, dim_length = len(num_dim)
+    cdef list expand_values, dimensions = []
     cdef object value
+    cdef short length_dimensions
+    cdef bytes binary_data
+    cdef bint has_list = True
 
-    while any(isinstance(value, list) for value in dtype_value):
+    while has_list:
+        has_list = False
         expand_values = []
+
         for value in dtype_value:
             if isinstance(value, list):
+                has_list = True
                 expand_values.extend(value)
             else:
                 expand_values.append(value)
+
         dtype_value = expand_values
 
-    cdef short is_nullable = None in dtype_value
-    cdef list dimensions = []
-    cdef short dim
+    is_nullable = False
+    for value in dtype_value:
+        if value is None:
+            is_nullable = True
+            break
 
     for dim in num_dim:
         dimensions.extend([dim, 1])
 
-    cdef short length_dimensions = len(dimensions)
+    length_dimensions = len(dimensions)
 
-    buffer.write(pack("!3I", dim_length, is_nullable, pgoid))
-    buffer.write(pack(f"!{length_dimensions}I", *dimensions))
+    buffer_object.write(pack("!3I", dim_length, is_nullable, pgoid))
+    buffer_object.write(pack("!%dI" % length_dimensions, *dimensions))
 
     for value in dtype_value:
         if value is None:
-            buffer.write(NULLABLE)
+            buffer_object.write(NULLABLE)
         else:
-            buffer.write(array_function(value, None, None))
+            binary_data = pgoid_function(value)
+            buffer_object.write(pack("!I", len(binary_data)))
+            buffer_object.write(binary_data)
 
-    cdef bytes binary_data = buffer.getvalue()
-    buffer.seek(0)
-    buffer.truncate()
+    binary_data = buffer_object.getvalue()
+    buffer_object.seek(0)
+    buffer_object.truncate()
     return binary_data

@@ -9,19 +9,18 @@ from typing import (
 )
 from struct import unpack
 
-from .dtypes import AssociateDtypes
-from .enums import (
+from .common import (
     ArrayOidToOid,
-    PGDataType,
     PGOid,
     PGOidToDType,
+    PGCopySignatureError,
 )
-from .errors import PGCopySignatureError
-from .common import (
+from .common.base import (
     read_num_columns,
     read_record,
     skip_all,
 )
+from .common.dtypes import PostgreSQLDtype
 
 if TYPE_CHECKING:
     from types import FunctionType
@@ -65,16 +64,12 @@ class PGCopyReader:
         )
         self.num_rows: int = 0
         self.read_functions: list[FunctionType] = [
-            AssociateDtypes[
-                PGOidToDType[self.pgtypes[column]]
-                if self.pgtypes else PGDataType.Bytes
-            ].read
+            PGOidToDType[self.pgtypes[column]].read
+            if self.pgtypes else PostgreSQLDtype.Bytes.read
             for column in range(self.num_columns)
         ]
-        self.array_functions: list[FunctionType] = [
-            AssociateDtypes[
-                PGOidToDType[ArrayOidToOid[self.pgtypes[column]]]
-            ].read
+        self.pgoid_functions: list[FunctionType] = [
+            PGOidToDType[ArrayOidToOid[self.pgtypes[column]]].read
             if self.pgtypes and ArrayOidToOid.get(
                 self.pgtypes[column]
             ) else None
@@ -87,7 +82,7 @@ class PGCopyReader:
             ) else 0
             for column in range(self.num_columns)
         ]
-        self.buffer = BytesIO()
+        self.buffer_object = BytesIO()
 
     def __count_rows(self) -> None:
         """Count rows."""
@@ -103,16 +98,16 @@ class PGCopyReader:
     def read_row(self) -> Generator[Any, None, None]:
         """Read single row."""
 
-        for reader, array_function, pgoid in zip(
+        for reader, pgoid_function, pgoid in zip(
             self.read_functions,
-            self.array_functions,
+            self.pgoid_functions,
             self.pgoid,
         ):
             yield read_record(
                 self.file,
                 reader,
-                array_function,
-                self.buffer,
+                pgoid_function,
+                self.buffer_object,
                 pgoid,
             )
 
