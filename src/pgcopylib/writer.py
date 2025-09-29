@@ -22,6 +22,7 @@ from .common.base import (
 
 if TYPE_CHECKING:
     from types import FunctionType
+    from .common.dtypes import PostgreSQLDtype
 
 
 class PGCopyWriter:
@@ -42,8 +43,8 @@ class PGCopyWriter:
         self.num_columns = len(pgtypes)
         self.num_rows = 0
         self.pos = 0
-        self.write_functions: list[FunctionType] = [
-            PGOidToDType[pgtype].write
+        self.postgres_dtype: list[PostgreSQLDtype] = [
+            PGOidToDType[pgtype]
             for pgtype in pgtypes
         ]
         self.pgoid_functions: list[FunctionType] = [
@@ -65,14 +66,14 @@ class PGCopyWriter:
     def write_row(self, dtype_values: Any) -> Generator[Any, None, None]:
         """Write single row."""
 
-        for write_dtype, dtype_value, pgoid_function, pgoid in zip(
-            self.write_functions,
+        for postgres_dtype, dtype_value, pgoid_function, pgoid in zip(
+            self.postgres_dtype,
             dtype_values,
             self.pgoid_functions,
             self.pgoid,
         ):
             yield nullable_writer(
-                write_dtype,
+                postgres_dtype.write,
                 dtype_value,
                 pgoid_function,
                 self.buffer_object,
@@ -120,6 +121,6 @@ Total columns: {self.num_columns}
 Total rows: {self.num_rows}
 Postgres types: {
     [pgtype.name for pgtype in self.pgtypes] or
-    ["bytea" for _ in self.write_functions]
+    ["bytea" for _ in self.postgres_dtype]
 }
 """

@@ -1,5 +1,9 @@
 # Version History
 
+## 0.2.1.1
+
+* Change read_functions & write_functions to postgres_dtype
+
 ## 0.2.1.0
 
 * Refactor project

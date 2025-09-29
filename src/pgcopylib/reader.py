@@ -63,9 +63,9 @@ class PGCopyReader:
             self.column_length,
         )
         self.num_rows: int = 0
-        self.read_functions: list[FunctionType] = [
-            PGOidToDType[self.pgtypes[column]].read
-            if self.pgtypes else PostgreSQLDtype.Bytes.read
+        self.postgres_dtype: list[PostgreSQLDtype] = [
+            PGOidToDType[self.pgtypes[column]]
+            if self.pgtypes else PostgreSQLDtype.Bytes
             for column in range(self.num_columns)
         ]
         self.pgoid_functions: list[FunctionType] = [
@@ -98,14 +98,14 @@ class PGCopyReader:
     def read_row(self) -> Generator[Any, None, None]:
         """Read single row."""
 
-        for reader, pgoid_function, pgoid in zip(
-            self.read_functions,
+        for postgres_dtype, pgoid_function, pgoid in zip(
+            self.postgres_dtype,
             self.pgoid_functions,
             self.pgoid,
         ):
             yield read_record(
                 self.file,
-                reader,
+                postgres_dtype.read,
                 pgoid_function,
                 self.buffer_object,
                 pgoid,
@@ -139,6 +139,6 @@ Total columns: {self.num_columns}
 Total rows: {self.num_rows}
 Postgres types: {
     [pgtype.name for pgtype in self.pgtypes] or
-    ["bytea" for _ in self.read_functions]
+    ["bytea" for _ in self.postgres_dtype]
 }
 """
