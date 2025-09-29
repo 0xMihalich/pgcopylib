@@ -1,5 +1,9 @@
 # Version History
 
+## 0.2.1.2
+
+* Fix PostgreSQLDtype values
+
 ## 0.2.1.1
 
 * Change read_functions & write_functions to postgres_dtype
