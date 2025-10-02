@@ -40,6 +40,12 @@ cpdef bytes write_date(
 ):
     """Pack date value."""
 
+    if (
+        dtype_value.__class__ is datetime or
+        dtype_value.__class__.__name__ == "Timestamp"
+    ):
+        dtype_value = dtype_value.date()
+
     cdef int days = (dtype_value - DEFAULT_DATE).days
     return pack("!i", days)
 
@@ -65,9 +71,14 @@ cpdef bytes write_timestamp(
 ):
     """Pack timestamp value."""
 
+    if dtype_value.__class__.__name__ == "Timestamp":
+        dtype_value = dtype_value.to_pydatetime()
+    elif dtype_value.__class__ is date:
+        dtype_value = datetime.combine(dtype_value, datetime.min.time())
+
     cdef long long seconds = (dtype_value - DEFAULT_DATETIME).total_seconds()
     cdef long long microseconds = seconds * MICROSECONDS_PER_SECOND
-    return unpack("!q", microseconds)
+    return pack("!q", microseconds)
 
 
 cpdef object read_timestamptz(

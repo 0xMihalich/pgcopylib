@@ -1,5 +1,11 @@
 # Version History
 
+## 0.2.1.3
+
+* Fix write_timestamp function
+* Improve pandas.Timestamp write errors for date & datetime write functions
+* Add date to datetime & datetime to date convert
+
 ## 0.2.1.2
 
 * Fix PostgreSQLDtype values
