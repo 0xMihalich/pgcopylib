@@ -40,10 +40,7 @@ cpdef bytes write_date(
 ):
     """Pack date value."""
 
-    if (
-        dtype_value.__class__ is datetime or
-        dtype_value.__class__.__name__ == "Timestamp"
-    ):
+    if dtype_value.__class__.__name__ in ("Timestamp", "datetime"):
         dtype_value = dtype_value.date()
 
     cdef int days = (dtype_value - DEFAULT_DATE).days

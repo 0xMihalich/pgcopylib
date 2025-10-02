@@ -1,5 +1,9 @@
 # Version History
 
+## 0.2.1.4
+
+* Reafactor write_date function
+
 ## 0.2.1.3
 
 * Fix write_timestamp function
