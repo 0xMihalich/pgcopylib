@@ -3,6 +3,8 @@
 ## 0.2.1.4
 
 * Reafactor write_date function
+* Add MANIFEST.in
+* Add MIT License
 
 ## 0.2.1.3
 
