@@ -124,6 +124,16 @@ class PGCopyReader:
                 self.column_length,
             )
 
+    def tell(self) -> int:
+        """Return current position."""
+
+        return self.file.tell()
+
+    def close(self) -> None:
+        """Close file object."""
+
+        self.file.close()
+
     def __repr__(self) -> str:
         """PGCopy info in interpreter."""
 

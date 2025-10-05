@@ -1,5 +1,13 @@
 # Version History
 
+## 0.2.1.5
+
+* Update MANIFEST.in
+* Improve pyproject.toml license file approve
+* Add CHANGELOG.md to pip package
+* Add close() method to PGCopyReader & PGCopyWriter
+* Add tell() method to PGCopyReader
+
 ## 0.2.1.4
 
 * Reafactor write_date function

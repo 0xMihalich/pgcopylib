@@ -108,6 +108,12 @@ class PGCopyWriter:
 
         return self.pos
 
+    def close(self) -> None:
+        """Close file object."""
+
+        if self.file:
+            self.file.close()
+
     def __repr__(self) -> str:
         """PGCopy info in interpreter."""
 
