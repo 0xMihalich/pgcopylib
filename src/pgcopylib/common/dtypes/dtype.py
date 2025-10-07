@@ -1,6 +1,5 @@
 """Convert between bytes and data types functions."""
 
-from decimal import Decimal
 from datetime import (
     date,
     datetime as dt,
@@ -16,7 +15,6 @@ from ipaddress import (
 )
 from typing import NamedTuple
 from types import FunctionType
-from uuid import UUID
 
 from .functions import (
     read_array,
@@ -120,7 +118,7 @@ class PostgreSQLDtype(PGTypeFunc, Enum):
     Macaddr8 = PGTypeFunc("Macaddr8", str, 8, read_macaddr, write_macaddr)
     Macaddr = PGTypeFunc("Macaddr", str, 6, read_macaddr, write_macaddr)
     Money = PGTypeFunc("Money", float, -1, read_money, write_money)
-    Numeric = PGTypeFunc("Numeric", Decimal, -1, read_numeric, write_numeric)
+    Numeric = PGTypeFunc("Numeric", object, -1, read_numeric, write_numeric)
     Oid = PGTypeFunc("Oid", int, 4, read_oid, write_oid)
     Path = PGTypeFunc("Path", tuple | list, -1, read_path, write_path)
     Point = PGTypeFunc("Point", tuple, 16, read_point, write_point)
@@ -133,4 +131,4 @@ class PostgreSQLDtype(PGTypeFunc, Enum):
     Timestamp = PGTypeFunc("Timestamp", dt, 8, read_timestamp, write_timestamp)
     Timestamptz = PGTypeFunc("Timestamptz", dt, 8, read_stamptz, write_stamptz)
     Timetz = PGTypeFunc("Timetz", time, 12, read_timetz, write_timetz)
-    Uuid = PGTypeFunc("Uuid", UUID, 16, read_uuid, write_uuid)
+    Uuid = PGTypeFunc("Uuid", object, 16, read_uuid, write_uuid)

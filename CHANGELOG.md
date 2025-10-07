@@ -1,5 +1,11 @@
 # Version History
 
+## 0.2.1.6
+
+* Fix PostgreSQLDtype polars compatible types
+* Fix digits dtype convert
+* Fix write_numeric function
+
 ## 0.2.1.5
 
 * Update MANIFEST.in

@@ -1,4 +1,7 @@
-from decimal import Decimal, ROUND_HALF_UP
+from decimal import (
+    ROUND_HALF_UP,
+    Decimal,
+)
 from libc.math cimport round
 from struct import (
     pack,
@@ -26,10 +29,10 @@ cpdef bytes write_bool(
 ):
     """Pack bool value."""
 
-    return pack("!?", dtype_value)
+    return pack("!?", bool(dtype_value))
 
 
-cpdef unsigned int read_oid(
+cpdef unsigned long read_oid(
     bytes binary_data,
     object pgoid_function = None,
     object buffer_object = None,
@@ -41,14 +44,14 @@ cpdef unsigned int read_oid(
 
 
 cpdef bytes write_oid(
-    unsigned int dtype_value,
+    object dtype_value,
     object pgoid_function = None,
     object buffer_object = None,
     object pgoid = None,
 ):
     """Pack oid value."""
 
-    return pack("!I", dtype_value)
+    return pack("!I", <unsigned long>dtype_value)
 
 
 cpdef unsigned short read_serial2(
@@ -63,14 +66,14 @@ cpdef unsigned short read_serial2(
 
 
 cpdef bytes write_serial2(
-    unsigned short dtype_value,
+    object dtype_value,
     object pgoid_function = None,
     object buffer_object = None,
     object pgoid = None,
 ):
     """Pack serial2 value."""
 
-    return pack("!H", dtype_value)
+    return pack("!H", <unsigned short>dtype_value)
 
 
 cpdef unsigned long read_serial4(
@@ -85,14 +88,14 @@ cpdef unsigned long read_serial4(
 
 
 cpdef bytes write_serial4(
-    unsigned long dtype_value,
+    object dtype_value,
     object pgoid_function = None,
     object buffer_object = None,
     object pgoid = None,
 ):
     """Pack serial4 value."""
 
-    return pack("!L", dtype_value)
+    return pack("!L", <unsigned long>dtype_value)
 
 
 cpdef unsigned long long read_serial8(
@@ -107,14 +110,14 @@ cpdef unsigned long long read_serial8(
 
 
 cpdef bytes write_serial8(
-    unsigned long long dtype_value,
+    object dtype_value,
     object pgoid_function = None,
     object buffer_object = None,
     object pgoid = None,
 ):
     """Pack serial8 value."""
 
-    return pack("!Q", dtype_value)
+    return pack("!Q", <unsigned long long>dtype_value)
 
 
 cpdef short read_int2(
@@ -129,14 +132,14 @@ cpdef short read_int2(
 
 
 cpdef bytes write_int2(
-    short dtype_value,
+    object dtype_value,
     object pgoid_function = None,
     object buffer_object = None,
     object pgoid = None,
 ):
     """Pack int2 value."""
 
-    return pack("!h", dtype_value)
+    return pack("!h", <short>dtype_value)
 
 
 cpdef long read_int4(
@@ -151,14 +154,14 @@ cpdef long read_int4(
 
 
 cpdef bytes write_int4(
-    long dtype_value,
+    object dtype_value,
     object pgoid_function = None,
     object buffer_object = None,
     object pgoid = None,
 ):
     """Pack int4 value."""
 
-    return pack("!l", dtype_value)
+    return pack("!l", <long>dtype_value)
 
 
 cpdef long long read_int8(
@@ -173,14 +176,14 @@ cpdef long long read_int8(
 
 
 cpdef bytes write_int8(
-    long long dtype_value,
+    object dtype_value,
     object pgoid_function = None,
     object buffer_object = None,
     object pgoid = None,
 ):
     """Pack int8 value."""
 
-    return pack("!q", dtype_value)
+    return pack("!q", <long long>dtype_value)
 
 
 cpdef double read_money(
@@ -195,7 +198,7 @@ cpdef double read_money(
 
 
 cpdef bytes write_money(
-    double dtype_value,
+    object dtype_value,
     object pgoid_function = None,
     object buffer_object = None,
     object pgoid = None,
@@ -217,14 +220,14 @@ cpdef float read_float4(
 
 
 cpdef bytes write_float4(
-    float dtype_value,
+    object dtype_value,
     object pgoid_function = None,
     object buffer_object = None,
     object pgoid = None,
 ):
     """Pack float4 value."""
 
-    return pack("!f", dtype_value)
+    return pack("!f", <float>dtype_value)
 
 
 cpdef double read_float8(
@@ -239,14 +242,14 @@ cpdef double read_float8(
 
 
 cpdef bytes write_float8(
-    double dtype_value,
+    object dtype_value,
     object pgoid_function = None,
     object buffer_object = None,
     object pgoid = None,
 ):
     """Pack float8 value."""
 
-    return pack("!d", dtype_value)
+    return pack("!d", <double>dtype_value)
 
 
 cpdef object read_numeric(
@@ -306,14 +309,16 @@ cpdef bytes write_numeric(
     """Pack numeric value."""
 
     cdef bint is_negative
-    cdef int sign, dscale, ndigits, weight, base, temp, digit
-    cdef object abs_value, scaled_value, int_value, as_tuple
+    cdef int sign, dscale, ndigits, weight, digit
+    cdef object abs_value, scaled_value, int_value
     cdef list digits = []
     cdef list digit_bytes_list = []
-    cdef bytes header, digits_data, result
+    cdef bytes header, digits_data
+
+    dtype_value = Decimal(dtype_value)
 
     if dtype_value.is_nan():
-        return pack("!hhhh", 0, 0, 0xC000, 0)
+        return pack("!hhhh", 0, 0, 0xc000, 0)
 
     is_negative = dtype_value < 0
     sign = 0x4000 if is_negative else 0x0000
@@ -326,9 +331,8 @@ cpdef bytes write_numeric(
     dscale = abs(as_tuple.exponent) if as_tuple.exponent < 0 else 0
     scaled_value = abs_value * (Decimal(10) ** dscale)
     int_value = int(scaled_value.to_integral_value(rounding=ROUND_HALF_UP))
-
-    base = 10000
     temp = int_value
+    base = 10000
 
     while temp > 0:
         digits.append(temp % base)
@@ -336,14 +340,22 @@ cpdef bytes write_numeric(
 
     if not digits:
         digits = [0]
+    else:
+        digits.reverse()
 
-    digits.reverse()
     ndigits = len(digits)
-    weight = (len(str(int_value)) - 1) // 4
+
+    if int_value == 0:
+        weight = 0
+    else:
+        integer_digits = len(str(int(abs_value)))
+        weight = (integer_digits - 1) // 4
+
     header = pack("!hhhh", ndigits, weight, sign, dscale)
 
     for digit in digits:
         digit_bytes_list.append(pack("!h", digit))
+
     digits_data = b''.join(digit_bytes_list)
 
     return header + digits_data
