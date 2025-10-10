@@ -95,7 +95,7 @@ cpdef bytes write_timestamptz(
     object buffer_object = None,
     object pgoid = None,
 ):
-    """Unpack timestamptz value."""
+    """Pack timestamptz value."""
 
     return write_timestamp(dtype_value.astimezone(timezone.utc))
 
@@ -129,7 +129,7 @@ cpdef bytes write_time(
     object buffer_object = None,
     object pgoid = None,
 ):
-    """Pack time value to pgcopy binary format."""
+    """Pack time value."""
 
     cdef long long hour_per_microsecond = (
         dtype_value.hour * SECONDS_PER_HOUR * MICROSECONDS_PER_SECOND

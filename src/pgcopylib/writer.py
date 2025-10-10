@@ -122,11 +122,34 @@ class PGCopyWriter:
     def __str__(self) -> str:
         """PGCopy info."""
 
-        return f"""PGCopy dump writer
+        def to_col(text: str) -> str:
+            """Format string element."""
+
+            text = text[:14] + "…" if len(text) > 15 else text
+            return f" {text: <15} "
+
+        empty_line = (
+            "│-----------------+-----------------│"
+        )
+        end_line = (
+            "└─────────────────┴─────────────────┘"
+        )
+        _str = [
+            "<PGCopy dump writer>",
+            "┌─────────────────┬─────────────────┐",
+            "│ Column Number   │ PostgreSQL Type │",
+            "╞═════════════════╪═════════════════╡",
+        ]
+
+        for column, pgtype in zip(range(self.num_columns), self.pgtypes):
+            _str.append(
+                f"│{to_col(f'Column_{column}')}│{to_col(pgtype.name)}│",
+            )
+            _str.append(empty_line)
+
+        _str[-1] = end_line
+
+        return "\n".join(_str) + f"""
 Total columns: {self.num_columns}
 Total rows: {self.num_rows}
-Postgres types: {
-    [pgtype.name for pgtype in self.pgtypes] or
-    ["bytea" for _ in self.postgres_dtype]
-}
 """

@@ -53,7 +53,13 @@ setup(
     ],
     package_data={
         "pgcopylib": [
-            "**/*.pyx", "**/*.pxd", "*.pxd", "*.pyd", "*.md", "*.txt",
+            "**/*.pyx",
+            "**/*.pyi",
+            "**/*.pxd",
+            "*.pxd",
+            "*.pyd",
+            "*.md",
+            "*.txt",
         ]
     },
     exclude_package_data={

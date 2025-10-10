@@ -1,5 +1,12 @@
 # Version History
 
+## 0.2.1.7
+
+* Add *.pyi files for cython modules descriptions
+* Change str and repr methods
+* Refactor some code
+* Update MANIFEST.in
+
 ## 0.2.1.6
 
 * Fix PostgreSQLDtype polars compatible types

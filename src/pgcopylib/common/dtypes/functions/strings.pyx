@@ -86,11 +86,11 @@ cpdef bytes write_bits(
     object pgoid = None,
 ):
     """Pack bit and varbit value."""
-    
+
     cdef long bit_length = len(dtype_value)
     cdef long byte_length = (bit_length + 7) // 8
     cdef int int_value = int(dtype_value, 2)
-    
+
     return int_value.to_bytes(byte_length, "big")
 
 
