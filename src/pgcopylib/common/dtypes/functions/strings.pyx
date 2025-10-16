@@ -17,7 +17,7 @@ cpdef bytes write_text(
 ):
     """Pack text value."""
 
-    return dtype_value.encode("utf-8")
+    return str(dtype_value).encode("utf-8")
 
 
 cpdef str read_macaddr(

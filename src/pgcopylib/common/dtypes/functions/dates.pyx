@@ -108,7 +108,7 @@ cpdef object read_time(
 ):
     """Unpack time value."""
 
-    cdef long long microseconds, total_seconds, total_minutes,
+    cdef long long microseconds, total_seconds, total_minutes
     cdef long long hours, minutes, seconds, microsecond
 
     microseconds = unpack_from("!q", binary_data)[0]
