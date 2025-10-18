@@ -1,5 +1,12 @@
 # Version History
 
+## 0.2.1.9
+
+* Update python version support to 3.10-3.14
+* Change str and repr column view
+* Change development status to 4 - Beta
+* Add auto upload to pip
+
 ## 0.2.1.8
 
 * Add wheels automake
