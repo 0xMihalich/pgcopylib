@@ -1,5 +1,10 @@
 # Version History
 
+## 0.2.2.0
+
+* Update setuptools minimal version
+* Fix nullable data read (thnx to @Art_Dmitriev)
+
 ## 0.2.1.9
 
 * Update python version support to 3.10-3.14

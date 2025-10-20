@@ -35,7 +35,7 @@ cpdef object read_record(
     )
     cdef int length = (buf[0] << 24) | (buf[1] << 16) | (buf[2] << 8) | buf[3]
 
-    if length == 0xffffffff:
+    if length == -1:
         return
 
     return reader(fileobj.read(length), pgoid_function, buffer_object, pgoid)
@@ -70,7 +70,9 @@ cdef void skip_record(object fileobj):
         _bytes
     )
     cdef int length = (buf[0] << 24) | (buf[1] << 16) | (buf[2] << 8) | buf[3]
-    fileobj.read(length)
+
+    if length != -1:
+        fileobj.read(length)
 
 
 cpdef long long writer(
