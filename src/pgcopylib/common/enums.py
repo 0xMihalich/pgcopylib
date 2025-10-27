@@ -45,6 +45,7 @@ class PGOid(Enum):
     _varbit = 1563
     _varchar = 1015
     _xml = 143
+    attname = 19
     bit = 1560
     bool = 16
     box = 603
@@ -166,6 +167,7 @@ PGOidToDType: dict[PGOid, PostgreSQLDtype] = {
     PGOid._varbit: PostgreSQLDtype.Array,
     PGOid._varchar: PostgreSQLDtype.Array,
     PGOid._xml: PostgreSQLDtype.Array,
+    PGOid.attname: PostgreSQLDtype.Text,
     PGOid.bit: PostgreSQLDtype.Bit,
     PGOid.bool: PostgreSQLDtype.Bool,
     PGOid.box: PostgreSQLDtype.Box,

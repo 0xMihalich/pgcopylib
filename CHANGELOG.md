@@ -1,5 +1,9 @@
 # Version History
 
+## 0.2.2.1
+
+* Add PGOid.attname for system atributes names
+
 ## 0.2.2.0
 
 * Update setuptools minimal version
