@@ -2,6 +2,7 @@ from datetime import (
     date,
     datetime,
     time,
+    timedelta,
 )
 from dateutil.relativedelta import relativedelta
 
@@ -84,7 +85,7 @@ def read_time(
 
 
 def write_time(
-    dtype_value: time,
+    dtype_value: time | timedelta,
     pgoid_function: object | None = None,
     buffer_object: object | None = None,
     pgoid: int | None = None,
@@ -106,7 +107,7 @@ def read_timetz(
 
 
 def write_timetz(
-    dtype_value: time,
+    dtype_value: time | timedelta,
     pgoid_function: object | None = None,
     buffer_object: object | None = None,
     pgoid: int | None = None,

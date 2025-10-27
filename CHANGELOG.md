@@ -1,5 +1,10 @@
 # Version History
 
+## 0.2.2.2
+
+* Improve functions write_time and write_timetz
+for support write from datetime.timedelta object
+
 ## 0.2.2.1
 
 * Add PGOid.attname for system atributes names

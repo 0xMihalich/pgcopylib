@@ -131,21 +131,27 @@ cpdef bytes write_time(
 ):
     """Pack time value."""
 
-    cdef long long hour_per_microsecond = (
-        dtype_value.hour * SECONDS_PER_HOUR * MICROSECONDS_PER_SECOND
-    )
-    cdef long long minute_per_microsecond = (
-        dtype_value.minute * SECONDS_PER_MINUTE * MICROSECONDS_PER_SECOND
-    )
-    cdef long long second_per_microsecond = (
-        dtype_value.second * MICROSECONDS_PER_SECOND
-    )
-    cdef long long total_microseconds = (
-        hour_per_microsecond +
-        minute_per_microsecond +
-        second_per_microsecond +
-        dtype_value.microsecond
-    )
+    cdef long long total_microseconds
+
+    if dtype_value.__class__ is timedelta:
+        total_microseconds = int(
+            dtype_value.total_seconds() * MICROSECONDS_PER_SECOND
+        )
+        total_microseconds = total_microseconds % (
+            HOURS_PER_DAY * SECONDS_PER_HOUR * MICROSECONDS_PER_SECOND
+        )
+    elif dtype_value.__class__ is time:
+        total_microseconds = (
+            (dtype_value.hour * SECONDS_PER_HOUR * MICROSECONDS_PER_SECOND) +
+            (dtype_value.minute * SECONDS_PER_MINUTE *
+            MICROSECONDS_PER_SECOND) + (dtype_value.second *
+            MICROSECONDS_PER_SECOND) + dtype_value.microsecond
+        )
+    else:
+        raise ValueError(
+            "dtype_value must be datetime.time or datetime.timedelta",
+        )
+
     return pack("!q", total_microseconds)
 
 
@@ -171,23 +177,37 @@ cpdef bytes write_timetz(
 ):
     """Pack timetz value."""
 
-    cdef long long hour_per_microsecond = (
-        dtype_value.hour * SECONDS_PER_HOUR * MICROSECONDS_PER_SECOND
-    )
-    cdef long long minute_per_microsecond = (
-        dtype_value.minute * SECONDS_PER_MINUTE * MICROSECONDS_PER_SECOND
-    )
-    cdef long long second_per_microsecond = (
-        dtype_value.second * MICROSECONDS_PER_SECOND
-    )
-    cdef long long total_microseconds = (
-        hour_per_microsecond +
-        minute_per_microsecond +
-        second_per_microsecond +
-        dtype_value.microsecond
-    )
-    cdef object tz_offset = dtype_value.tzinfo.utcoffset(None)
-    cdef int offset = tz_offset.total_seconds()
+    cdef long long total_microseconds
+    cdef int offset
+    cdef object tz_offset
+
+    if dtype_value.__class__ is timedelta:
+        total_microseconds = int(
+            dtype_value.total_seconds() * MICROSECONDS_PER_SECOND
+        )
+        total_microseconds = total_microseconds % (
+            HOURS_PER_DAY * SECONDS_PER_HOUR * MICROSECONDS_PER_SECOND
+        )
+        offset = 0
+
+    elif dtype_value.__class__ is time:
+        total_microseconds = (
+            (dtype_value.hour * SECONDS_PER_HOUR * MICROSECONDS_PER_SECOND) +
+            (dtype_value.minute * SECONDS_PER_MINUTE *
+            MICROSECONDS_PER_SECOND) + (dtype_value.second *
+            MICROSECONDS_PER_SECOND) + dtype_value.microsecond
+        )
+
+        if dtype_value.tzinfo is None:
+            offset = 0
+        else:
+            tz_offset = dtype_value.tzinfo.utcoffset(None)
+            offset = int(tz_offset.total_seconds())
+    else:
+        raise ValueError(
+            "dtype_value must be datetime.time or datetime.timedelta",
+        )
+
     return pack("!qi", total_microseconds, offset)
 
 
