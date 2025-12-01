@@ -73,7 +73,9 @@ cpdef bytes write_timestamp(
     elif dtype_value.__class__ is date:
         dtype_value = datetime.combine(dtype_value, datetime.min.time())
 
-    cdef long long seconds = (dtype_value - DEFAULT_DATETIME).total_seconds()
+    cdef object dt_utc = dtype_value.astimezone(timezone.utc)
+    cdef object dt = dt_utc.replace(tzinfo=None)
+    cdef long long seconds = (dt - DEFAULT_DATETIME).total_seconds()
     cdef long long microseconds = seconds * MICROSECONDS_PER_SECOND
     return pack("!q", microseconds)
 

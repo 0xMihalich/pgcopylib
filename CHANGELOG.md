@@ -1,5 +1,9 @@
 # Version History
 
+## 0.2.2.3
+
+* Fix write_timestamp error Can't subtract offset-naive and offset-aware datetimes
+
 ## 0.2.2.2
 
 * Improve functions write_time and write_timetz
