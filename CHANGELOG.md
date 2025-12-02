@@ -1,5 +1,9 @@
 # Version History
 
+## 0.2.2.4
+
+* Add auto convert String/FixedString(36) from Clickhouse data to Postgres uuid
+
 ## 0.2.2.3
 
 * Fix write_timestamp error Can't subtract offset-naive and offset-aware datetimes

@@ -20,4 +20,7 @@ cpdef bytes write_uuid(
 ):
     """Pack uuid value."""
 
+    if dtype_value.__class__ is str:
+        dtype_value = UUID(dtype_value)
+
     return dtype_value.bytes
