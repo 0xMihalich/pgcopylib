@@ -17,7 +17,11 @@ cpdef bytes write_text(
 ):
     """Pack text value."""
 
-    return str(dtype_value).encode("utf-8")
+    if not dtype_value.__class__ is str:
+        dtype_value = str(dtype_value)
+
+    cdef str string_value = dtype_value.replace("\x00", "")
+    return string_value.encode("utf-8", errors="replace")
 
 
 cpdef str read_macaddr(

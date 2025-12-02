@@ -1,5 +1,10 @@
 # Version History
 
+## 0.2.2.5
+
+* Improve invalid byte sequence for encoding "UTF8": 0x00
+* Disable Linux Aarch64
+
 ## 0.2.2.4
 
 * Add auto convert String/FixedString(36) from Clickhouse data to Postgres uuid
