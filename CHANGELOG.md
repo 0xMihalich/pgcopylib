@@ -1,5 +1,10 @@
 # Version History
 
+## 0.2.2.6
+
+* Downgrade compile depends to cython==0.29.33
+* Make wheels for python 3.10 and 3.11 only
+
 ## 0.2.2.5
 
 * Improve invalid byte sequence for encoding "UTF8": 0x00
