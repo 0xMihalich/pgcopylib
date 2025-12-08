@@ -85,7 +85,10 @@ cpdef list read_array(
     cdef unsigned int num_dim, _, oid
     cdef list array_struct = []
     cdef list array_elements = []
-    cdef bytes data, element
+    cdef bytes data, num_element
+    cdef unsigned int num
+    cdef object element
+    cdef list elements
 
     buffer_object.write(binary_data)
     buffer_object.seek(0)
@@ -93,15 +96,18 @@ cpdef list read_array(
     num_dim, _, oid = unpack("!3I", data)
 
     for _ in range(num_dim):
-        element = buffer_object.read(8)
-        array_struct.append(unpack("!2I", element)[0])
+        num_element = buffer_object.read(8)
+        num = unpack("!2I", num_element)[0]
+        array_struct.append(num)
 
     for _ in range(prod(array_struct)):
-        array_elements.append(_reader(buffer_object, pgoid_function))
+        element = _reader(buffer_object, pgoid_function)
+        array_elements.append(element)
 
     buffer_object.seek(0)
     buffer_object.truncate()
-    return recursive_elements(array_elements, array_struct)
+    elements = recursive_elements(array_elements, array_struct)
+    return elements
 
 
 cpdef bytes write_array(
