@@ -1,4 +1,3 @@
-from cpython cimport PyBytes_AsString
 from struct import (
     pack,
     unpack,
@@ -65,12 +64,9 @@ cdef object _reader(object buffer_object, object pgoid_function):
     """Read array record."""
 
     cdef bytes _bytes = buffer_object.read(4)
-    cdef const unsigned char *buf = <const unsigned char*>PyBytes_AsString(
-        _bytes
-    )
-    cdef int length = (buf[0] << 24) | (buf[1] << 16) | (buf[2] << 8) | buf[3]
+    cdef int length = unpack("!i", _bytes)
 
-    if length == 0xffffffff:
+    if length == -1:
         return
 
     return pgoid_function(buffer_object.read(length))

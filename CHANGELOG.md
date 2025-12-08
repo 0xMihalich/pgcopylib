@@ -1,5 +1,11 @@
 # Version History
 
+## 0.2.2.7
+
+* Improve array read length for unix systems
+* Back compile depends to cython>=0.29.33
+* Make wheels for python 3.10-3.14
+
 ## 0.2.2.6
 
 * Downgrade compile depends to cython==0.29.33
