@@ -1,5 +1,9 @@
 # Version History
 
+## 0.2.3.1
+
+* Add BufferObject
+
 ## 0.2.3.0
 
 * Fix unpack requires a buffer of 4 bytes for unix systems

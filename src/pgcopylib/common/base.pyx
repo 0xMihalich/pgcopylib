@@ -1,5 +1,8 @@
 from cpython cimport PyBytes_AsString
-from struct import pack
+from struct import (
+    pack,
+    unpack,
+)
 
 
 cdef bytes HEADER = b"PGCOPY\n\xff\r\n\x00\x00\x00\x00\x00\x00\x00\x00\x00"
@@ -30,15 +33,14 @@ cpdef object read_record(
     """Read one record to bytes."""
 
     cdef bytes _bytes = fileobj.read(4)
-    cdef const unsigned char *buf = <const unsigned char*>PyBytes_AsString(
-        _bytes
-    )
-    cdef int length = (buf[0] << 24) | (buf[1] << 16) | (buf[2] << 8) | buf[3]
+    cdef int length = unpack("!i", _bytes)[0]
+    cdef bytes data
 
     if length == -1:
         return
 
-    return reader(fileobj.read(length), pgoid_function, buffer_object, pgoid)
+    data = fileobj.read(length)
+    return reader(data, pgoid_function, buffer_object, pgoid)
 
 
 cpdef long long skip_all(
@@ -66,10 +68,7 @@ cdef void skip_record(object fileobj):
     """Skip one record."""
 
     cdef bytes _bytes = fileobj.read(4)
-    cdef const unsigned char *buf = <const unsigned char*>PyBytes_AsString(
-        _bytes
-    )
-    cdef int length = (buf[0] << 24) | (buf[1] << 16) | (buf[2] << 8) | buf[3]
+    cdef int length = unpack("!i", _bytes)[0]
 
     if length != -1:
         fileobj.read(length)
