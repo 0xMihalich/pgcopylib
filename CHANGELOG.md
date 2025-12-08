@@ -1,5 +1,9 @@
 # Version History
 
+## 0.2.3.0
+
+* Fix unpack requires a buffer of 4 bytes for unix systems
+
 ## 0.2.2.8
 
 * Fix TypeError: an integer is required
