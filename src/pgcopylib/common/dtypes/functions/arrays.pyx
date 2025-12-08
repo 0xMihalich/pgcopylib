@@ -63,32 +63,13 @@ cdef long prod(list iterable):
 cdef object _reader(object buffer_object, object pgoid_function):
     """Read array record."""
 
-    cdef bytes _bytes = b""
-    cdef bytes chunk
-    cdef int bytes_read = 0
-    cdef int length
-    cdef bytes data
-    
-    while bytes_read < 4:
-        chunk = buffer_object.read(4 - bytes_read)
-
-        if not chunk:
-            raise ValueError(f"Could not read 4 bytes for length, got {bytes_read}")
-
-        _bytes += chunk
-        bytes_read += len(chunk)
-
-    length = unpack("!i", _bytes)[0]
+    cdef bytes _bytes = buffer_object.read(4)
+    cdef int length = unpack("!i", _bytes)[0]
 
     if length == -1:
-        return None
+        return
 
-    data = buffer_object.read(length)
-
-    if len(data) != length:
-        raise ValueError(f"Expected {length} bytes, got {len(data)}")
-
-    return pgoid_function(data)
+    return pgoid_function(buffer_object.read(length))
 
 
 cpdef list read_array(
@@ -102,29 +83,20 @@ cpdef list read_array(
     cdef unsigned int num_dim, _, oid
     cdef list array_struct = []
     cdef list array_elements = []
-    cdef bytes data, num_element
-    cdef unsigned int num
-    cdef object element
-    cdef list elements
 
     buffer_object.write(binary_data)
     buffer_object.seek(0)
-    data = buffer_object.read(12)
-    num_dim, _, oid = unpack("!3I", data)
+    num_dim, _, oid = unpack("!3I", buffer_object.read(12))
 
     for _ in range(num_dim):
-        num_element = buffer_object.read(8)
-        num = unpack("!2I", num_element)[0]
-        array_struct.append(num)
+        array_struct.append(unpack("!2I", buffer_object.read(8))[0])
 
     for _ in range(prod(array_struct)):
-        element = _reader(buffer_object, pgoid_function)
-        array_elements.append(element)
+        array_elements.append(_reader(buffer_object, pgoid_function))
 
     buffer_object.seek(0)
     buffer_object.truncate()
-    elements = recursive_elements(array_elements, array_struct)
-    return elements
+    return recursive_elements(array_elements, array_struct)
 
 
 cpdef bytes write_array(
@@ -166,6 +138,7 @@ cpdef bytes write_array(
         dimensions.extend([dim, 1])
 
     length_dimensions = len(dimensions)
+
     buffer_object.write(pack("!3I", dim_length, is_nullable, pgoid))
     buffer_object.write(pack("!%dI" % length_dimensions, *dimensions))
 

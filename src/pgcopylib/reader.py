@@ -1,7 +1,4 @@
-from io import (
-    BufferedReader,
-    BytesIO,
-)
+from io import BufferedReader
 from typing import (
     Any,
     Generator,
@@ -11,6 +8,7 @@ from struct import unpack
 
 from .common import (
     ArrayOidToOid,
+    BufferObject,
     PGOid,
     PGOidToDType,
     PGCopySignatureError,
@@ -82,7 +80,7 @@ class PGCopyReader:
             ) else 0
             for column in range(self.num_columns)
         ]
-        self.buffer_object = BytesIO()
+        self.buffer_object = BufferObject()
 
     def __count_rows(self) -> None:
         """Count rows."""

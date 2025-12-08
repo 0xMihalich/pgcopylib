@@ -1,3 +1,4 @@
+from .buffer_object import BufferObject
 from .enums import (
     ArrayOidToOid,
     PGOid,
@@ -11,6 +12,7 @@ from .errors import (
 
 __all__ = (
     "ArrayOidToOid",
+    "BufferObject",
     "PGCopyRecordError",
     "PGCopySignatureError",
     "PGOid",
