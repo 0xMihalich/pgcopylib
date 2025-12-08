@@ -65,11 +65,13 @@ cdef object _reader(object buffer_object, object pgoid_function):
 
     cdef bytes _bytes = buffer_object.read(4)
     cdef int length = unpack("!i", _bytes)[0]
+    cdef bytes data
 
     if length == -1:
         return
 
-    return pgoid_function(buffer_object.read(length))
+    data = buffer_object.read(length)
+    return pgoid_function(data)
 
 
 cpdef list read_array(
@@ -83,13 +85,16 @@ cpdef list read_array(
     cdef unsigned int num_dim, _, oid
     cdef list array_struct = []
     cdef list array_elements = []
+    cdef bytes data, element
 
     buffer_object.write(binary_data)
     buffer_object.seek(0)
-    num_dim, _, oid = unpack("!3I", buffer_object.read(12))
+    data = buffer_object.read(12)
+    num_dim, _, oid = unpack("!3I", data)
 
     for _ in range(num_dim):
-        array_struct.append(unpack("!2I", buffer_object.read(8))[0])
+        element = buffer_object.read(8)
+        array_struct.append(unpack("!2I", element)[0])
 
     for _ in range(prod(array_struct)):
         array_elements.append(_reader(buffer_object, pgoid_function))
@@ -138,7 +143,6 @@ cpdef bytes write_array(
         dimensions.extend([dim, 1])
 
     length_dimensions = len(dimensions)
-
     buffer_object.write(pack("!3I", dim_length, is_nullable, pgoid))
     buffer_object.write(pack("!%dI" % length_dimensions, *dimensions))
 

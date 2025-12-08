@@ -34,11 +34,13 @@ cpdef object read_record(
 
     cdef bytes _bytes = fileobj.read(4)
     cdef int length = unpack("!i", _bytes)[0]
+    cdef bytes data
 
     if length == -1:
         return
 
-    return reader(fileobj.read(length), pgoid_function, buffer_object, pgoid)
+    data = fileobj.read(length)
+    return reader(data, pgoid_function, buffer_object, pgoid)
 
 
 cpdef long long skip_all(
