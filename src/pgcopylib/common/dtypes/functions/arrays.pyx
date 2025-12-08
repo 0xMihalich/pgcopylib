@@ -63,14 +63,31 @@ cdef long prod(list iterable):
 cdef object _reader(object buffer_object, object pgoid_function):
     """Read array record."""
 
-    cdef bytes _bytes = buffer_object.read(4)
-    cdef int length = unpack("!i", _bytes)[0]
+    cdef bytes _bytes = b""
+    cdef bytes chunk
+    cdef int bytes_read = 0
+    cdef int length
     cdef bytes data
+    
+    while bytes_read < 4:
+        chunk = buffer_object.read(4 - bytes_read)
+
+        if not chunk:
+            raise ValueError(f"Could not read 4 bytes for length, got {bytes_read}")
+
+        _bytes += chunk
+        bytes_read += len(chunk)
+
+    length = unpack("!i", _bytes)[0]
 
     if length == -1:
-        return
+        return None
 
     data = buffer_object.read(length)
+
+    if len(data) != length:
+        raise ValueError(f"Expected {length} bytes, got {len(data)}")
+
     return pgoid_function(data)
 
 
