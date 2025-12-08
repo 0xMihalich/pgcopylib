@@ -64,7 +64,7 @@ cdef object _reader(object buffer_object, object pgoid_function):
     """Read array record."""
 
     cdef bytes _bytes = buffer_object.read(4)
-    cdef int length = unpack("!i", _bytes)
+    cdef int length = unpack("!i", _bytes)[0]
 
     if length == -1:
         return

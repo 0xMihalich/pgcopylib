@@ -1,5 +1,9 @@
 # Version History
 
+## 0.2.2.8
+
+* Fix TypeError: an integer is required
+
 ## 0.2.2.7
 
 * Improve array read length for unix systems
