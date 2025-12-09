@@ -45,17 +45,21 @@ extensions = [
 
 setup(
     name="pgcopylib",
+    version="0.2.3.2",
     package_dir={"": "src"},
     ext_modules=cythonize(extensions, language_level="3"),
     packages=[
+        "pgcopylib",
         "pgcopylib.common",
         "pgcopylib.common.dtypes.functions",
     ],
     package_data={
         "pgcopylib": [
+            "**/*.py",
             "**/*.pyx",
             "**/*.pyi",
             "**/*.pxd",
+            "*.py",
             "*.pxd",
             "*.pyd",
             "*.md",

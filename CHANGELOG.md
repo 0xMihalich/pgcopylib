@@ -1,5 +1,12 @@
 # Version History
 
+## 0.2.3.2
+
+* Delete BufferObject
+* Rollback to stable functions from 0.2.2.6 version
+* Improve unix systems support for array read function
+* Fix compile from source on unix systems
+
 ## 0.2.3.1
 
 * Add BufferObject
